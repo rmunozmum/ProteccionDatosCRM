@@ -1,0 +1,418 @@
+swagger: '2.0'
+info:
+  title: MotorDynamicsAPI
+  description: >-
+    API para consultar o ejecutar procesos sobre registros Dynamics/Dataverse
+    por RUT o Pasaporte.
+  version: '1.0'
+host: um-ley-proteccion-datos-qa.azurewebsites.net
+basePath: /
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /api/execute-single:
+    post:
+      summary: Ejecutar proceso para un RUT o Pasaporte
+      description: >-
+        Ejecuta una operación para un único RUT o Pasaporte. Para pruebas seguras usar mode
+        = Consultar.
+      operationId: ExecuteSingle
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SingleRequest'
+      responses:
+        '200':
+          description: Respuesta de ejecución
+          schema:
+            $ref: '#/definitions/ExecutionResponse'
+        '400':
+          description: Solicitud inválida
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '500':
+          description: Error interno
+      x-ms-visibility: important
+  /api/execute-batch:
+    post:
+      summary: Ejecutar proceso para múltiples identificadores
+      description: >-
+        Ejecuta una operación para una lista de RUTs y/o pasaportes. Usar
+        Consultar para pruebas seguras.
+      operationId: ExecuteBatch
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BatchRequest'
+      responses:
+        '200':
+          description: Respuesta de ejecución por lote
+          schema:
+            $ref: '#/definitions/ExecutionResponse'
+        '400':
+          description: Solicitud inválida
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '500':
+          description: Error interno
+      x-ms-visibility: important
+  /api/reports/catalog:
+    get:
+      summary: Obtener catálogo de reportes
+      description: Obtiene el catálogo de reportes LPD disponibles.
+      operationId: GetReportsCatalog
+      x-ms-visibility: important
+      parameters: []
+      responses:
+        '200':
+          description: Catálogo de reportes
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                reportCode:
+                  type: string
+                reportName:
+                  type: string
+                description:
+                  type: string
+                module:
+                  type: string
+                executionType:
+                  type: string
+                status:
+                  type: string
+                enabled:
+                  type: boolean
+                parameters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      required:
+                        type: boolean
+                      type:
+                        type: string
+                outputFormats:
+                  type: array
+                  items:
+                    type: string
+        '401':
+          description: No autorizado
+        '500':
+          description: Error interno
+  /api/reports/execute:
+    post:
+      summary: Ejecutar reporte LPD
+      description: Ejecuta un reporte LPD usando los parámetros requeridos.
+      operationId: ExecuteReport
+      x-ms-visibility: important
+      parameters:
+        - name: body
+          in: body
+          required: false
+          schema:
+            type: object
+            properties:
+              reportCode:
+                type: string
+                description: reportCode
+              parameters:
+                type: object
+                properties:
+                  rut:
+                    type: string
+                  pasaporte:
+                    type: string
+                  tipoDocumento:
+                    type: string
+                  usuarioEjecutor:
+                    type: string
+                  correoEjecutor:
+                    type: string
+                  areaEjecutor:
+                    type: string
+                  motivo:
+                    type: string
+      responses:
+        '200':
+          description: Resultado del reporte
+          schema:
+            type: object
+        '400':
+          description: Solicitud inválida
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '500':
+          description: Error interno
+definitions:
+  SingleRequest:
+    type: object
+    required:
+      - mode
+    properties:
+      rut:
+        type: string
+        title: RUT
+        description: RUT a consultar o procesar.
+        x-ms-summary: RUT
+      pasaporte:
+        type: string
+        title: Pasaporte
+        description: Pasaporte a consultar o procesar.
+        x-ms-summary: Pasaporte
+      mode:
+        type: string
+        title: Modo
+        description: Modo de ejecución. Usar Consultar para pruebas seguras.
+        enum:
+          - Consultar
+          - EliminarTodo
+          - EliminarTodoMenosContacto
+        default: Consultar
+        x-ms-summary: Modo
+      confirmationText:
+        type: string
+        title: Texto de confirmación
+        description: >-
+          Texto requerido para autorizar eliminación. Para consultar puede ir
+          vacío.
+        x-ms-summary: Confirmación
+  BatchRequest:
+    type: object
+    required:
+      - mode
+    properties:
+      ruts:
+        type: array
+        title: RUTs
+        description: Lista de RUTs a consultar o procesar.
+        items:
+          type: string
+        x-ms-summary: RUTs
+      pasaportes:
+        type: array
+        title: Pasaportes
+        description: Lista de pasaportes a consultar o procesar.
+        items:
+          type: string
+        x-ms-summary: Pasaportes
+      mode:
+        type: string
+        title: Modo
+        description: Modo de ejecución.
+        enum:
+          - Consultar
+          - EliminarTodo
+          - EliminarTodoMenosContacto
+        default: Consultar
+        x-ms-summary: Modo
+      confirmationText:
+        type: string
+        title: Texto de confirmación
+        description: >-
+          Texto requerido para autorizar eliminación. Para consultar puede ir
+          vacío.
+        x-ms-summary: Confirmación
+  ExecutionResponse:
+    type: object
+    properties:
+      executionId:
+        type: string
+        description: Identificador único de la ejecución.
+      message:
+        type: string
+        description: Mensaje general de la ejecución, si la API lo informa.
+      summary:
+        $ref: '#/definitions/BatchSummary'
+      results:
+        type: array
+        description: Resultado por identificador procesado.
+        items:
+          $ref: '#/definitions/RutResult'
+      apiBuild:
+        type: string
+        description: Versión desplegada de la API.
+  BatchSummary:
+    type: object
+    properties:
+      totalProcessed:
+        type: integer
+        format: int32
+      successful:
+        type: integer
+        format: int32
+      notFound:
+        type: integer
+        format: int32
+      failed:
+        type: integer
+        format: int32
+  RutResult:
+    type: object
+    properties:
+      rut:
+        type: string
+        description: RUT procesado.
+      status:
+        type: string
+        description: Estado final informado por la API.
+        enum:
+          - Consultado
+          - Eliminado
+          - EliminadoMenosContacto
+          - NoEncontrado
+          - Error
+      error:
+        type: string
+        description: Detalle del error, si aplica.
+        x-nullable: true
+      data:
+        $ref: '#/definitions/MatrixData'
+      audit:
+        $ref: '#/definitions/AuditResult'
+  AuditResult:
+    type: object
+    properties:
+      attempted:
+        type: boolean
+      created:
+        type: boolean
+      recordId:
+        type: string
+      retrieveAfterCreateCount:
+        type: integer
+        format: int32
+      webApiRetrieveCount:
+        type: integer
+        format: int32
+      error:
+        type: string
+        x-nullable: true
+      retryUsed:
+        type: boolean
+      warning:
+        type: string
+        x-nullable: true
+      originalResponseJsonLength:
+        type: integer
+        format: int32
+      fullJsonColumnsUsed:
+        type: boolean
+      legacyJsonColumnsUsed:
+        type: boolean
+      savedResponseJsonFullLength:
+        type: integer
+        format: int32
+  MatrixData:
+    type: object
+    properties:
+      isMatrix:
+        type: boolean
+      executionId:
+        type: string
+      environmentUrl:
+        type: string
+      operationMode:
+        type: string
+      phase:
+        type: string
+      rut:
+        type: string
+      contactId:
+        type: string
+      fullname:
+        type: string
+      dv:
+        type: string
+      contactSummary:
+        $ref: '#/definitions/ContactSummary'
+      retrievedAt:
+        type: string
+        format: date-time
+      found:
+        type: boolean
+      message:
+        type: string
+      matrix:
+        type: array
+        items:
+          $ref: '#/definitions/MatrixRow'
+  MatrixRow:
+    type: object
+    properties:
+      entidadPrincipal:
+        type: string
+      entidadRelacionada:
+        type: string
+      campoRelacion:
+        type: string
+      cantidadTotal:
+        type: integer
+        format: int32
+  ContactSummary:
+    type: object
+    properties:
+      contactId:
+        type: string
+      fullname:
+        type: string
+      rut:
+        type: string
+      pasaporte:
+        type: string
+      dv:
+        type: string
+      rutCompleto:
+        type: string
+      tipoDocumento:
+        type: string
+      emailPrincipal:
+        type: string
+      emailSecundario:
+        type: string
+      telefonoMovil:
+        type: string
+      telefonoFijo:
+        type: string
+      fase:
+        type: string
+      clasificacionContacto:
+        type: string
+      ownerName:
+        type: string
+      carreraInteresActual:
+        type: string
+      sedeActual:
+        type: string
+      score:
+        type: string
+      origen:
+        type: string
+      subOrigen:
+        type: string
+      procesoAdmision:
+        type: string
+      createdOn:
+        type: string
+      modifiedOn:
+        type: string
+security: []
+securityDefinitions: {}

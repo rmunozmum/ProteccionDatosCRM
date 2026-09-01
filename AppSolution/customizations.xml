@@ -1,0 +1,3352 @@
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26064.143" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.26064.00143">
+  <Entities>
+    <Entity>
+      <Name LocalizedName="Registro de operación de privacidad" OriginalName="Registro de operación de privacidad">um_privacyoperationlog</Name>
+      <EntityInfo>
+        <entity Name="um_privacyoperationlog">
+          <LocalizedNames>
+            <LocalizedName description="Registro de operación de privacidad" languagecode="3082" />
+            <LocalizedName description="Registro de operación de privacidad" languagecode="1033" />
+          </LocalizedNames>
+          <LocalizedCollectionNames>
+            <LocalizedCollectionName description="Registro de operación de privacidad" languagecode="3082" />
+            <LocalizedCollectionName description="Registro de operación de privacidad" languagecode="1033" />
+          </LocalizedCollectionNames>
+          <Descriptions>
+            <Description description="" languagecode="3082" />
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+          <attributes>
+            <attribute PhysicalName="CreatedBy">
+              <Type>lookup</Type>
+              <Name>createdby</Name>
+              <LogicalName>createdby</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <LookupStyle>single</LookupStyle>
+              <LookupTypes />
+              <displaynames>
+                <displayname description="Autor" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Identificador único del usuario que creó el registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="CreatedOn">
+              <Type>datetime</Type>
+              <Name>createdon</Name>
+              <LogicalName>createdon</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>inactive</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>1</IsFilterable>
+              <IsRetrievable>1</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>datetime</Format>
+              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
+              <Behavior>1</Behavior>
+              <displaynames>
+                <displayname description="Fecha de creación" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Fecha y hora de creación del registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="CreatedOnBehalfBy">
+              <Type>lookup</Type>
+              <Name>createdonbehalfby</Name>
+              <LogicalName>createdonbehalfby</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <LookupStyle>single</LookupStyle>
+              <LookupTypes />
+              <displaynames>
+                <displayname description="Autor (delegado)" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Identificador único del usuario delegado que creó el registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="ImportSequenceNumber">
+              <Type>int</Type>
+              <Name>importsequencenumber</Name>
+              <LogicalName>importsequencenumber</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind</DisplayMask>
+              <ImeMode>disabled</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format></Format>
+              <MinValue>-2147483648</MinValue>
+              <MaxValue>2147483647</MaxValue>
+              <displaynames>
+                <displayname description="Número de secuencia de importación" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Número de secuencia de la importación que creó este registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="ModifiedBy">
+              <Type>lookup</Type>
+              <Name>modifiedby</Name>
+              <LogicalName>modifiedby</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <LookupStyle>single</LookupStyle>
+              <LookupTypes />
+              <displaynames>
+                <displayname description="Modificado por" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Identificador único del usuario que modificó el registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="ModifiedOn">
+              <Type>datetime</Type>
+              <Name>modifiedon</Name>
+              <LogicalName>modifiedon</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>inactive</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>1</IsFilterable>
+              <IsRetrievable>1</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>datetime</Format>
+              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
+              <Behavior>1</Behavior>
+              <displaynames>
+                <displayname description="Fecha de modificación" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Fecha y hora en que se modificó el registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="ModifiedOnBehalfBy">
+              <Type>lookup</Type>
+              <Name>modifiedonbehalfby</Name>
+              <LogicalName>modifiedonbehalfby</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <LookupStyle>single</LookupStyle>
+              <LookupTypes />
+              <displaynames>
+                <displayname description="Modificado por (delegado)" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Identificador único del usuario delegado que modificó el registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="OverriddenCreatedOn">
+              <Type>datetime</Type>
+              <Name>overriddencreatedon</Name>
+              <LogicalName>overriddencreatedon</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForGrid</DisplayMask>
+              <ImeMode>inactive</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>date</Format>
+              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
+              <Behavior>1</Behavior>
+              <displaynames>
+                <displayname description="Fecha de creación del registro" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Fecha y hora en que se migró el registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="OwnerId">
+              <Type>owner</Type>
+              <Name>ownerid</Name>
+              <LogicalName>ownerid</LogicalName>
+              <RequiredLevel>systemrequired</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>1</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <LookupStyle>single</LookupStyle>
+              <LookupTypes>
+                <LookupType id="00000000-0000-0000-0000-000000000000">9</LookupType>
+                <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
+              </LookupTypes>
+              <displaynames>
+                <displayname description="Propietario" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Id. del propietario" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="OwningBusinessUnit">
+              <Type>lookup</Type>
+              <Name>owningbusinessunit</Name>
+              <LogicalName>owningbusinessunit</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>1</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <LookupStyle>single</LookupStyle>
+              <LookupTypes />
+              <displaynames>
+                <displayname description="Unidad de negocio propietaria" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Identificador único de la unidad de negocio propietaria del registro" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="OwningTeam">
+              <Type>lookup</Type>
+              <Name>owningteam</Name>
+              <LogicalName>owningteam</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsLogical>1</IsLogical>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <LookupStyle>single</LookupStyle>
+              <LookupTypes />
+              <displaynames>
+                <displayname description="Equipo propietario" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Identificador único del equipo propietario del registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="OwningUser">
+              <Type>lookup</Type>
+              <Name>owninguser</Name>
+              <LogicalName>owninguser</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsLogical>1</IsLogical>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <LookupStyle>single</LookupStyle>
+              <LookupTypes />
+              <displaynames>
+                <displayname description="Usuario propietario" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Identificador único del usuario propietario del registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="statecode">
+              <Type>state</Type>
+              <Name>statecode</Name>
+              <LogicalName>statecode</LogicalName>
+              <RequiredLevel>systemrequired</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>0</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>1</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <optionset Name="um_privacyoperationlog_statecode">
+                <OptionSetType>state</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <displaynames>
+                  <displayname description="Estado" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="Estado del Registro de operación de privacidad" languagecode="3082" />
+                </Descriptions>
+                <states>
+                  <state value="0" defaultstatus="1" invariantname="Active" IsHidden="0">
+                    <labels>
+                      <label description="Activo" languagecode="3082" />
+                    </labels>
+                  </state>
+                  <state value="1" defaultstatus="2" invariantname="Inactive" IsHidden="0">
+                    <labels>
+                      <label description="Inactivo" languagecode="3082" />
+                    </labels>
+                  </state>
+                </states>
+              </optionset>
+              <displaynames>
+                <displayname description="Estado" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Estado del Registro de operación de privacidad" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="statuscode">
+              <Type>status</Type>
+              <Name>statuscode</Name>
+              <LogicalName>statuscode</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <optionset Name="um_privacyoperationlog_statuscode">
+                <OptionSetType>status</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <displaynames>
+                  <displayname description="Razón para el estado" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="Razón para el estado del Registro de operación de privacidad" languagecode="3082" />
+                </Descriptions>
+                <statuses>
+                  <status value="1" state="0" IsHidden="0">
+                    <labels>
+                      <label description="Activo" languagecode="3082" />
+                    </labels>
+                  </status>
+                  <status value="2" state="1" IsHidden="0">
+                    <labels>
+                      <label description="Inactivo" languagecode="3082" />
+                    </labels>
+                  </status>
+                </statuses>
+              </optionset>
+              <displaynames>
+                <displayname description="Razón para el estado" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Razón para el estado del Registro de operación de privacidad" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="TimeZoneRuleVersionNumber">
+              <Type>int</Type>
+              <Name>timezoneruleversionnumber</Name>
+              <LogicalName>timezoneruleversionnumber</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format></Format>
+              <MinValue>-1</MinValue>
+              <MaxValue>2147483647</MaxValue>
+              <displaynames>
+                <displayname description="Número de versión de regla de zona horaria" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Solo para uso interno." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_backupcreated">
+              <Type>bit</Type>
+              <Name>um_backupcreated</Name>
+              <LogicalName>um_backupcreated</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>0</AppDefaultValue>
+              <optionset Name="um_privacyoperationlog_um_backupcreated">
+                <OptionSetType>bit</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <ExternalTypeName></ExternalTypeName>
+                <displaynames>
+                  <displayname description="Respaldo Creado" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="" languagecode="3082" />
+                </Descriptions>
+                <options>
+                  <option value="1" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="True" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="0" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="False" languagecode="3082" />
+                    </labels>
+                  </option>
+                </options>
+              </optionset>
+              <displaynames>
+                <displayname description="Respaldo Creado" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_backupfilename">
+              <Type>nvarchar</Type>
+              <Name>um_backupfilename</Name>
+              <LogicalName>um_backupfilename</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="Nombre del Archivo de Respaldo" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_confirmationprovided">
+              <Type>bit</Type>
+              <Name>um_confirmationprovided</Name>
+              <LogicalName>um_confirmationprovided</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>0</AppDefaultValue>
+              <optionset Name="um_privacyoperationlog_um_confirmationprovided">
+                <OptionSetType>bit</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <ExternalTypeName></ExternalTypeName>
+                <displaynames>
+                  <displayname description="Confirmación Proporcionada" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="" languagecode="3082" />
+                </Descriptions>
+                <options>
+                  <option value="1" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="True" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="0" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="False" languagecode="3082" />
+                    </labels>
+                  </option>
+                </options>
+              </optionset>
+              <displaynames>
+                <displayname description="Confirmación Proporcionada" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_contactdeleted">
+              <Type>bit</Type>
+              <Name>um_contactdeleted</Name>
+              <LogicalName>um_contactdeleted</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>0</AppDefaultValue>
+              <optionset Name="um_privacyoperationlog_um_contactdeleted">
+                <OptionSetType>bit</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <ExternalTypeName></ExternalTypeName>
+                <displaynames>
+                  <displayname description="Contacto Eliminado" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="" languagecode="3082" />
+                </Descriptions>
+                <options>
+                  <option value="1" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="True" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="0" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="False" languagecode="3082" />
+                    </labels>
+                  </option>
+                </options>
+              </optionset>
+              <displaynames>
+                <displayname description="Contacto Eliminado" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_contactfullname">
+              <Type>nvarchar</Type>
+              <Name>um_contactfullname</Name>
+              <LogicalName>um_contactfullname</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="Nombre Completo del Contacto" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_contactidtext">
+              <Type>nvarchar</Type>
+              <Name>um_contactidtext</Name>
+              <LogicalName>um_contactidtext</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="ID de Contacto" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_deletionenabled">
+              <Type>bit</Type>
+              <Name>um_deletionenabled</Name>
+              <LogicalName>um_deletionenabled</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>0</AppDefaultValue>
+              <optionset Name="um_privacyoperationlog_um_deletionenabled">
+                <OptionSetType>bit</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <ExternalTypeName></ExternalTypeName>
+                <displaynames>
+                  <displayname description="Eliminación Habilitada" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="" languagecode="3082" />
+                </Descriptions>
+                <options>
+                  <option value="1" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="True" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="0" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="False" languagecode="3082" />
+                    </labels>
+                  </option>
+                </options>
+              </optionset>
+              <displaynames>
+                <displayname description="Eliminación Habilitada" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_durationms">
+              <Type>int</Type>
+              <Name>um_durationms</Name>
+              <LogicalName>um_durationms</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>disabled</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>none</Format>
+              <MinValue>-2147483648</MinValue>
+              <MaxValue>2147483647</MaxValue>
+              <displaynames>
+                <displayname description="Duración (ms)" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_dv">
+              <Type>nvarchar</Type>
+              <Name>um_dv</Name>
+              <LogicalName>um_dv</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="Dígito Verificador" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_environmenturl">
+              <Type>nvarchar</Type>
+              <Name>um_environmenturl</Name>
+              <LogicalName>um_environmenturl</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="URL del Entorno" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_errormessage">
+              <Type>nvarchar</Type>
+              <Name>um_errormessage</Name>
+              <LogicalName>um_errormessage</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>textarea</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="Mensaje de Error" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_errormessagefull">
+              <Type>ntext</Type>
+              <Name>um_errormessagefull</Name>
+              <LogicalName>um_errormessagefull</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>1048576</MaxLength>
+              <displaynames>
+                <displayname description="Error Message Full" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_ExecutionID">
+              <Type>nvarchar</Type>
+              <Name>um_executionid</Name>
+              <LogicalName>um_executionid</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>PrimaryName|ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>1</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>1</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>850</MaxLength>
+              <Length>1700</Length>
+              <displaynames>
+                <displayname description="Execution ID" languagecode="3082" />
+                <displayname description="Execution ID" languagecode="1033" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+                <Description description="" languagecode="1033" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_finishedat">
+              <Type>datetime</Type>
+              <Name>um_finishedat</Name>
+              <LogicalName>um_finishedat</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>datetime</Format>
+              <CanChangeDateTimeBehavior>1</CanChangeDateTimeBehavior>
+              <Behavior>1</Behavior>
+              <displaynames>
+                <displayname description="Finalización" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_operationstatus">
+              <Type>picklist</Type>
+              <Name>um_operationstatus</Name>
+              <LogicalName>um_operationstatus</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>127120000</AppDefaultValue>
+              <optionset Name="um_privacyoperationlog_um_operationstatus">
+                <OptionSetType>picklist</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <ExternalTypeName></ExternalTypeName>
+                <displaynames>
+                  <displayname description="Estado de operación" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="" languagecode="3082" />
+                </Descriptions>
+                <options>
+                  <option value="127120000" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Consultado" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120001" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Eliminado" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120002" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Bloqueado" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120003" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Error" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120004" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Parcial" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120005" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="NoEncontrado" languagecode="3082" />
+                    </labels>
+                  </option>
+                </options>
+              </optionset>
+              <displaynames>
+                <displayname description="Estado de operación" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_operationtype">
+              <Type>picklist</Type>
+              <Name>um_operationtype</Name>
+              <LogicalName>um_operationtype</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>127120000</AppDefaultValue>
+              <optionset Name="um_privacyoperationlog_um_operationtype">
+                <OptionSetType>picklist</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <ExternalTypeName></ExternalTypeName>
+                <displaynames>
+                  <displayname description="Tipo de operación" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="" languagecode="3082" />
+                </Descriptions>
+                <options>
+                  <option value="127120000" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Consultar" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120001" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="EliminarTodoMenosContacto" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120002" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="EliminarTodo" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120003" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Anonimizar" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120004" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="ExportarDatos" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120005" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="RectificarDatos" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120006" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="RevocarConsentimiento" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120007" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Otro" languagecode="3082" />
+                    </labels>
+                  </option>
+                </options>
+              </optionset>
+              <displaynames>
+                <displayname description="Tipo de operación" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_postmatrixjson">
+              <Type>nvarchar</Type>
+              <Name>um_postmatrixjson</Name>
+              <LogicalName>um_postmatrixjson</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>textarea</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="JSON Post Matriz" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_postmatrixjsonfull">
+              <Type>ntext</Type>
+              <Name>um_postmatrixjsonfull</Name>
+              <LogicalName>um_postmatrixjsonfull</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>1048576</MaxLength>
+              <displaynames>
+                <displayname description="Post Matrix JSON Full" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_prematrixjson">
+              <Type>nvarchar</Type>
+              <Name>um_prematrixjson</Name>
+              <LogicalName>um_prematrixjson</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>textarea</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="JSON Pre Matriz" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_prematrixjsonfull">
+              <Type>ntext</Type>
+              <Name>um_prematrixjsonfull</Name>
+              <LogicalName>um_prematrixjsonfull</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>1048576</MaxLength>
+              <displaynames>
+                <displayname description="Pre Matrix JSON Full" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_privacyoperationlogId">
+              <Type>primarykey</Type>
+              <Name>um_privacyoperationlogid</Name>
+              <LogicalName>um_privacyoperationlogid</LogicalName>
+              <RequiredLevel>systemrequired</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|RequiredForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>0</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>0</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>1</IsFilterable>
+              <IsRetrievable>1</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <displaynames>
+                <displayname description="Registro de operación de privacidad" languagecode="3082" />
+                <displayname description="Registro de operación de privacidad" languagecode="1033" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Identificador único de instancias de entidad" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_requestedbyemail">
+              <Type>nvarchar</Type>
+              <Name>um_requestedbyemail</Name>
+              <LogicalName>um_requestedbyemail</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="Solicitado Por (Email)" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_requestedbyname">
+              <Type>nvarchar</Type>
+              <Name>um_requestedbyname</Name>
+              <LogicalName>um_requestedbyname</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="Solicitado Por (Nombre)" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_requestjson">
+              <Type>nvarchar</Type>
+              <Name>um_requestjson</Name>
+              <LogicalName>um_requestjson</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>textarea</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="JSON de Solicitud" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_requestjsonfull">
+              <Type>ntext</Type>
+              <Name>um_requestjsonfull</Name>
+              <LogicalName>um_requestjsonfull</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>1048576</MaxLength>
+              <displaynames>
+                <displayname description="Request JSON Full" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_responsejson">
+              <Type>nvarchar</Type>
+              <Name>um_responsejson</Name>
+              <LogicalName>um_responsejson</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>textarea</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="JSON de Respuesta" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_responsejsonfull">
+              <Type>ntext</Type>
+              <Name>um_responsejsonfull</Name>
+              <LogicalName>um_responsejsonfull</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>1048576</MaxLength>
+              <displaynames>
+                <displayname description="Response JSON Full" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_rutcompleto">
+              <Type>nvarchar</Type>
+              <Name>um_rutcompleto</Name>
+              <LogicalName>um_rutcompleto</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="RUT Completo" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_rutingresado">
+              <Type>nvarchar</Type>
+              <Name>um_rutingresado</Name>
+              <LogicalName>um_rutingresado</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="RUT Ingresado" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_rutnormalizado">
+              <Type>nvarchar</Type>
+              <Name>um_rutnormalizado</Name>
+              <LogicalName>um_rutnormalizado</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>4000</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="RUT Normalizado" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_source">
+              <Type>picklist</Type>
+              <Name>um_source</Name>
+              <LogicalName>um_source</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>127120000</AppDefaultValue>
+              <optionset Name="um_privacyoperationlog_um_source">
+                <OptionSetType>picklist</OptionSetType>
+                <IntroducedVersion>1.0</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <ExternalTypeName></ExternalTypeName>
+                <displaynames>
+                  <displayname description="Origen" languagecode="3082" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="" languagecode="3082" />
+                </Descriptions>
+                <options>
+                  <option value="127120000" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="CanvasApp" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120001" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Swagger" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120002" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="API" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120003" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="Batch" languagecode="3082" />
+                    </labels>
+                  </option>
+                  <option value="127120004" ExternalValue="" IsHidden="0">
+                    <labels>
+                      <label description="ProcesoAutomatico" languagecode="3082" />
+                    </labels>
+                  </option>
+                </options>
+              </optionset>
+              <displaynames>
+                <displayname description="Origen" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_startedat">
+              <Type>datetime</Type>
+              <Name>um_startedat</Name>
+              <LogicalName>um_startedat</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>datetime</Format>
+              <CanChangeDateTimeBehavior>1</CanChangeDateTimeBehavior>
+              <Behavior>1</Behavior>
+              <displaynames>
+                <displayname description="Inicio" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_totaldeleted">
+              <Type>int</Type>
+              <Name>um_totaldeleted</Name>
+              <LogicalName>um_totaldeleted</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>disabled</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>none</Format>
+              <MinValue>-2147483648</MinValue>
+              <MaxValue>2147483647</MaxValue>
+              <displaynames>
+                <displayname description="Total Eliminado" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_totalerrors">
+              <Type>int</Type>
+              <Name>um_totalerrors</Name>
+              <LogicalName>um_totalerrors</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>disabled</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>none</Format>
+              <MinValue>-2147483648</MinValue>
+              <MaxValue>2147483647</MaxValue>
+              <displaynames>
+                <displayname description="Total de Errores" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="um_totalfoundbeforedelete">
+              <Type>int</Type>
+              <Name>um_totalfoundbeforedelete</Name>
+              <LogicalName>um_totalfoundbeforedelete</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>disabled</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>none</Format>
+              <MinValue>-2147483648</MinValue>
+              <MaxValue>2147483647</MaxValue>
+              <displaynames>
+                <displayname description="Total Encontrado Antes de Eliminar" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="3082" />
+              </Descriptions>
+            </attribute>
+            <attribute PhysicalName="UTCConversionTimeZoneCode">
+              <Type>int</Type>
+              <Name>utcconversiontimezonecode</Name>
+              <LogicalName>utcconversiontimezonecode</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>0</IsCustomField>
+              <IsAuditEnabled>0</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format></Format>
+              <MinValue>-1</MinValue>
+              <MaxValue>2147483647</MaxValue>
+              <displaynames>
+                <displayname description="Código de zona horaria de conversión UTC" languagecode="3082" />
+              </displaynames>
+              <Descriptions>
+                <Description description="Código de la zona horaria que estaba en uso cuando se creó el registro." languagecode="3082" />
+              </Descriptions>
+            </attribute>
+          </attributes>
+          <EntitySetName>um_privacyoperationlogs</EntitySetName>
+          <IsDuplicateCheckSupported>1</IsDuplicateCheckSupported>
+          <IsBusinessProcessEnabled>0</IsBusinessProcessEnabled>
+          <IsRequiredOffline>0</IsRequiredOffline>
+          <IsInteractionCentricEnabled>0</IsInteractionCentricEnabled>
+          <IsCollaboration>0</IsCollaboration>
+          <AutoRouteToOwnerQueue>0</AutoRouteToOwnerQueue>
+          <IsConnectionsEnabled>0</IsConnectionsEnabled>
+          <EntityColor></EntityColor>
+          <IsDocumentManagementEnabled>0</IsDocumentManagementEnabled>
+          <AutoCreateAccessTeams>0</AutoCreateAccessTeams>
+          <IsOneNoteIntegrationEnabled>0</IsOneNoteIntegrationEnabled>
+          <IsKnowledgeManagementEnabled>0</IsKnowledgeManagementEnabled>
+          <IsSLAEnabled>0</IsSLAEnabled>
+          <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
+          <IsBPFEntity>0</IsBPFEntity>
+          <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
+          <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>
+          <IsActivity>0</IsActivity>
+          <ActivityTypeMask></ActivityTypeMask>
+          <IsActivityParty>0</IsActivityParty>
+          <IsReplicated>0</IsReplicated>
+          <IsReplicationUserFiltered>0</IsReplicationUserFiltered>
+          <IsMailMergeEnabled>1</IsMailMergeEnabled>
+          <IsVisibleInMobile>0</IsVisibleInMobile>
+          <IsVisibleInMobileClient>1</IsVisibleInMobileClient>
+          <IsReadOnlyInMobileClient>0</IsReadOnlyInMobileClient>
+          <IsOfflineInMobileClient>1</IsOfflineInMobileClient>
+          <DaysSinceRecordLastModified>0</DaysSinceRecordLastModified>
+          <MobileOfflineFilters></MobileOfflineFilters>
+          <IsMapiGridEnabled>1</IsMapiGridEnabled>
+          <IsReadingPaneEnabled>1</IsReadingPaneEnabled>
+          <IsQuickCreateEnabled>0</IsQuickCreateEnabled>
+          <SyncToExternalSearchIndex>0</SyncToExternalSearchIndex>
+          <IntroducedVersion>1.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <IsMappable>1</IsMappable>
+          <CanModifyAuditSettings>1</CanModifyAuditSettings>
+          <CanModifyMobileVisibility>1</CanModifyMobileVisibility>
+          <CanModifyMobileClientVisibility>1</CanModifyMobileClientVisibility>
+          <CanModifyMobileClientReadOnly>1</CanModifyMobileClientReadOnly>
+          <CanModifyMobileClientOffline>1</CanModifyMobileClientOffline>
+          <CanModifyConnectionSettings>1</CanModifyConnectionSettings>
+          <CanModifyDuplicateDetectionSettings>1</CanModifyDuplicateDetectionSettings>
+          <CanModifyMailMergeSettings>1</CanModifyMailMergeSettings>
+          <CanModifyQueueSettings>1</CanModifyQueueSettings>
+          <CanCreateAttributes>1</CanCreateAttributes>
+          <CanCreateForms>1</CanCreateForms>
+          <CanCreateCharts>1</CanCreateCharts>
+          <CanCreateViews>1</CanCreateViews>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <CanEnableSyncToExternalSearchIndex>1</CanEnableSyncToExternalSearchIndex>
+          <EnforceStateTransitions>0</EnforceStateTransitions>
+          <CanChangeHierarchicalRelationship>1</CanChangeHierarchicalRelationship>
+          <EntityHelpUrlEnabled>0</EntityHelpUrlEnabled>
+          <ChangeTrackingEnabled>1</ChangeTrackingEnabled>
+          <CanChangeTrackingBeEnabled>1</CanChangeTrackingBeEnabled>
+          <IsEnabledForExternalChannels>0</IsEnabledForExternalChannels>
+          <IsMSTeamsIntegrationEnabled>0</IsMSTeamsIntegrationEnabled>
+          <IsSolutionAware>0</IsSolutionAware>
+        </entity>
+      </EntityInfo>
+      <FormXml>
+        <forms type="quick">
+          <systemform>
+            <formid>{d032b697-1fab-435e-8de4-e28018d50068}</formid>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <FormPresentation>1</FormPresentation>
+            <FormActivationState>1</FormActivationState>
+            <form>
+              <tabs>
+                <tab verticallayout="true" id="{1F7C4653-64BC-48F3-A01F-620F2809E572}" IsUserDefined="1">
+                  <labels>
+                    <label description="" languagecode="3082" />
+                  </labels>
+                  <columns>
+                    <column width="100%">
+                      <sections>
+                        <section showlabel="false" showbar="false" IsUserDefined="0" id="{54EA4479-4933-479D-B3D6-90F8FF788F7D}">
+                          <labels>
+                            <label description="GENERAL" languagecode="3082" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell id="{B1D81E18-6815-4597-A7C3-B45815E3EB2C}">
+                                <labels>
+                                  <label description="" languagecode="3082" />
+                                </labels>
+                                <control id="um_executionid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="um_ExecutionID" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{F9620C52-198C-42BF-8FC0-39BA506F9AD9}">
+                                <labels>
+                                  <label description="Propietario" languagecode="3082" />
+                                </labels>
+                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                      </sections>
+                    </column>
+                  </columns>
+                </tab>
+              </tabs>
+            </form>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>1</CanBeDeleted>
+            <LocalizedNames>
+              <LocalizedName description="Información" languagecode="3082" />
+            </LocalizedNames>
+          </systemform>
+        </forms>
+        <forms type="main">
+          <systemform>
+            <formid>{91ba571f-70a2-4256-8ddc-6a9fe2716406}</formid>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <FormPresentation>1</FormPresentation>
+            <FormActivationState>1</FormActivationState>
+            <form>
+              <tabs>
+                <tab verticallayout="true" id="{FF7B186E-0F66-4BEF-91B1-3CAE3BEA17DB}" IsUserDefined="1">
+                  <labels>
+                    <label description="General" languagecode="3082" />
+                  </labels>
+                  <columns>
+                    <column width="100%">
+                      <sections>
+                        <section showlabel="false" showbar="false" IsUserDefined="0" id="{A70C567D-151F-48FA-A11C-E8B6538BA116}">
+                          <labels>
+                            <label description="General" languagecode="3082" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell id="{716324AC-CB07-4FB3-9514-00E66E60B9BA}">
+                                <labels>
+                                  <label description="" languagecode="3082" />
+                                </labels>
+                                <control id="um_executionid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="um_ExecutionID" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{C55B6E6E-5D26-4C28-A28B-5A0C22565621}">
+                                <labels>
+                                  <label description="Propietario" languagecode="3082" />
+                                </labels>
+                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{d7ed093d-b9a7-41a3-af41-29183fff21d6}">
+                                <labels>
+                                  <label description="RUT Ingresado" languagecode="3082" />
+                                </labels>
+                                <control id="um_rutingresado" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_rutingresado" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{326a9490-137d-47f4-9788-1984632b3056}">
+                                <labels>
+                                  <label description="RUT Normalizado" languagecode="3082" />
+                                </labels>
+                                <control id="um_rutnormalizado" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_rutnormalizado" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{3e6851a7-0169-47f0-bf1a-b1590e2177b2}">
+                                <labels>
+                                  <label description="Dígito Verificador" languagecode="3082" />
+                                </labels>
+                                <control id="um_dv" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_dv" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{0b517767-e1b4-43f6-b14f-fa9a7ec76e32}">
+                                <labels>
+                                  <label description="RUT Completo" languagecode="3082" />
+                                </labels>
+                                <control id="um_rutcompleto" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_rutcompleto" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{5d25d2d6-ea54-4703-957c-45c8b2de1a90}">
+                                <labels>
+                                  <label description="ID de Contacto" languagecode="3082" />
+                                </labels>
+                                <control id="um_contactidtext" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_contactidtext" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{678b76ae-98fc-4b0e-aa05-e29c8f3cf7ed}">
+                                <labels>
+                                  <label description="Nombre Completo del Contacto" languagecode="3082" />
+                                </labels>
+                                <control id="um_contactfullname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_contactfullname" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{1ccfbd5f-a0a8-4dba-81cc-3555ff5f4497}">
+                                <labels>
+                                  <label description="Solicitado Por (Nombre)" languagecode="3082" />
+                                </labels>
+                                <control id="um_requestedbyname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_requestedbyname" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{2be3a761-cc30-4ee3-a2d9-5a40eb4ae250}">
+                                <labels>
+                                  <label description="Solicitado Por (Email)" languagecode="3082" />
+                                </labels>
+                                <control id="um_requestedbyemail" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_requestedbyemail" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{9d988320-24db-4f04-927e-ceb3d181e9f1}">
+                                <labels>
+                                  <label description="URL del Entorno" languagecode="3082" />
+                                </labels>
+                                <control id="um_environmenturl" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_environmenturl" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{fc58e463-8d3e-4e55-a281-814b1b3bb30d}">
+                                <labels>
+                                  <label description="Nombre del Archivo de Respaldo" languagecode="3082" />
+                                </labels>
+                                <control id="um_backupfilename" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_backupfilename" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{59d8b1f8-a568-4e74-a6b2-8746ba1128eb}">
+                                <labels>
+                                  <label description="Contacto Eliminado" languagecode="3082" />
+                                </labels>
+                                <control id="um_contactdeleted" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="um_contactdeleted" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{06f5548e-aeb3-48b6-ac0e-6823f4d30204}">
+                                <labels>
+                                  <label description="Confirmación Proporcionada" languagecode="3082" />
+                                </labels>
+                                <control id="um_confirmationprovided" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="um_confirmationprovided" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{98d5eeec-69fe-4dea-9b14-5366bd307f97}">
+                                <labels>
+                                  <label description="Eliminación Habilitada" languagecode="3082" />
+                                </labels>
+                                <control id="um_deletionenabled" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="um_deletionenabled" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{82cd51d9-4d0d-4e01-87af-6660b690e4f7}">
+                                <labels>
+                                  <label description="Respaldo Creado" languagecode="3082" />
+                                </labels>
+                                <control id="um_backupcreated" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="um_backupcreated" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{bd3ac436-b75e-4d06-9309-646ad3fbd1ea}">
+                                <labels>
+                                  <label description="Total Encontrado Antes de Eliminar" languagecode="3082" />
+                                </labels>
+                                <control id="um_totalfoundbeforedelete" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="um_totalfoundbeforedelete" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{4e0d2465-f264-4cce-89b4-ca1d1be9d374}">
+                                <labels>
+                                  <label description="Total Eliminado" languagecode="3082" />
+                                </labels>
+                                <control id="um_totaldeleted" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="um_totaldeleted" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{49661f7c-83ac-4b6b-a371-d03e9810c9a8}">
+                                <labels>
+                                  <label description="Total de Errores" languagecode="3082" />
+                                </labels>
+                                <control id="um_totalerrors" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="um_totalerrors" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{fc3c154b-329c-4b30-9c0c-923b82a7c0eb}">
+                                <labels>
+                                  <label description="Duración (ms)" languagecode="3082" />
+                                </labels>
+                                <control id="um_durationms" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="um_durationms" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{94decb1a-2324-44e5-b412-d75648a5ad81}">
+                                <labels>
+                                  <label description="Inicio" languagecode="3082" />
+                                </labels>
+                                <control id="um_startedat" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="um_startedat" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{04e58fc5-61a9-4b84-90fa-d898151049f4}">
+                                <labels>
+                                  <label description="Finalización" languagecode="3082" />
+                                </labels>
+                                <control id="um_finishedat" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="um_finishedat" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{d781880e-7cb6-4c47-b6b8-404e26b51967}">
+                                <labels>
+                                  <label description="Mensaje de Error" languagecode="3082" />
+                                </labels>
+                                <control id="um_errormessage" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_errormessage" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{dd11d6c8-c3e5-4449-8958-09fb7939dc50}">
+                                <labels>
+                                  <label description="JSON de Solicitud" languagecode="3082" />
+                                </labels>
+                                <control id="um_requestjson" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_requestjson" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{5fd379e1-8eae-4b2d-884e-821d66042120}">
+                                <labels>
+                                  <label description="JSON de Respuesta" languagecode="3082" />
+                                </labels>
+                                <control id="um_responsejson" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_responsejson" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{8886d970-6b6a-4069-a79a-bf4740242db0}">
+                                <labels>
+                                  <label description="JSON Pre Matriz" languagecode="3082" />
+                                </labels>
+                                <control id="um_prematrixjson" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_prematrixjson" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{601ab4e5-ba50-4572-a6a5-0f000cd66327}">
+                                <labels>
+                                  <label description="JSON Post Matriz" languagecode="3082" />
+                                </labels>
+                                <control id="um_postmatrixjson" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="um_postmatrixjson" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{1cac373e-f0e1-4222-8e98-f59123ec4341}">
+                                <labels>
+                                  <label description="Tipo de operación" languagecode="3082" />
+                                </labels>
+                                <control id="um_operationtype" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="um_operationtype" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{a3dcce6c-96d1-470f-b651-4e8405683461}">
+                                <labels>
+                                  <label description="Estado de operación" languagecode="3082" />
+                                </labels>
+                                <control id="um_operationstatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="um_operationstatus" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{d17613d5-49e8-4208-bbf4-6bb531cb70f5}">
+                                <labels>
+                                  <label description="Origen" languagecode="3082" />
+                                </labels>
+                                <control id="um_source" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="um_source" />
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                      </sections>
+                    </column>
+                  </columns>
+                </tab>
+              </tabs>
+            </form>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>1</CanBeDeleted>
+            <LocalizedNames>
+              <LocalizedName description="Información" languagecode="3082" />
+            </LocalizedNames>
+            <Descriptions>
+              <Description description="Formulario para esta entidad." languagecode="3082" />
+            </Descriptions>
+          </systemform>
+        </forms>
+        <forms type="card">
+          <systemform>
+            <formid>{67806605-07ff-49e9-ad24-da6d81afe55e}</formid>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <FormPresentation>1</FormPresentation>
+            <FormActivationState>1</FormActivationState>
+            <form>
+              <tabs>
+                <tab name="general" verticallayout="true" id="{577ACBE5-D0BE-4B2B-B9E6-EAEB680BFF75}" IsUserDefined="0">
+                  <labels>
+                    <label description="" languagecode="3082" />
+                  </labels>
+                  <columns>
+                    <column width="25%">
+                      <sections>
+                        <section name="ColorStrip" showlabel="false" showbar="false" columns="1" IsUserDefined="0" id="{43B5D5A0-990F-4088-8BA3-221E02A8095E}">
+                          <labels>
+                            <label description="ColorStrip" languagecode="3082" />
+                          </labels>
+                        </section>
+                      </sections>
+                    </column>
+                    <column width="75%">
+                      <sections>
+                        <section name="CardHeader" showlabel="false" showbar="false" columns="111" id="{E5C91FED-2C1D-4C33-AF46-43FC38778AC8}" IsUserDefined="0">
+                          <labels>
+                            <label description="Encabezado" languagecode="3082" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell id="{FCD19D5F-8D19-424A-B521-F767552B683E}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="Razón para el estado" languagecode="3082" />
+                                </labels>
+                                <control id="statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
+                              </cell>
+                              <cell id="{5A6ECD3F-F3DB-46CB-93B1-BCAAA3B9D0EE}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="" languagecode="3082" />
+                                </labels>
+                              </cell>
+                              <cell id="{924CEDC4-A0A7-41F3-BDF0-EA80E4FE1586}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="" languagecode="3082" />
+                                </labels>
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                        <section name="CardDetails" showlabel="false" showbar="false" columns="1" id="{6048F5B0-58CD-4777-9AE9-0E1860354238}" IsUserDefined="0">
+                          <labels>
+                            <label description="Detalles" languagecode="3082" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell id="{B089333A-2535-4A59-A8D1-F62B56B6BF14}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="" languagecode="3082" />
+                                </labels>
+                                <control id="um_executionid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="um_ExecutionID" disabled="false" />
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                        <section name="CardFooter" showlabel="false" columns="1111" showbar="false" id="{D56C8119-6576-4D0A-AA92-3782BFD43776}" IsUserDefined="0">
+                          <labels>
+                            <label description="Pie de página" languagecode="3082" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell id="{85EE7903-6325-4E0E-AFBA-5B2815031699}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="Propietario" languagecode="3082" />
+                                </labels>
+                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                              </cell>
+                              <cell id="{B17E61C7-C18C-48EB-95FA-6E9CBB560C34}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="Fecha de creación" languagecode="3082" />
+                                </labels>
+                                <control id="createdon" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdon" disabled="false" />
+                              </cell>
+                              <cell id="{7980F0FA-107B-4CB0-8A8B-7EEA5A9EFFDC}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="" languagecode="3082" />
+                                </labels>
+                              </cell>
+                              <cell id="{95E6D90C-3D18-49DE-80EE-F40FB574E2F9}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="" languagecode="3082" />
+                                </labels>
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                      </sections>
+                    </column>
+                  </columns>
+                </tab>
+              </tabs>
+            </form>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>1</CanBeDeleted>
+            <LocalizedNames>
+              <LocalizedName description="Información" languagecode="3082" />
+            </LocalizedNames>
+            <Descriptions>
+              <Description description="Formulario de tarjeta para esta entidad." languagecode="3082" />
+            </Descriptions>
+          </systemform>
+        </forms>
+      </FormXml>
+      <SavedQueries>
+        <savedqueries>
+          <savedquery>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>0</CanBeDeleted>
+            <isquickfindquery>1</isquickfindquery>
+            <isprivate>0</isprivate>
+            <isdefault>1</isdefault>
+            <savedqueryid>{e9ce1c6e-f382-434f-bf93-7c2bbbc8d76a}</savedqueryid>
+            <layoutxml>
+              <grid name="resultset" jump="um_executionid" select="1" icon="1" preview="1">
+                <row name="result" id="um_privacyoperationlogid">
+                  <cell name="um_executionid" width="300" />
+                  <cell name="createdon" width="125" />
+                </row>
+              </grid>
+            </layoutxml>
+            <querytype>4</querytype>
+            <fetchxml>
+              <fetch version="1.0" mapping="logical">
+                <entity name="um_privacyoperationlog">
+                  <attribute name="um_privacyoperationlogid" />
+                  <attribute name="um_executionid" />
+                  <attribute name="createdon" />
+                  <order attribute="um_executionid" descending="false" />
+                  <filter type="and">
+                    <condition attribute="statecode" operator="eq" value="0" />
+                  </filter>
+                  <filter type="or" isquickfindfields="1">
+                    <condition attribute="um_executionid" operator="like" value="{0}" />
+                  </filter>
+                </entity>
+              </fetch>
+            </fetchxml>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <LocalizedNames>
+              <LocalizedName description="Búsqueda rápida de Registro de operación de privacidad activos" languagecode="3082" />
+            </LocalizedNames>
+          </savedquery>
+          <savedquery>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>1</CanBeDeleted>
+            <isquickfindquery>0</isquickfindquery>
+            <isprivate>0</isprivate>
+            <isdefault>1</isdefault>
+            <savedqueryid>{229e9d25-45af-432e-80b5-ba2aac3e687b}</savedqueryid>
+            <querytype>8192</querytype>
+            <fetchxml>
+              <fetch version="1.0" mapping="logical" output-format="xml-platform">
+                <entity name="um_privacyoperationlog">
+                  <attribute name="um_privacyoperationlogid" />
+                  <filter type="and">
+                    <condition attribute="statecode" operator="eq" value="0" />
+                    <condition attribute="ownerid" operator="eq-userid" />
+                  </filter>
+                </entity>
+              </fetch>
+            </fetchxml>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <LocalizedNames>
+              <LocalizedName description="Mis Registro de operación de privacidad" languagecode="3082" />
+            </LocalizedNames>
+            <Descriptions>
+              <Description description="Entidades Registro de operación de privacidad activas de mi propiedad" languagecode="3082" />
+            </Descriptions>
+          </savedquery>
+          <savedquery>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>0</CanBeDeleted>
+            <isquickfindquery>0</isquickfindquery>
+            <isprivate>0</isprivate>
+            <isdefault>1</isdefault>
+            <savedqueryid>{64201c02-c859-4c2f-98b3-ae7ed407fd0c}</savedqueryid>
+            <layoutxml>
+              <grid name="resultset" jump="um_executionid" select="1" icon="1" preview="1">
+                <row name="result" id="um_privacyoperationlogid">
+                  <cell name="um_executionid" width="300" />
+                  <cell name="um_rutingresado" width="150" />
+                  <cell name="um_rutnormalizado" width="150" />
+                  <cell name="um_dv" width="150" />
+                  <cell name="um_rutcompleto" width="150" />
+                  <cell name="um_contactidtext" width="150" />
+                  <cell name="um_contactfullname" width="150" />
+                  <cell name="um_requestedbyname" width="150" />
+                  <cell name="um_requestedbyemail" width="150" />
+                  <cell name="um_environmenturl" width="150" />
+                  <cell name="um_backupfilename" width="150" />
+                  <cell name="um_contactdeleted" width="150" />
+                  <cell name="um_confirmationprovided" width="150" />
+                  <cell name="um_deletionenabled" width="150" />
+                  <cell name="um_backupcreated" width="150" />
+                  <cell name="um_totalfoundbeforedelete" width="150" />
+                  <cell name="um_totaldeleted" width="150" />
+                  <cell name="um_totalerrors" width="150" />
+                  <cell name="um_durationms" width="150" />
+                  <cell name="um_startedat" width="150" />
+                  <cell name="um_finishedat" width="150" />
+                  <cell name="um_errormessage" width="150" />
+                  <cell name="um_requestjson" width="150" />
+                  <cell name="um_responsejson" width="150" />
+                  <cell name="um_prematrixjson" width="150" />
+                  <cell name="um_postmatrixjson" width="150" />
+                  <cell name="um_operationtype" width="150" />
+                  <cell name="um_operationstatus" width="150" />
+                  <cell name="um_source" width="150" />
+                </row>
+              </grid>
+            </layoutxml>
+            <querytype>0</querytype>
+            <fetchxml>
+              <fetch version="1.0" mapping="logical">
+                <entity name="um_privacyoperationlog">
+                  <attribute name="um_privacyoperationlogid" />
+                  <attribute name="um_executionid" />
+                  <attribute name="createdon" />
+                  <order attribute="um_executionid" descending="false" />
+                  <filter type="and">
+                    <condition attribute="statecode" operator="eq" value="0" />
+                  </filter>
+                  <attribute name="um_rutingresado" />
+                  <attribute name="um_rutnormalizado" />
+                  <attribute name="um_dv" />
+                  <attribute name="um_rutcompleto" />
+                  <attribute name="um_contactidtext" />
+                  <attribute name="um_contactfullname" />
+                  <attribute name="um_requestedbyname" />
+                  <attribute name="um_requestedbyemail" />
+                  <attribute name="um_environmenturl" />
+                  <attribute name="um_backupfilename" />
+                  <attribute name="um_contactdeleted" />
+                  <attribute name="um_confirmationprovided" />
+                  <attribute name="um_deletionenabled" />
+                  <attribute name="um_backupcreated" />
+                  <attribute name="um_totalfoundbeforedelete" />
+                  <attribute name="um_totaldeleted" />
+                  <attribute name="um_totalerrors" />
+                  <attribute name="um_durationms" />
+                  <attribute name="um_startedat" />
+                  <attribute name="um_finishedat" />
+                  <attribute name="um_errormessage" />
+                  <attribute name="um_requestjson" />
+                  <attribute name="um_responsejson" />
+                  <attribute name="um_prematrixjson" />
+                  <attribute name="um_postmatrixjson" />
+                  <attribute name="um_operationtype" />
+                  <attribute name="um_operationstatus" />
+                  <attribute name="um_source" />
+                </entity>
+              </fetch>
+            </fetchxml>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <LocalizedNames>
+              <LocalizedName description="Registro de operación de privacidad activo" languagecode="3082" />
+            </LocalizedNames>
+          </savedquery>
+          <savedquery>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>0</CanBeDeleted>
+            <isquickfindquery>0</isquickfindquery>
+            <isprivate>0</isprivate>
+            <isdefault>0</isdefault>
+            <savedqueryid>{50697cf3-c447-4c03-9a25-2707b9b8c11c}</savedqueryid>
+            <layoutxml>
+              <grid name="resultset" jump="um_executionid" select="1" icon="1" preview="1">
+                <row name="result" id="um_privacyoperationlogid">
+                  <cell name="um_executionid" width="300" />
+                  <cell name="createdon" width="125" />
+                </row>
+              </grid>
+            </layoutxml>
+            <querytype>0</querytype>
+            <fetchxml>
+              <fetch version="1.0" mapping="logical">
+                <entity name="um_privacyoperationlog">
+                  <attribute name="um_privacyoperationlogid" />
+                  <attribute name="um_executionid" />
+                  <attribute name="createdon" />
+                  <order attribute="um_executionid" descending="false" />
+                  <filter type="and">
+                    <condition attribute="statecode" operator="eq" value="1" />
+                  </filter>
+                </entity>
+              </fetch>
+            </fetchxml>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <LocalizedNames>
+              <LocalizedName description="Registro de operación de privacidad inactivo" languagecode="3082" />
+            </LocalizedNames>
+          </savedquery>
+          <savedquery>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>0</CanBeDeleted>
+            <isquickfindquery>0</isquickfindquery>
+            <isprivate>0</isprivate>
+            <isdefault>1</isdefault>
+            <savedqueryid>{858211e0-44cd-42e4-940f-4da93fdf5bdb}</savedqueryid>
+            <layoutxml>
+              <grid name="um_privacyoperationlogs" jump="um_executionid" select="1" icon="1" preview="1">
+                <row name="um_privacyoperationlog" id="um_privacyoperationlogid">
+                  <cell name="um_executionid" width="300" />
+                  <cell name="createdon" width="125" />
+                </row>
+              </grid>
+            </layoutxml>
+            <querytype>2</querytype>
+            <fetchxml>
+              <fetch version="1.0" mapping="logical">
+                <entity name="um_privacyoperationlog">
+                  <attribute name="um_privacyoperationlogid" />
+                  <attribute name="um_executionid" />
+                  <attribute name="createdon" />
+                  <order attribute="um_executionid" descending="false" />
+                  <filter type="and">
+                    <condition attribute="statecode" operator="eq" value="0" />
+                  </filter>
+                </entity>
+              </fetch>
+            </fetchxml>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <LocalizedNames>
+              <LocalizedName description="Vista asociada de Registro de operación de privacidad" languagecode="3082" />
+            </LocalizedNames>
+          </savedquery>
+          <savedquery>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>0</CanBeDeleted>
+            <isquickfindquery>0</isquickfindquery>
+            <isprivate>0</isprivate>
+            <isdefault>1</isdefault>
+            <savedqueryid>{0dbbf7c2-537d-487e-85da-39b10e0376e0}</savedqueryid>
+            <layoutxml>
+              <grid name="resultset" jump="um_executionid" select="1" icon="1" preview="1">
+                <row name="result" id="um_privacyoperationlogid">
+                  <cell name="um_executionid" width="300" />
+                  <cell name="createdon" width="125" />
+                </row>
+              </grid>
+            </layoutxml>
+            <querytype>1</querytype>
+            <fetchxml>
+              <fetch version="1.0" mapping="logical">
+                <entity name="um_privacyoperationlog">
+                  <attribute name="um_privacyoperationlogid" />
+                  <attribute name="um_executionid" />
+                  <attribute name="createdon" />
+                  <order attribute="um_executionid" descending="false" />
+                </entity>
+              </fetch>
+            </fetchxml>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <LocalizedNames>
+              <LocalizedName description="Vista de búsqueda avanzada de Registro de operación de privacidad" languagecode="3082" />
+            </LocalizedNames>
+          </savedquery>
+          <savedquery>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>0</CanBeDeleted>
+            <isquickfindquery>0</isquickfindquery>
+            <isprivate>0</isprivate>
+            <isdefault>1</isdefault>
+            <savedqueryid>{d885dfd9-98ed-4960-89e5-3d8e8bbdffd8}</savedqueryid>
+            <layoutxml>
+              <grid name="um_privacyoperationlogs" jump="um_executionid" select="1" icon="1" preview="0">
+                <row name="um_privacyoperationlog" id="um_privacyoperationlogid">
+                  <cell name="um_executionid" width="300" />
+                  <cell name="createdon" width="125" />
+                </row>
+              </grid>
+            </layoutxml>
+            <querytype>64</querytype>
+            <fetchxml>
+              <fetch version="1.0" mapping="logical">
+                <entity name="um_privacyoperationlog">
+                  <attribute name="um_privacyoperationlogid" />
+                  <attribute name="um_executionid" />
+                  <attribute name="createdon" />
+                  <filter type="and">
+                    <condition attribute="statecode" operator="eq" value="0" />
+                  </filter>
+                </entity>
+              </fetch>
+            </fetchxml>
+            <IntroducedVersion>1.0</IntroducedVersion>
+            <LocalizedNames>
+              <LocalizedName description="Vista de búsqueda de Registro de operación de privacidad" languagecode="3082" />
+            </LocalizedNames>
+          </savedquery>
+        </savedqueries>
+      </SavedQueries>
+      <RibbonDiffXml>
+        <CustomActions />
+        <Templates>
+          <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+        </Templates>
+        <CommandDefinitions />
+        <RuleDefinitions>
+          <TabDisplayRules />
+          <DisplayRules />
+          <EnableRules />
+        </RuleDefinitions>
+        <LocLabels />
+      </RibbonDiffXml>
+    </Entity>
+  </Entities>
+  <Roles></Roles>
+  <Workflows></Workflows>
+  <FieldSecurityProfiles></FieldSecurityProfiles>
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships>
+    <EntityRelationship Name="business_unit_um_privacyoperationlog">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <IsCustomizable>1</IsCustomizable>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <IsHierarchical>0</IsHierarchical>
+      <ReferencingEntityName>um_privacyoperationlog</ReferencingEntityName>
+      <ReferencedEntityName>BusinessUnit</ReferencedEntityName>
+      <CascadeAssign>NoCascade</CascadeAssign>
+      <CascadeDelete>Restrict</CascadeDelete>
+      <CascadeArchive>Restrict</CascadeArchive>
+      <CascadeReparent>NoCascade</CascadeReparent>
+      <CascadeShare>NoCascade</CascadeShare>
+      <CascadeUnshare>NoCascade</CascadeUnshare>
+      <ReferencingAttributeName>OwningBusinessUnit</ReferencingAttributeName>
+      <RelationshipDescription>
+        <Descriptions>
+          <Description description="Identificador único de la unidad de negocio propietaria del registro" languagecode="3082" />
+        </Descriptions>
+      </RelationshipDescription>
+    </EntityRelationship>
+    <EntityRelationship Name="lk_um_privacyoperationlog_createdby">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <IsCustomizable>1</IsCustomizable>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <IsHierarchical>0</IsHierarchical>
+      <ReferencingEntityName>um_privacyoperationlog</ReferencingEntityName>
+      <ReferencedEntityName>SystemUser</ReferencedEntityName>
+      <CascadeAssign>NoCascade</CascadeAssign>
+      <CascadeDelete>NoCascade</CascadeDelete>
+      <CascadeArchive>NoCascade</CascadeArchive>
+      <CascadeReparent>NoCascade</CascadeReparent>
+      <CascadeShare>NoCascade</CascadeShare>
+      <CascadeUnshare>NoCascade</CascadeUnshare>
+      <ReferencingAttributeName>CreatedBy</ReferencingAttributeName>
+      <RelationshipDescription>
+        <Descriptions>
+          <Description description="Identificador único del usuario que creó el registro." languagecode="3082" />
+        </Descriptions>
+      </RelationshipDescription>
+    </EntityRelationship>
+    <EntityRelationship Name="lk_um_privacyoperationlog_modifiedby">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <IsCustomizable>1</IsCustomizable>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <IsHierarchical>0</IsHierarchical>
+      <ReferencingEntityName>um_privacyoperationlog</ReferencingEntityName>
+      <ReferencedEntityName>SystemUser</ReferencedEntityName>
+      <CascadeAssign>NoCascade</CascadeAssign>
+      <CascadeDelete>NoCascade</CascadeDelete>
+      <CascadeArchive>NoCascade</CascadeArchive>
+      <CascadeReparent>NoCascade</CascadeReparent>
+      <CascadeShare>NoCascade</CascadeShare>
+      <CascadeUnshare>NoCascade</CascadeUnshare>
+      <ReferencingAttributeName>ModifiedBy</ReferencingAttributeName>
+      <RelationshipDescription>
+        <Descriptions>
+          <Description description="Identificador único del usuario que modificó el registro." languagecode="3082" />
+        </Descriptions>
+      </RelationshipDescription>
+    </EntityRelationship>
+    <EntityRelationship Name="owner_um_privacyoperationlog">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <IsCustomizable>1</IsCustomizable>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <IsHierarchical>0</IsHierarchical>
+      <ReferencingEntityName>um_privacyoperationlog</ReferencingEntityName>
+      <ReferencedEntityName>Owner</ReferencedEntityName>
+      <CascadeAssign>NoCascade</CascadeAssign>
+      <CascadeDelete>NoCascade</CascadeDelete>
+      <CascadeArchive>NoCascade</CascadeArchive>
+      <CascadeReparent>NoCascade</CascadeReparent>
+      <CascadeShare>NoCascade</CascadeShare>
+      <CascadeUnshare>NoCascade</CascadeUnshare>
+      <ReferencingAttributeName>OwnerId</ReferencingAttributeName>
+      <RelationshipDescription>
+        <Descriptions>
+          <Description description="Id. del propietario" languagecode="3082" />
+        </Descriptions>
+      </RelationshipDescription>
+    </EntityRelationship>
+    <EntityRelationship Name="team_um_privacyoperationlog">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <IsCustomizable>1</IsCustomizable>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <IsHierarchical>0</IsHierarchical>
+      <ReferencingEntityName>um_privacyoperationlog</ReferencingEntityName>
+      <ReferencedEntityName>Team</ReferencedEntityName>
+      <CascadeAssign>NoCascade</CascadeAssign>
+      <CascadeDelete>NoCascade</CascadeDelete>
+      <CascadeArchive>NoCascade</CascadeArchive>
+      <CascadeReparent>NoCascade</CascadeReparent>
+      <CascadeShare>NoCascade</CascadeShare>
+      <CascadeUnshare>NoCascade</CascadeUnshare>
+      <ReferencingAttributeName>OwningTeam</ReferencingAttributeName>
+      <RelationshipDescription>
+        <Descriptions>
+          <Description description="Identificador único del equipo propietario del registro." languagecode="3082" />
+        </Descriptions>
+      </RelationshipDescription>
+    </EntityRelationship>
+    <EntityRelationship Name="user_um_privacyoperationlog">
+      <EntityRelationshipType>OneToMany</EntityRelationshipType>
+      <IsCustomizable>1</IsCustomizable>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <IsHierarchical>0</IsHierarchical>
+      <ReferencingEntityName>um_privacyoperationlog</ReferencingEntityName>
+      <ReferencedEntityName>SystemUser</ReferencedEntityName>
+      <CascadeAssign>NoCascade</CascadeAssign>
+      <CascadeDelete>NoCascade</CascadeDelete>
+      <CascadeArchive>NoCascade</CascadeArchive>
+      <CascadeReparent>NoCascade</CascadeReparent>
+      <CascadeShare>NoCascade</CascadeShare>
+      <CascadeUnshare>NoCascade</CascadeUnshare>
+      <ReferencingAttributeName>OwningUser</ReferencingAttributeName>
+      <RelationshipDescription>
+        <Descriptions>
+          <Description description="Identificador único del usuario propietario del registro." languagecode="3082" />
+        </Descriptions>
+      </RelationshipDescription>
+    </EntityRelationship>
+  </EntityRelationships>
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <AppModuleSiteMaps>
+    <AppModuleSiteMap>
+      <SiteMapUniqueName>um_LeydeProtecciondeDatosDerechosARCO</SiteMapUniqueName>
+      <EnableCollapsibleGroups>False</EnableCollapsibleGroups>
+      <ShowHome>True</ShowHome>
+      <ShowPinned>True</ShowPinned>
+      <ShowRecents>True</ShowRecents>
+      <SiteMap IntroducedVersion="7.0.0.0">
+        <Area Id="area_86bc1de3" ResourceId="SitemapDesigner.NewTitle" DescriptionResourceId="SitemapDesigner.NewTitle" ShowGroups="true" IntroducedVersion="7.0.0.0">
+          <Titles>
+            <Title LCID="3082" Title="Área 1" />
+          </Titles>
+          <Group Id="group_31103bda" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" IntroducedVersion="7.0.0.0" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+            <Titles>
+              <Title LCID="3082" Title="Gestión ARCO" />
+            </Titles>
+            <SubArea Id="subarea_1799e757" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="um_privacyoperationlog" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+              <Titles>
+                <Title LCID="3082" Title="Historial de ejecuciones" />
+              </Titles>
+            </SubArea>
+            <SubArea Id="subarea_78b6d98d" Icon="/_imgs/imagestrips/transparent_spacer.gif" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" Page="um_ejecutarproceso_9b8d5">
+              <Titles>
+                <Title LCID="3082" Title="Ejecutar Proceso" />
+              </Titles>
+            </SubArea>
+          </Group>
+        </Area>
+      </SiteMap>
+      <LocalizedNames>
+        <LocalizedName description="Ley de Protección de Datos / Derechos ARCO" languagecode="3082" />
+      </LocalizedNames>
+    </AppModuleSiteMap>
+  </AppModuleSiteMaps>
+  <AppModules>
+    <AppModule>
+      <UniqueName>um_LeydeProtecciondeDatosDerechosARCO</UniqueName>
+      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+      <OptimizedFor></OptimizedFor>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+      <FormFactor>1</FormFactor>
+      <ClientType>4</ClientType>
+      <NavigationType>0</NavigationType>
+      <AppModuleComponents>
+        <AppModuleComponent type="1" schemaName="um_privacyoperationlog" />
+        <AppModuleComponent type="62" schemaName="um_LeydeProtecciondeDatosDerechosARCO" />
+      </AppModuleComponents>
+      <AppModuleRoleMaps>
+        <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </AppModuleRoleMaps>
+      <LocalizedNames>
+        <LocalizedName description="Ley de Protección de Datos / Derechos ARCO" languagecode="3082" />
+      </LocalizedNames>
+      <appsettings>
+        <appsetting settingdefinitionid.uniquename="AppChannel">
+          <iscustomizable>1</iscustomizable>
+          <value>1</value>
+        </appsetting>
+      </appsettings>
+    </AppModule>
+  </AppModules>
+  <EntityDataProviders />
+  <CanvasApps>
+    <CanvasApp>
+      <Name>um_ejecutarproceso_9b8d5</Name>
+      <AppVersion>2026-07-07T14:19:11Z</AppVersion>
+      <Status>Ready</Status>
+      <CreatedByClientVersion>3.26065.8.0</CreatedByClientVersion>
+      <MinClientVersion>3.26065.8.0</MinClientVersion>
+      <Tags>{"primaryDeviceWidth":"2275","primaryDeviceHeight":"1028","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.26065.8","minimumRequiredApiVersion":"2.2.0","hasComponent":"false","hasUnlockedComponent":"false","isUnifiedRootApp":"false","m365CopilotSettingValue":"0","sienaVersion":"20260707T130102Z-3.26065.8.0"}</Tags>
+      <IsCdsUpgraded>0</IsCdsUpgraded>
+      <GalleryItemId xsi:nil="true"></GalleryItemId>
+      <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
+      <DisplayName>Ejecutar Proceso</DisplayName>
+      <Description xsi:nil="true"></Description>
+      <CommitMessage xsi:nil="true"></CommitMessage>
+      <Publisher xsi:nil="true"></Publisher>
+      <AuthorizationReferences>[]</AuthorizationReferences>
+      <ConnectionReferences>{"138250e1-32b0-406e-9ee5-4fdc0e4d75c4":{"id":"/providers/microsoft.powerapps/apis/shared_motordynamicsapi-5fa4dd8e0df5d4490a-5fd18e0a7d5c150807","displayName":"MotorDynamicsAPI","iconUri":"https://defaulticons.powerapps.com/defaulticons/api-dedicated.png","dataSources":["MotorDynamicsAPI"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["ExecuteSingle"],"isCustomApiSolutionAware":false}}</ConnectionReferences>
+      <DatabaseReferences>{}</DatabaseReferences>
+      <AppComponents>[]</AppComponents>
+      <AppComponentDependencies>[]</AppComponentDependencies>
+      <CanConsumeAppPass>1</CanConsumeAppPass>
+      <CanvasAppType>2</CanvasAppType>
+      <BypassConsent>0</BypassConsent>
+      <AdminControlBypassConsent>0</AdminControlBypassConsent>
+      <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <CdsDependencies>{"cdsdependencies":[]}</CdsDependencies>
+      <IsCustomizable>1</IsCustomizable>
+      <BackgroundImageUri>/CanvasApps/um_ejecutarproceso_9b8d5_BackgroundImageUri</BackgroundImageUri>
+      <DocumentUri>/CanvasApps/um_ejecutarproceso_9b8d5_DocumentUri.msapp</DocumentUri>
+      <AdditionalUris>
+        <AdditionalUri>/CanvasApps/um_ejecutarproceso_9b8d5_AdditionalUris0_identity.json</AdditionalUri>
+      </AdditionalUris>
+    </CanvasApp>
+  </CanvasApps>
+  <Languages>
+    <Language>3082</Language>
+  </Languages>
+</ImportExportXml>

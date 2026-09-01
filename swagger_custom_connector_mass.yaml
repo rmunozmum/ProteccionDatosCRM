@@ -1,0 +1,709 @@
+swagger: '2.0'
+info:
+  title: MotorDynamicsAPI
+  description: >-
+    API para consultar o ejecutar procesos sobre registros Dynamics/Dataverse
+    por RUT o Pasaporte.
+  version: '1.0'
+host: um-ley-proteccion-datos-qa.azurewebsites.net
+basePath: /
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /api/execute-single:
+    post:
+      summary: Ejecutar proceso para un RUT o Pasaporte
+      description: >-
+        Ejecuta una operacion para un unico RUT o Pasaporte. Para pruebas
+        seguras usar mode = Consultar.
+      operationId: ExecuteSingle
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SingleRequest'
+      responses:
+        '200':
+          description: Respuesta de ejecucion
+          schema:
+            $ref: '#/definitions/ExecutionResponse'
+        '400':
+          description: Solicitud invalida
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '500':
+          description: Error interno
+      x-ms-visibility: important
+
+  /api/execute-batch:
+    post:
+      summary: Ejecutar proceso para multiples identificadores
+      description: >-
+        Ejecuta una operacion para una lista de RUTs y/o pasaportes. Usar
+        Consultar para pruebas seguras.
+      operationId: ExecuteBatch
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BatchRequest'
+      responses:
+        '200':
+          description: Respuesta de ejecucion por lote
+          schema:
+            $ref: '#/definitions/ExecutionResponse'
+        '400':
+          description: Solicitud invalida
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '500':
+          description: Error interno
+      x-ms-visibility: important
+
+  /api/reports/catalog:
+    get:
+      summary: Obtener catalogo de reportes
+      description: Obtiene el catalogo de reportes LPD disponibles.
+      operationId: GetReportsCatalog
+      x-ms-visibility: important
+      parameters: []
+      responses:
+        '200':
+          description: Catalogo de reportes
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                reportCode:
+                  type: string
+                reportName:
+                  type: string
+                description:
+                  type: string
+                module:
+                  type: string
+                executionType:
+                  type: string
+                status:
+                  type: string
+                enabled:
+                  type: boolean
+                parameters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      required:
+                        type: boolean
+                      type:
+                        type: string
+                outputFormats:
+                  type: array
+                  items:
+                    type: string
+        '401':
+          description: No autorizado
+        '500':
+          description: Error interno
+
+  /api/reports/execute:
+    post:
+      summary: Ejecutar reporte LPD
+      description: Ejecuta un reporte LPD usando los parametros requeridos.
+      operationId: ExecuteReport
+      x-ms-visibility: important
+      parameters:
+        - name: body
+          in: body
+          required: false
+          schema:
+            type: object
+            properties:
+              reportCode:
+                type: string
+                description: reportCode
+              parameters:
+                type: object
+                properties:
+                  rut:
+                    type: string
+                  pasaporte:
+                    type: string
+                  tipoDocumento:
+                    type: string
+                  usuarioEjecutor:
+                    type: string
+                  correoEjecutor:
+                    type: string
+                  areaEjecutor:
+                    type: string
+                  motivo:
+                    type: string
+      responses:
+        '200':
+          description: Resultado del reporte
+          schema:
+            type: object
+        '400':
+          description: Solicitud invalida
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '500':
+          description: Error interno
+
+  /api/mass/create:
+    post:
+      summary: Crear lote masivo
+      description: Crea cabecera y detalles de proceso masivo en Dataverse.
+      operationId: CreateMassLote
+      x-ms-visibility: important
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CreateMassLoteRequest'
+      responses:
+        '202':
+          description: Lote creado
+          schema:
+            $ref: '#/definitions/CreateMassLoteResponse'
+        '400':
+          description: Solicitud invalida
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '500':
+          description: Error interno
+
+  /api/mass/start/{executionId}:
+    post:
+      summary: Iniciar lote masivo
+      description: Encola el procesamiento de un lote masivo ya creado.
+      operationId: StartMassLote
+      x-ms-visibility: important
+      parameters:
+        - name: executionId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Lote iniciado
+          schema:
+            $ref: '#/definitions/StartMassLoteResponse'
+        '400':
+          description: Solicitud invalida
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '404':
+          description: Lote no encontrado
+        '500':
+          description: Error interno
+
+  /api/mass/status/{executionId}:
+    get:
+      summary: Obtener estado de lote masivo
+      description: Consulta avance y contadores de una ejecucion masiva.
+      operationId: GetMassLoteStatus
+      x-ms-visibility: important
+      parameters:
+        - name: executionId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Estado del lote
+          schema:
+            $ref: '#/definitions/MassLoteStatusResponse'
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '404':
+          description: Lote no encontrado
+        '500':
+          description: Error interno
+
+  /api/mass/details/{executionId}:
+    get:
+      summary: Obtener detalle de lote masivo
+      description: Consulta los detalles procesados de una ejecucion masiva.
+      operationId: GetMassLoteDetails
+      x-ms-visibility: important
+      parameters:
+        - name: executionId
+          in: path
+          required: true
+          type: string
+        - name: status
+          in: query
+          required: false
+          type: string
+        - name: page
+          in: query
+          required: false
+          type: integer
+          format: int32
+          default: 1
+        - name: pageSize
+          in: query
+          required: false
+          type: integer
+          format: int32
+          default: 200
+      responses:
+        '200':
+          description: Detalle del lote
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MassLoteDetailItem'
+        '401':
+          description: No autorizado
+        '403':
+          description: Acceso denegado
+        '404':
+          description: Lote no encontrado
+        '500':
+          description: Error interno
+
+definitions:
+  SingleRequest:
+    type: object
+    required:
+      - mode
+    properties:
+      rut:
+        type: string
+        title: RUT
+        description: RUT a consultar o procesar.
+        x-ms-summary: RUT
+      pasaporte:
+        type: string
+        title: Pasaporte
+        description: Pasaporte a consultar o procesar.
+        x-ms-summary: Pasaporte
+      mode:
+        type: string
+        title: Modo
+        description: Modo de ejecucion. Usar Consultar para pruebas seguras.
+        enum:
+          - Consultar
+          - EliminarTodo
+          - EliminarTodoMenosContacto
+        default: Consultar
+        x-ms-summary: Modo
+      confirmationText:
+        type: string
+        title: Texto de confirmacion
+        description: >-
+          Texto requerido para autorizar eliminacion. Para consultar puede ir
+          vacio.
+        x-ms-summary: Confirmacion
+
+  BatchRequest:
+    type: object
+    required:
+      - mode
+    properties:
+      ruts:
+        type: array
+        title: RUTs
+        description: Lista de RUTs a consultar o procesar.
+        items:
+          type: string
+        x-ms-summary: RUTs
+      pasaportes:
+        type: array
+        title: Pasaportes
+        description: Lista de pasaportes a consultar o procesar.
+        items:
+          type: string
+        x-ms-summary: Pasaportes
+      mode:
+        type: string
+        title: Modo
+        description: Modo de ejecucion.
+        enum:
+          - Consultar
+          - EliminarTodo
+          - EliminarTodoMenosContacto
+        default: Consultar
+        x-ms-summary: Modo
+      confirmationText:
+        type: string
+        title: Texto de confirmacion
+        description: >-
+          Texto requerido para autorizar eliminacion. Para consultar puede ir
+          vacio.
+        x-ms-summary: Confirmacion
+
+  CreateMassLoteRequest:
+    type: object
+    required:
+      - identificadores
+      - tratamiento
+      - motivo
+      - confirmationText
+    properties:
+      identificadores:
+        type: array
+        title: Identificadores
+        description: Lista de RUTs o pasaportes.
+        items:
+          type: string
+        x-ms-summary: Identificadores
+      tratamiento:
+        type: string
+        title: Tratamiento
+        description: Tratamiento masivo a ejecutar.
+        enum:
+          - EliminarTodo
+          - EliminarTodoMenosContacto
+        x-ms-summary: Tratamiento
+      motivo:
+        type: string
+        title: Motivo
+        description: Motivo o justificacion del proceso masivo.
+        x-ms-summary: Motivo
+      confirmationText:
+        type: string
+        title: Confirmacion
+        description: Para eliminaciones debe ser ELIMINAR.
+        default: ELIMINAR
+        x-ms-summary: Confirmacion
+
+  CreateMassLoteResponse:
+    type: object
+    properties:
+      executionId:
+        type: string
+      totalRegistros:
+        type: integer
+        format: int32
+      registrosValidos:
+        type: integer
+        format: int32
+      registrosInvalidos:
+        type: integer
+        format: int32
+      registrosDuplicados:
+        type: integer
+        format: int32
+      totalLineasArchivo:
+        type: integer
+        format: int32
+      sourceFileName:
+        type: string
+        x-nullable: true
+      sourceBlobReference:
+        type: string
+        x-nullable: true
+      sourceFileHash:
+        type: string
+        x-nullable: true
+      partitionSize:
+        type: integer
+        format: int32
+      estimatedPartitions:
+        type: integer
+        format: int32
+
+  StartMassLoteResponse:
+    type: object
+    properties:
+      message:
+        type: string
+      executionId:
+        type: string
+      enqueuedPartitions:
+        type: integer
+        format: int32
+
+  MassLoteStatusResponse:
+    type: object
+    properties:
+      executionId:
+        type: string
+      tratamiento:
+        type: string
+      motivo:
+        type: string
+      estado:
+        type: string
+      totalRegistros:
+        type: integer
+        format: int32
+      procesados:
+        type: integer
+        format: int32
+      exitosos:
+        type: integer
+        format: int32
+      noEncontrados:
+        type: integer
+        format: int32
+      errores:
+        type: integer
+        format: int32
+      invalidos:
+        type: integer
+        format: int32
+      requiereConciliacion:
+        type: integer
+        format: int32
+      inicio:
+        type: string
+      termino:
+        type: string
+      creadoEl:
+        type: string
+      solicitadoPor:
+        type: string
+      progresoPorcentaje:
+        type: number
+        format: double
+
+  MassLoteDetailItem:
+    type: object
+    properties:
+      detailId:
+        type: string
+      identificador:
+        type: string
+      tipoIdentificador:
+        type: string
+      estado:
+        type: string
+      resultado:
+        type: string
+        x-nullable: true
+      errorMessage:
+        type: string
+        x-nullable: true
+      backupReference:
+        type: string
+        x-nullable: true
+      backupDate:
+        type: string
+        x-nullable: true
+      backupSize:
+        type: integer
+        format: int64
+        x-nullable: true
+      backupHash:
+        type: string
+        x-nullable: true
+
+  ExecutionResponse:
+    type: object
+    properties:
+      executionId:
+        type: string
+        description: Identificador unico de la ejecucion.
+      message:
+        type: string
+        description: Mensaje general de la ejecucion, si la API lo informa.
+      summary:
+        $ref: '#/definitions/BatchSummary'
+      results:
+        type: array
+        description: Resultado por identificador procesado.
+        items:
+          $ref: '#/definitions/RutResult'
+      apiBuild:
+        type: string
+        description: Version desplegada de la API.
+
+  BatchSummary:
+    type: object
+    properties:
+      totalProcessed:
+        type: integer
+        format: int32
+      successful:
+        type: integer
+        format: int32
+      notFound:
+        type: integer
+        format: int32
+      failed:
+        type: integer
+        format: int32
+
+  RutResult:
+    type: object
+    properties:
+      rut:
+        type: string
+        description: RUT procesado.
+      status:
+        type: string
+        description: Estado final informado por la API.
+        enum:
+          - Consultado
+          - Eliminado
+          - EliminadoMenosContacto
+          - NoEncontrado
+          - Error
+      error:
+        type: string
+        description: Detalle del error, si aplica.
+        x-nullable: true
+      data:
+        $ref: '#/definitions/MatrixData'
+      audit:
+        $ref: '#/definitions/AuditResult'
+
+  AuditResult:
+    type: object
+    properties:
+      attempted:
+        type: boolean
+      created:
+        type: boolean
+      recordId:
+        type: string
+      retrieveAfterCreateCount:
+        type: integer
+        format: int32
+      webApiRetrieveCount:
+        type: integer
+        format: int32
+      error:
+        type: string
+        x-nullable: true
+      retryUsed:
+        type: boolean
+      warning:
+        type: string
+        x-nullable: true
+      originalResponseJsonLength:
+        type: integer
+        format: int32
+      fullJsonColumnsUsed:
+        type: boolean
+      legacyJsonColumnsUsed:
+        type: boolean
+      savedResponseJsonFullLength:
+        type: integer
+        format: int32
+
+  MatrixData:
+    type: object
+    properties:
+      isMatrix:
+        type: boolean
+      executionId:
+        type: string
+      environmentUrl:
+        type: string
+      operationMode:
+        type: string
+      phase:
+        type: string
+      rut:
+        type: string
+      contactId:
+        type: string
+      fullname:
+        type: string
+      dv:
+        type: string
+      contactSummary:
+        $ref: '#/definitions/ContactSummary'
+      retrievedAt:
+        type: string
+        format: date-time
+      found:
+        type: boolean
+      message:
+        type: string
+      matrix:
+        type: array
+        items:
+          $ref: '#/definitions/MatrixRow'
+
+  MatrixRow:
+    type: object
+    properties:
+      entidadPrincipal:
+        type: string
+      entidadRelacionada:
+        type: string
+      campoRelacion:
+        type: string
+      cantidadTotal:
+        type: integer
+        format: int32
+
+  ContactSummary:
+    type: object
+    properties:
+      contactId:
+        type: string
+      fullname:
+        type: string
+      rut:
+        type: string
+      pasaporte:
+        type: string
+      dv:
+        type: string
+      rutCompleto:
+        type: string
+      tipoDocumento:
+        type: string
+      emailPrincipal:
+        type: string
+      emailSecundario:
+        type: string
+      telefonoMovil:
+        type: string
+      telefonoFijo:
+        type: string
+      fase:
+        type: string
+      clasificacionContacto:
+        type: string
+      ownerName:
+        type: string
+      carreraInteresActual:
+        type: string
+      sedeActual:
+        type: string
+      score:
+        type: string
+      origen:
+        type: string
+      subOrigen:
+        type: string
+      procesoAdmision:
+        type: string
+      createdOn:
+        type: string
+      modifiedOn:
+        type: string
+
+security: []
+securityDefinitions: {}

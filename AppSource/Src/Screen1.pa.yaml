@@ -1,0 +1,398 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Screen1:
+    Properties:
+      Fill: =RGBA(255, 255, 255, 1)
+      LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+      OnVisible: =Set(varProcesando, false)
+    Children:
+      - ScreenContainer1:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            ContentLanguage: ="es-CL"
+            Fill: =RGBA(245, 245, 245, 1)
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =16
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Width: =Parent.Width
+          Children:
+            - HeaderContainer1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  FillPortions: =0
+                  Height: =75
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                Children:
+                  - Label3_1:
+                      Control: Label@2.5.1
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =2
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(161, 159, 157, 1)
+                        FocusedBorderThickness: =4
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Bold
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Size: =18
+                        Text: ="Ley de Privacidad de Datos - Derechos ARCO"
+                        Width: =800
+            - MainContainer1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  FillPortions: =0
+                  Height: =150
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =20
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                Children:
+                  - Container1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        FillPortions: =0
+                        Height: =50
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutMinHeight: =4
+                        LayoutMinWidth: =16
+                        PaddingBottom: =2
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =2
+                      Children:
+                        - Label3:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =2
+                              Color: =RGBA(50, 49, 48, 1)
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              FocusedBorderThickness: =4
+                              Font: =Font.'Segoe UI'
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Text: ="Ingrese rut (wit_rut) y seleccione opción a ejecutar"
+                              Width: =400
+                        - txtRut:
+                            Control: Classic/TextInput@2.3.2
+                            Properties:
+                              BorderColor: =RGBA(245, 245, 245, 1)
+                              Color: =RGBA(50, 49, 48, 1)
+                              Default: =
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              DisabledFill: =RGBA(242, 242, 241, 0)
+                              Font: =Font.'Segoe UI'
+                              HintText: ="12345678"
+                              HoverBorderColor: =RGBA(16, 110, 190, 1)
+                              HoverColor: =RGBA(50, 49, 48, 1)
+                              HoverFill: =RGBA(255, 255, 255, 1)
+                              PressedBorderColor: =RGBA(0, 120, 212, 1)
+                              PressedColor: =RGBA(50, 49, 48, 1)
+                              PressedFill: =RGBA(255, 255, 255, 1)
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              X: =240
+                              Y: =305
+                        - drpMode:
+                            Control: Classic/DropDown@2.3.1
+                            Properties:
+                              AccessibleLabel: =
+                              BorderColor: =RGBA(245, 245, 245, 1)
+                              ChevronBackground: =RGBA(245, 245, 245, 1)
+                              ChevronDisabledBackground: =RGBA(242, 242, 241, 0)
+                              ChevronDisabledFill: =RGBA(161, 159, 157, 1)
+                              ChevronFill: =RGBA(50, 49, 48, 1)
+                              ChevronHoverBackground: =RGBA(245, 245, 245, 1)
+                              ChevronHoverFill: =RGBA(50, 49, 48, 1)
+                              Color: =RGBA(50, 49, 48, 1)
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              DisabledFill: =RGBA(242, 242, 241, 0)
+                              Fill: =RGBA(245, 245, 245, 1)
+                              Font: =Font.'Segoe UI'
+                              HoverBorderColor: =RGBA(16, 110, 190, 1)
+                              HoverColor: =RGBA(50, 49, 48, 1)
+                              HoverFill: =RGBA(245, 245, 245, 1)
+                              Items: |+
+                                =["Consultar", "EliminarTodo", "EliminarTodoMenosContacto"]
+                              Items.Value: =Value
+                              OnSelect: =
+                              PaddingBottom: =5
+                              PaddingLeft: =8
+                              PaddingRight: =5
+                              PaddingTop: =5
+                              PressedBorderColor: =RGBA(16, 110, 190, 1)
+                              PressedColor: =RGBA(255, 255, 255, 1)
+                              PressedFill: =RGBA(0, 120, 212, 1)
+                              SelectionColor: =RGBA(50, 49, 48, 1)
+                              SelectionFill: =RGBA(0, 120, 212, 1)
+                              X: =8
+                              Y: =48
+                        - Button1_1:
+                            Control: Classic/Button@2.2.0
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              BorderStyle: =BorderStyle.None
+                              Color: =RGBA(255, 255, 255, 1)
+                              DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                              DisabledColor: =RGBA(161, 159, 157, 1)
+                              DisabledFill: =RGBA(242, 242, 241, 0)
+                              DisplayMode: |+
+                                =If(varProcesando, DisplayMode.Disabled, DisplayMode.Edit)
+                              Fill: =RGBA(0, 120, 212, 1)
+                              Font: =Font.'Segoe UI'
+                              HoverBorderColor: =RGBA(0, 0, 0, 0)
+                              HoverColor: =RGBA(255, 255, 255, 1)
+                              HoverFill: =RGBA(16, 110, 190, 1)
+                              OnSelect: |-
+                                =If(
+                                    IsBlank(txtRut.Text),
+                                    Notify("Por favor, ingresa un RUT antes de procesar.", NotificationType.Warning),
+
+                                    If(
+                                        drpMode.Selected.Value <> "Consultar" && Upper(Trim(txtConfirmation.Text)) <> "ELIMINAR",
+                                        Notify("Para ejecutar una eliminación debes escribir ELIMINAR en el campo de confirmación.", NotificationType.Error),
+
+                                        Set(varProcesando, true);
+
+                                        Notify(
+                                            "Procesando solicitud para el RUT " & txtRut.Text & "...",
+                                            NotificationType.Information,
+                                            30000
+                                        );
+
+                                        IfError(
+                                            Set(varRutProcesado, txtRut.Text);
+                                            Set(varModoProcesado, drpMode.Selected.Value);
+
+                                            Set(
+                                                varRespuesta,
+                                                MotorDynamicsAPI.ExecuteSingle(
+                                                    txtRut.Text,
+                                                    drpMode.Selected.Value,
+                                                    If(drpMode.Selected.Value = "Consultar", "", txtConfirmation.Text)
+                                                )
+                                            );
+
+                                            Set(varResult, First(varRespuesta.results));
+
+                                            Set(
+                                                varNombreContacto,
+                                                If(
+                                                    varResult.status = "Consultado",
+                                                    Coalesce(varResult.data.fullname, "Contacto no encontrado"),
+                                                    ""
+                                                )
+                                            );
+
+                                            If(
+                                                varModoProcesado = "Consultar" && varResult.status = "Consultado",
+                                                ClearCollect(colMatrix, varResult.data.matrix)
+                                            );
+
+                                            If(
+                                                varModoProcesado <> "Consultar" && varResult.status = "Eliminado",
+                                                Clear(colMatrix)
+                                            );
+
+                                            Notify(
+                                                If(
+                                                    varResult.status = "Eliminado",
+                                                    "RUT " & varRutProcesado & " eliminado correctamente. Modo: " & varModoProcesado,
+                                                    If(
+                                                        varResult.status = "Bloqueado",
+                                                        "Operación bloqueada para el RUT " & varRutProcesado & ". Revise confirmación o seguridad del servidor.",
+                                                        If(
+                                                            varResult.status = "Consultado",
+                                                            "Consulta finalizada para el RUT " & varRutProcesado,
+                                                            "Proceso finalizado para el RUT " & varRutProcesado & ". Estado: " & varResult.status
+                                                        )
+                                                    )
+                                                ),
+                                                If(varResult.status = "Bloqueado", NotificationType.Warning, NotificationType.Success)
+                                            );
+
+                                            Reset(txtConfirmation);
+                                            Set(varProcesando, false),
+
+                                            Set(varProcesando, false);
+                                            Notify("Ocurrió un error al procesar la solicitud.", NotificationType.Error)
+                                        )
+                                    )
+                                )
+                              PressedBorderColor: =RGBA(0, 69, 120, 1)
+                              PressedColor: =RGBA(255, 255, 255, 1)
+                              PressedFill: =RGBA(16, 110, 190, 1)
+                              RadiusBottomLeft: =0
+                              RadiusBottomRight: =0
+                              RadiusTopLeft: =0
+                              RadiusTopRight: =0
+                              Text: =If(varProcesando, "Procesando...", "Procesar")
+                              Width: =240
+                              X: =40
+                              Y: =40
+                  - txtConfirmation:
+                      Control: Classic/TextInput@2.3.2
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        Color: =RGBA(50, 49, 48, 1)
+                        Default: =""
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(161, 159, 157, 1)
+                        DisabledFill: =RGBA(242, 242, 241, 0)
+                        Font: =Font.'Segoe UI'
+                        HintText: ="Ingresa frase de eliminación"
+                        HoverBorderColor: =RGBA(16, 110, 190, 1)
+                        HoverColor: =RGBA(50, 49, 48, 1)
+                        HoverFill: =RGBA(255, 255, 255, 1)
+                        PaddingBottom: =0
+                        PaddingTop: =0
+                        PressedBorderColor: =RGBA(0, 120, 212, 1)
+                        PressedColor: =RGBA(50, 49, 48, 1)
+                        PressedFill: =RGBA(255, 255, 255, 1)
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Visible: =drpMode.Selected.Value <> "Consultar"
+                        X: =40
+                        Y: =40
+                  - Etiqueta de contacto:
+                      Control: Label@2.5.1
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =2
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(161, 159, 157, 1)
+                        FocusedBorderThickness: =4
+                        Font: =Font.'Segoe UI'
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Text: |-
+                          =If(
+                              !IsBlank(varResult.data.contactSummary.fullname),
+                              "Datos de: " &
+                              varResult.data.contactSummary.fullname &
+                              " — RUT " &
+                              varResult.data.contactSummary.rutCompleto &
+                              If(
+                                  !IsBlank(varResult.data.contactSummary.clasificacionContacto),
+                                  " — " & varResult.data.contactSummary.clasificacionContacto,
+                                  ""
+                              ) &
+                              If(
+                                  !IsBlank(varResult.data.contactSummary.sedeActual),
+                                  " — Sede: " & varResult.data.contactSummary.sedeActual,
+                                  ""
+                              ),
+                              ""
+                          )
+                        Visible: =drpMode.Selected.Value = "Consultar" && !IsBlank(varResult.data.contactSummary.fullname)
+                        Width: =1200
+      - DataTable3:
+          Control: DataTable@1.0.3
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(50, 49, 48, 1)
+            Font: =Font.'Segoe UI'
+            HeadingColor: =RGBA(255, 255, 255, 1)
+            HeadingFill: =RGBA(0, 120, 212, 1)
+            HeadingFont: =Font.'Segoe UI'
+            Height: =486
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(0, 120, 212, 1)
+            Items: =colMatrix
+            SelectedColor: =RGBA(50, 49, 48, 1)
+            SelectedFill: =RGBA(199, 224, 244, 1)
+            Visible: =drpMode.Selected.Value = "Consultar"
+            Width: =1320
+            X: =20
+            Y: =268
+          Children:
+            - entidadPrincipal_Columna1:
+                Control: DataTableColumn@1.0.1
+                Variant: Textual
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="Entidad Principal"
+                  FieldName: ="entidadPrincipal"
+                  Order: =1
+                  Text: =ThisItem.entidadPrincipal
+            - entidadRelacionada_Columna1:
+                Control: DataTableColumn@1.0.1
+                Variant: Textual
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="Entidad Relacionada"
+                  FieldName: ="entidadRelacionada"
+                  Order: =2
+                  Text: =ThisItem.entidadRelacionada
+            - campoRelacion_Columna1:
+                Control: DataTableColumn@1.0.1
+                Variant: Textual
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="Campo relacionado"
+                  FieldName: ="campoRelacion"
+                  Order: =3
+                  Text: =ThisItem.campoRelacion
+            - cantidadTotal_Columna1:
+                Control: DataTableColumn@1.0.1
+                Variant: Textual
+                IsLocked: true
+                Properties:
+                  FieldDisplayName: ="Cantidad Total de registros"
+                  FieldName: ="cantidadTotal"
+                  Order: =4
+                  Text: =ThisItem.cantidadTotal

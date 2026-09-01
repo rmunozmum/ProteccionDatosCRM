@@ -1,0 +1,1142 @@
+﻿{
+    "openapi":  "3.0.4",
+    "info":  {
+                 "title":  "Umayor.Dynamics.DeletePoc",
+                 "version":  "1.0"
+             },
+    "paths":  {
+                  "/api/reports/catalog":  {
+                                               "get":  {
+                                                           "tags":  [
+                                                                        "Umayor.Dynamics.DeletePoc"
+                                                                    ],
+                                                           "operationId":  "GetReportsCatalog",
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "OK",
+                                                                                         "content":  {
+                                                                                                         "application/json":  {
+                                                                                                                                  "schema":  {
+                                                                                                                                                 "type":  "array",
+                                                                                                                                                 "items":  {
+                                                                                                                                                               "$ref":  "#/components/schemas/ReportMetadata"
+                                                                                                                                                           }
+                                                                                                                                             }
+                                                                                                                              }
+                                                                                                     }
+                                                                                     }
+                                                                         }
+                                                       }
+                                           },
+                  "/api/reports/execute":  {
+                                               "post":  {
+                                                            "tags":  [
+                                                                         "Umayor.Dynamics.DeletePoc"
+                                                                     ],
+                                                            "operationId":  "ExecuteReport",
+                                                            "requestBody":  {
+                                                                                "content":  {
+                                                                                                "application/json":  {
+                                                                                                                         "schema":  {
+                                                                                                                                        "$ref":  "#/components/schemas/ReportExecutionRequest"
+                                                                                                                                    }
+                                                                                                                     }
+                                                                                            },
+                                                                                "required":  true
+                                                                            },
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "OK",
+                                                                                          "content":  {
+                                                                                                          "application/json":  {
+                                                                                                                                   "schema":  {
+                                                                                                                                                  "$ref":  "#/components/schemas/ReportResponse"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                      }
+                                                                                      }
+                                                                          }
+                                                        }
+                                           },
+                  "/api/reports/export":  {
+                                              "post":  {
+                                                           "tags":  [
+                                                                        "Umayor.Dynamics.DeletePoc"
+                                                                    ],
+                                                           "operationId":  "ExportReport",
+                                                           "responses":  {
+                                                                             "501":  {
+                                                                                         "description":  "Not Implemented"
+                                                                                     }
+                                                                         }
+                                                       }
+                                          },
+                  "/api/execute-single":  {
+                                              "post":  {
+                                                           "tags":  [
+                                                                        "Umayor.Dynamics.DeletePoc"
+                                                                    ],
+                                                           "operationId":  "ExecuteSingle",
+                                                           "requestBody":  {
+                                                                               "content":  {
+                                                                                               "application/json":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/SingleRequest"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                           },
+                                                                               "required":  true
+                                                                           },
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "OK",
+                                                                                         "content":  {
+                                                                                                         "application/json":  {
+                                                                                                                                  "schema":  {
+                                                                                                                                                 "$ref":  "#/components/schemas/ExecutionResponse"
+                                                                                                                                             }
+                                                                                                                              }
+                                                                                                     }
+                                                                                     }
+                                                                         }
+                                                       }
+                                          },
+                  "/api/execute-batch":  {
+                                             "post":  {
+                                                          "tags":  [
+                                                                       "Umayor.Dynamics.DeletePoc"
+                                                                   ],
+                                                          "operationId":  "ExecuteBatch",
+                                                          "requestBody":  {
+                                                                              "content":  {
+                                                                                              "application/json":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "$ref":  "#/components/schemas/BatchRequest"
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                          },
+                                                                              "required":  true
+                                                                          },
+                                                          "responses":  {
+                                                                            "200":  {
+                                                                                        "description":  "OK",
+                                                                                        "content":  {
+                                                                                                        "application/json":  {
+                                                                                                                                 "schema":  {
+                                                                                                                                                "$ref":  "#/components/schemas/ExecutionResponse"
+                                                                                                                                            }
+                                                                                                                             }
+                                                                                                    }
+                                                                                    }
+                                                                        }
+                                                      }
+                                         },
+                  "/api/mass/create":  {
+                                           "post":  {
+                                                        "tags":  [
+                                                                     "Umayor.Dynamics.DeletePoc"
+                                                                 ],
+                                                        "operationId":  "CreateMassLote",
+                                                        "requestBody":  {
+                                                                            "content":  {
+                                                                                            "application/json":  {
+                                                                                                                     "schema":  {
+                                                                                                                                    "$ref":  "#/components/schemas/CreateMassLoteRequest"
+                                                                                                                                }
+                                                                                                                 }
+                                                                                        },
+                                                                            "required":  true
+                                                                        },
+                                                        "responses":  {
+                                                                          "202":  {
+                                                                                      "description":  "Accepted",
+                                                                                      "content":  {
+                                                                                                      "application/json":  {
+                                                                                                                               "schema":  {
+                                                                                                                                              "$ref":  "#/components/schemas/CreateMassLoteResponse"
+                                                                                                                                          }
+                                                                                                                           }
+                                                                                                  }
+                                                                                  }
+                                                                      }
+                                                    }
+                                       },
+                  "/api/mass/start/{executionId}":  {
+                                                        "post":  {
+                                                                     "tags":  [
+                                                                                  "Umayor.Dynamics.DeletePoc"
+                                                                              ],
+                                                                     "operationId":  "StartMassLote",
+                                                                     "parameters":  [
+                                                                                        {
+                                                                                            "name":  "executionId",
+                                                                                            "in":  "path",
+                                                                                            "required":  true,
+                                                                                            "schema":  {
+                                                                                                           "type":  "string"
+                                                                                                       }
+                                                                                        }
+                                                                                    ],
+                                                                     "responses":  {
+                                                                                       "200":  {
+                                                                                                   "description":  "OK",
+                                                                                                   "content":  {
+                                                                                                                   "application/json":  {
+                                                                                                                                            "schema":  {
+
+                                                                                                                                                       }
+                                                                                                                                        }
+                                                                                                               }
+                                                                                               }
+                                                                                   }
+                                                                 }
+                                                    },
+                  "/api/mass/status/{executionId}":  {
+                                                         "get":  {
+                                                                     "tags":  [
+                                                                                  "Umayor.Dynamics.DeletePoc"
+                                                                              ],
+                                                                     "operationId":  "GetMassLoteStatus",
+                                                                     "parameters":  [
+                                                                                        {
+                                                                                            "name":  "executionId",
+                                                                                            "in":  "path",
+                                                                                            "required":  true,
+                                                                                            "schema":  {
+                                                                                                           "type":  "string"
+                                                                                                       }
+                                                                                        }
+                                                                                    ],
+                                                                     "responses":  {
+                                                                                       "200":  {
+                                                                                                   "description":  "OK",
+                                                                                                   "content":  {
+                                                                                                                   "application/json":  {
+                                                                                                                                            "schema":  {
+                                                                                                                                                           "$ref":  "#/components/schemas/MassLoteStatusResponse"
+                                                                                                                                                       }
+                                                                                                                                        }
+                                                                                                               }
+                                                                                               }
+                                                                                   }
+                                                                 }
+                                                     },
+                  "/api/mass/details/{executionId}":  {
+                                                          "get":  {
+                                                                      "tags":  [
+                                                                                   "Umayor.Dynamics.DeletePoc"
+                                                                               ],
+                                                                      "operationId":  "GetMassLoteDetails",
+                                                                      "parameters":  [
+                                                                                         {
+                                                                                             "name":  "executionId",
+                                                                                             "in":  "path",
+                                                                                             "required":  true,
+                                                                                             "schema":  {
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         },
+                                                                                         {
+                                                                                             "name":  "status",
+                                                                                             "in":  "query",
+                                                                                             "schema":  {
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         }
+                                                                                     ],
+                                                                      "responses":  {
+                                                                                        "200":  {
+                                                                                                    "description":  "OK",
+                                                                                                    "content":  {
+                                                                                                                    "application/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "type":  "array",
+                                                                                                                                                            "items":  {
+                                                                                                                                                                          "$ref":  "#/components/schemas/MassLoteDetailItem"
+                                                                                                                                                                      }
+                                                                                                                                                        }
+                                                                                                                                         }
+                                                                                                                }
+                                                                                                }
+                                                                                    }
+                                                                  }
+                                                      },
+                  "/api/mass/backup/download":  {
+                                                    "get":  {
+                                                                "tags":  [
+                                                                             "Umayor.Dynamics.DeletePoc"
+                                                                         ],
+                                                                "operationId":  "DownloadMassBackup",
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "blobReference",
+                                                                                       "in":  "query",
+                                                                                       "required":  true,
+                                                                                       "schema":  {
+                                                                                                      "type":  "string"
+                                                                                                  }
+                                                                                   }
+                                                                               ],
+                                                                "responses":  {
+                                                                                  "200":  {
+                                                                                              "description":  "OK"
+                                                                                          }
+                                                                              }
+                                                            }
+                                                },
+                  "/api/diagnostics/update-audit-metadata":  {
+                                                                 "post":  {
+                                                                              "tags":  [
+                                                                                           "Umayor.Dynamics.DeletePoc"
+                                                                                       ],
+                                                                              "operationId":  "UpdateAuditMetadata",
+                                                                              "responses":  {
+                                                                                                "200":  {
+                                                                                                            "description":  "OK",
+                                                                                                            "content":  {
+                                                                                                                            "application/json":  {
+                                                                                                                                                     "schema":  {
+
+                                                                                                                                                                }
+                                                                                                                                                 }
+                                                                                                                        }
+                                                                                                        }
+                                                                                            }
+                                                                          }
+                                                             },
+                  "/api/diagnostics/audit-full-columns":  {
+                                                              "get":  {
+                                                                          "tags":  [
+                                                                                       "Umayor.Dynamics.DeletePoc"
+                                                                                   ],
+                                                                          "operationId":  "GetAuditFullColumns",
+                                                                          "responses":  {
+                                                                                            "200":  {
+                                                                                                        "description":  "OK",
+                                                                                                        "content":  {
+                                                                                                                        "application/json":  {
+                                                                                                                                                 "schema":  {
+                                                                                                                                                                "type":  "array",
+                                                                                                                                                                "items":  {
+
+                                                                                                                                                                          }
+                                                                                                                                                            }
+                                                                                                                                             }
+                                                                                                                    }
+                                                                                                    }
+                                                                                        }
+                                                                      }
+                                                          },
+                  "/api/diagnostics/test-audit-full-json":  {
+                                                                "post":  {
+                                                                             "tags":  [
+                                                                                          "Umayor.Dynamics.DeletePoc"
+                                                                                      ],
+                                                                             "operationId":  "TestAuditFullJson",
+                                                                             "responses":  {
+                                                                                               "200":  {
+                                                                                                           "description":  "OK",
+                                                                                                           "content":  {
+                                                                                                                           "application/json":  {
+                                                                                                                                                    "schema":  {
+                                                                                                                                                                   "$ref":  "#/components/schemas/AuditDiagnosticReport"
+                                                                                                                                                               }
+                                                                                                                                                }
+                                                                                                                       }
+                                                                                                       }
+                                                                                           }
+                                                                         }
+                                                            },
+                  "/api/diagnostics/audit-metadata":  {
+                                                          "get":  {
+                                                                      "tags":  [
+                                                                                   "Umayor.Dynamics.DeletePoc"
+                                                                               ],
+                                                                      "operationId":  "GetAuditMetadata",
+                                                                      "responses":  {
+                                                                                        "200":  {
+                                                                                                    "description":  "OK",
+                                                                                                    "content":  {
+                                                                                                                    "application/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "type":  "array",
+                                                                                                                                                            "items":  {
+
+                                                                                                                                                                      }
+                                                                                                                                                        }
+                                                                                                                                         }
+                                                                                                                }
+                                                                                                }
+                                                                                    }
+                                                                  }
+                                                      },
+                  "/api/diagnostics/audit-last":  {
+                                                      "get":  {
+                                                                  "tags":  [
+                                                                               "Umayor.Dynamics.DeletePoc"
+                                                                           ],
+                                                                  "operationId":  "GetAuditLast",
+                                                                  "responses":  {
+                                                                                    "200":  {
+                                                                                                "description":  "OK",
+                                                                                                "content":  {
+                                                                                                                "application/json":  {
+                                                                                                                                         "schema":  {
+                                                                                                                                                        "type":  "array",
+                                                                                                                                                        "items":  {
+
+                                                                                                                                                                  }
+                                                                                                                                                    }
+                                                                                                                                     }
+                                                                                                            }
+                                                                                            }
+                                                                                }
+                                                              }
+                                                  },
+                  "/api/diagnostics/audit/{executionId}":  {
+                                                               "get":  {
+                                                                           "tags":  [
+                                                                                        "Umayor.Dynamics.DeletePoc"
+                                                                                    ],
+                                                                           "operationId":  "GetAuditByExecutionId",
+                                                                           "parameters":  [
+                                                                                              {
+                                                                                                  "name":  "executionId",
+                                                                                                  "in":  "path",
+                                                                                                  "required":  true,
+                                                                                                  "schema":  {
+                                                                                                                 "type":  "string"
+                                                                                                             }
+                                                                                              }
+                                                                                          ],
+                                                                           "responses":  {
+                                                                                             "200":  {
+                                                                                                         "description":  "OK",
+                                                                                                         "content":  {
+                                                                                                                         "application/json":  {
+                                                                                                                                                  "schema":  {
+
+                                                                                                                                                             }
+                                                                                                                                              }
+                                                                                                                     }
+                                                                                                     }
+                                                                                         }
+                                                                       }
+                                                           },
+                  "/api/diagnostics/build":  {
+                                                 "get":  {
+                                                             "tags":  [
+                                                                          "Umayor.Dynamics.DeletePoc"
+                                                                      ],
+                                                             "operationId":  "GetDiagnosticsBuild",
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "OK",
+                                                                                           "content":  {
+                                                                                                           "application/json":  {
+                                                                                                                                    "schema":  {
+
+                                                                                                                                               }
+                                                                                                                                }
+                                                                                                       }
+                                                                                       }
+                                                                           }
+                                                         }
+                                             }
+              },
+    "components":  {
+                       "schemas":  {
+                                       "AuditDiagnosticReport":  {
+                                                                     "type":  "object",
+                                                                     "properties":  {
+                                                                                        "attempted":  {
+                                                                                                          "type":  "boolean"
+                                                                                                      },
+                                                                                        "created":  {
+                                                                                                        "type":  "boolean"
+                                                                                                    },
+                                                                                        "recordId":  {
+                                                                                                         "type":  "string",
+                                                                                                         "nullable":  true
+                                                                                                     },
+                                                                                        "retrieveAfterCreateCount":  {
+                                                                                                                         "type":  "integer",
+                                                                                                                         "format":  "int32"
+                                                                                                                     },
+                                                                                        "webApiRetrieveCount":  {
+                                                                                                                    "type":  "integer",
+                                                                                                                    "format":  "int32"
+                                                                                                                },
+                                                                                        "error":  {
+                                                                                                      "type":  "string",
+                                                                                                      "nullable":  true
+                                                                                                  },
+                                                                                        "retryUsed":  {
+                                                                                                          "type":  "boolean"
+                                                                                                      },
+                                                                                        "warning":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                        "originalResponseJsonLength":  {
+                                                                                                                           "type":  "integer",
+                                                                                                                           "format":  "int32",
+                                                                                                                           "nullable":  true
+                                                                                                                       },
+                                                                                        "fullJsonColumnsUsed":  {
+                                                                                                                    "type":  "boolean"
+                                                                                                                },
+                                                                                        "legacyJsonColumnsUsed":  {
+                                                                                                                      "type":  "boolean"
+                                                                                                                  },
+                                                                                        "savedResponseJsonFullLength":  {
+                                                                                                                            "type":  "integer",
+                                                                                                                            "format":  "int32",
+                                                                                                                            "nullable":  true
+                                                                                                                        }
+                                                                                    },
+                                                                     "additionalProperties":  false
+                                                                 },
+                                       "BatchRequest":  {
+                                                            "type":  "object",
+                                                            "properties":  {
+                                                                               "ruts":  {
+                                                                                            "type":  "array",
+                                                                                            "items":  {
+                                                                                                          "type":  "string"
+                                                                                                      },
+                                                                                            "nullable":  true
+                                                                                        },
+                                                                               "pasaportes":  {
+                                                                                                  "type":  "array",
+                                                                                                  "items":  {
+                                                                                                                "type":  "string"
+                                                                                                            },
+                                                                                                  "nullable":  true
+                                                                                              },
+                                                                               "mode":  {
+                                                                                            "type":  "string",
+                                                                                            "nullable":  true
+                                                                                        },
+                                                                               "confirmationText":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    }
+                                                                           },
+                                                            "additionalProperties":  false
+                                                        },
+                                       "ConsultationData":  {
+                                                                "type":  "object",
+                                                                "properties":  {
+                                                                                   "isMatrix":  {
+                                                                                                    "type":  "boolean"
+                                                                                                },
+                                                                                   "executionId":  {
+                                                                                                       "type":  "string",
+                                                                                                       "nullable":  true
+                                                                                                   },
+                                                                                   "environmentUrl":  {
+                                                                                                          "type":  "string",
+                                                                                                          "nullable":  true
+                                                                                                      },
+                                                                                   "operationMode":  {
+                                                                                                         "type":  "string",
+                                                                                                         "nullable":  true
+                                                                                                     },
+                                                                                   "phase":  {
+                                                                                                 "type":  "string",
+                                                                                                 "nullable":  true
+                                                                                             },
+                                                                                   "rut":  {
+                                                                                               "type":  "string",
+                                                                                               "nullable":  true
+                                                                                           },
+                                                                                   "contactId":  {
+                                                                                                     "type":  "string",
+                                                                                                     "nullable":  true
+                                                                                                 },
+                                                                                   "fullname":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                   "dv":  {
+                                                                                              "type":  "string",
+                                                                                              "nullable":  true
+                                                                                          },
+                                                                                   "contactSummary":  {
+                                                                                                          "$ref":  "#/components/schemas/ContactSummary"
+                                                                                                      },
+                                                                                   "retrievedAt":  {
+                                                                                                       "type":  "string",
+                                                                                                       "format":  "date-time",
+                                                                                                       "nullable":  true
+                                                                                                   },
+                                                                                   "found":  {
+                                                                                                 "type":  "boolean"
+                                                                                             },
+                                                                                   "matrix":  {
+                                                                                                  "type":  "array",
+                                                                                                  "items":  {
+                                                                                                                "$ref":  "#/components/schemas/MatrixRow"
+                                                                                                            },
+                                                                                                  "nullable":  true
+                                                                                              }
+                                                                               },
+                                                                "additionalProperties":  false
+                                                            },
+                                       "ContactSummary":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "contactId":  {
+                                                                                                   "type":  "string",
+                                                                                                   "nullable":  true
+                                                                                               },
+                                                                                 "fullname":  {
+                                                                                                  "type":  "string",
+                                                                                                  "nullable":  true
+                                                                                              },
+                                                                                 "rut":  {
+                                                                                             "type":  "string",
+                                                                                             "nullable":  true
+                                                                                         },
+                                                                                 "dv":  {
+                                                                                            "type":  "string",
+                                                                                            "nullable":  true
+                                                                                        },
+                                                                                 "rutCompleto":  {
+                                                                                                     "type":  "string",
+                                                                                                     "nullable":  true
+                                                                                                 },
+                                                                                 "tipoDocumento":  {
+                                                                                                       "type":  "string",
+                                                                                                       "nullable":  true
+                                                                                                   },
+                                                                                 "emailPrincipal":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                 "emailSecundario":  {
+                                                                                                         "type":  "string",
+                                                                                                         "nullable":  true
+                                                                                                     },
+                                                                                 "telefonoMovil":  {
+                                                                                                       "type":  "string",
+                                                                                                       "nullable":  true
+                                                                                                   },
+                                                                                 "telefonoFijo":  {
+                                                                                                      "type":  "string",
+                                                                                                      "nullable":  true
+                                                                                                  },
+                                                                                 "fase":  {
+                                                                                              "type":  "string",
+                                                                                              "nullable":  true
+                                                                                          },
+                                                                                 "clasificacionContacto":  {
+                                                                                                               "type":  "string",
+                                                                                                               "nullable":  true
+                                                                                                           },
+                                                                                 "ownerName":  {
+                                                                                                   "type":  "string",
+                                                                                                   "nullable":  true
+                                                                                               },
+                                                                                 "carreraInteresActual":  {
+                                                                                                              "type":  "string",
+                                                                                                              "nullable":  true
+                                                                                                          },
+                                                                                 "sedeActual":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                 "score":  {
+                                                                                               "type":  "string",
+                                                                                               "nullable":  true
+                                                                                           },
+                                                                                 "origen":  {
+                                                                                                "type":  "string",
+                                                                                                "nullable":  true
+                                                                                            },
+                                                                                 "subOrigen":  {
+                                                                                                   "type":  "string",
+                                                                                                   "nullable":  true
+                                                                                               },
+                                                                                 "procesoAdmision":  {
+                                                                                                         "type":  "string",
+                                                                                                         "nullable":  true
+                                                                                                     },
+                                                                                 "createdOn":  {
+                                                                                                   "type":  "string",
+                                                                                                   "nullable":  true
+                                                                                               },
+                                                                                 "modifiedOn":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                }
+                                                                             },
+                                                              "additionalProperties":  false
+                                                          },
+                                       "CreateMassLoteRequest":  {
+                                                                     "type":  "object",
+                                                                     "properties":  {
+                                                                                        "tratamiento":  {
+                                                                                                            "type":  "string",
+                                                                                                            "nullable":  true
+                                                                                                        },
+                                                                                        "motivo":  {
+                                                                                                       "type":  "string",
+                                                                                                       "nullable":  true
+                                                                                                   },
+                                                                                        "identificadores":  {
+                                                                                                                "type":  "array",
+                                                                                                                "items":  {
+                                                                                                                              "type":  "string"
+                                                                                                                          },
+                                                                                                                "nullable":  true
+                                                                                                            }
+                                                                                    },
+                                                                     "additionalProperties":  false
+                                                                 },
+                                       "CreateMassLoteResponse":  {
+                                                                      "type":  "object",
+                                                                      "properties":  {
+                                                                                         "executionId":  {
+                                                                                                             "type":  "string",
+                                                                                                             "nullable":  true
+                                                                                                         },
+                                                                                         "totalRegistros":  {
+                                                                                                                "type":  "integer",
+                                                                                                                "format":  "int32"
+                                                                                                            },
+                                                                                         "registrosValidos":  {
+                                                                                                                  "type":  "integer",
+                                                                                                                  "format":  "int32"
+                                                                                                              },
+                                                                                         "registrosInvalidos":  {
+                                                                                                                    "type":  "integer",
+                                                                                                                    "format":  "int32"
+                                                                                                                }
+                                                                                     },
+                                                                      "additionalProperties":  false
+                                                                  },
+                                       "DeletionExecutionReport":  {
+                                                                       "type":  "object",
+                                                                       "properties":  {
+                                                                                          "operationMode":  {
+                                                                                                                "type":  "string",
+                                                                                                                "nullable":  true
+                                                                                                            },
+                                                                                          "contactDeleted":  {
+                                                                                                                 "type":  "boolean"
+                                                                                                             },
+                                                                                          "postMatrixFound":  {
+                                                                                                                  "type":  "boolean"
+                                                                                                              },
+                                                                                          "operationCompleted":  {
+                                                                                                                     "type":  "boolean"
+                                                                                                                 },
+                                                                                          "preMatrix":  {
+                                                                                                            "nullable":  true
+                                                                                                        },
+                                                                                          "postMatrix":  {
+                                                                                                             "nullable":  true
+                                                                                                         },
+                                                                                          "deletionSummary":  {
+                                                                                                                  "$ref":  "#/components/schemas/DeletionSummary"
+                                                                                                              },
+                                                                                          "warnings":  {
+                                                                                                           "type":  "array",
+                                                                                                           "items":  {
+                                                                                                                         "type":  "string"
+                                                                                                                     },
+                                                                                                           "nullable":  true
+                                                                                                       },
+                                                                                          "warningCount":  {
+                                                                                                               "type":  "integer",
+                                                                                                               "format":  "int32",
+                                                                                                               "readOnly":  true
+                                                                                                           },
+                                                                                          "errors":  {
+                                                                                                         "type":  "array",
+                                                                                                         "items":  {
+                                                                                                                       "type":  "string"
+                                                                                                                   },
+                                                                                                         "nullable":  true
+                                                                                                     }
+                                                                                      },
+                                                                       "additionalProperties":  false
+                                                                   },
+                                       "DeletionSummary":  {
+                                                               "type":  "object",
+                                                               "properties":  {
+                                                                                  "totalFoundBeforeDelete":  {
+                                                                                                                 "type":  "integer",
+                                                                                                                 "format":  "int32"
+                                                                                                             },
+                                                                                  "totalDeleted":  {
+                                                                                                       "type":  "integer",
+                                                                                                       "format":  "int32"
+                                                                                                   },
+                                                                                  "totalErrors":  {
+                                                                                                      "type":  "integer",
+                                                                                                      "format":  "int32"
+                                                                                                  },
+                                                                                  "backupCreated":  {
+                                                                                                        "type":  "boolean"
+                                                                                                    },
+                                                                                  "backupFileName":  {
+                                                                                                         "type":  "string",
+                                                                                                         "nullable":  true
+                                                                                                     },
+                                                                                  "startedAt":  {
+                                                                                                    "type":  "string",
+                                                                                                    "format":  "date-time",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                  "finishedAt":  {
+                                                                                                     "type":  "string",
+                                                                                                     "format":  "date-time",
+                                                                                                     "nullable":  true
+                                                                                                 }
+                                                                              },
+                                                               "additionalProperties":  false
+                                                           },
+                                       "ExecutionResponse":  {
+                                                                 "type":  "object",
+                                                                 "properties":  {
+                                                                                    "message":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                    "executionId":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                    "results":  {
+                                                                                                    "type":  "array",
+                                                                                                    "items":  {
+                                                                                                                  "$ref":  "#/components/schemas/RutResult"
+                                                                                                              },
+                                                                                                    "nullable":  true
+                                                                                                }
+                                                                                },
+                                                                 "additionalProperties":  false
+                                                             },
+                                       "MassLoteDetailItem":  {
+                                                                  "type":  "object",
+                                                                  "properties":  {
+                                                                                     "detailId":  {
+                                                                                                      "type":  "string",
+                                                                                                      "nullable":  true
+                                                                                                  },
+                                                                                     "identificador":  {
+                                                                                                           "type":  "string",
+                                                                                                           "nullable":  true
+                                                                                                       },
+                                                                                     "tipoIdentificador":  {
+                                                                                                               "type":  "string",
+                                                                                                               "nullable":  true
+                                                                                                           },
+                                                                                     "estado":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                     "resultado":  {
+                                                                                                       "type":  "string",
+                                                                                                       "nullable":  true
+                                                                                                   },
+                                                                                     "errorMessage":  {
+                                                                                                          "type":  "string",
+                                                                                                          "nullable":  true
+                                                                                                      },
+                                                                                     "backupReference":  {
+                                                                                                             "type":  "string",
+                                                                                                             "nullable":  true
+                                                                                                         },
+                                                                                     "backupDate":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                     "backupSize":  {
+                                                                                                        "type":  "integer",
+                                                                                                        "format":  "int64",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                     "backupHash":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    }
+                                                                                 },
+                                                                  "additionalProperties":  false
+                                                              },
+                                       "MassLoteStatusResponse":  {
+                                                                      "type":  "object",
+                                                                      "properties":  {
+                                                                                         "executionId":  {
+                                                                                                             "type":  "string",
+                                                                                                             "nullable":  true
+                                                                                                         },
+                                                                                         "tratamiento":  {
+                                                                                                             "type":  "string",
+                                                                                                             "nullable":  true
+                                                                                                         },
+                                                                                         "motivo":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                         "estado":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                         "totalRegistros":  {
+                                                                                                                "type":  "integer",
+                                                                                                                "format":  "int32"
+                                                                                                            },
+                                                                                         "procesados":  {
+                                                                                                            "type":  "integer",
+                                                                                                            "format":  "int32"
+                                                                                                        },
+                                                                                         "exitosos":  {
+                                                                                                          "type":  "integer",
+                                                                                                          "format":  "int32"
+                                                                                                      },
+                                                                                         "noEncontrados":  {
+                                                                                                               "type":  "integer",
+                                                                                                               "format":  "int32"
+                                                                                                           },
+                                                                                         "errores":  {
+                                                                                                         "type":  "integer",
+                                                                                                         "format":  "int32"
+                                                                                                     },
+                                                                                         "invalidos":  {
+                                                                                                           "type":  "integer",
+                                                                                                           "format":  "int32"
+                                                                                                       },
+                                                                                         "requiereConciliacion":  {
+                                                                                                                      "type":  "integer",
+                                                                                                                      "format":  "int32"
+                                                                                                                  },
+                                                                                         "inicio":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                         "termino":  {
+                                                                                                         "type":  "string",
+                                                                                                         "nullable":  true
+                                                                                                     },
+                                                                                         "creadoEl":  {
+                                                                                                          "type":  "string",
+                                                                                                          "nullable":  true
+                                                                                                      },
+                                                                                         "solicitadoPor":  {
+                                                                                                               "type":  "string",
+                                                                                                               "nullable":  true
+                                                                                                           },
+                                                                                         "progresoPorcentaje":  {
+                                                                                                                    "type":  "number",
+                                                                                                                    "format":  "double",
+                                                                                                                    "readOnly":  true
+                                                                                                                }
+                                                                                     },
+                                                                      "additionalProperties":  false
+                                                                  },
+                                       "MatrixRow":  {
+                                                         "type":  "object",
+                                                         "properties":  {
+                                                                            "entidadPrincipal":  {
+                                                                                                     "type":  "string",
+                                                                                                     "nullable":  true
+                                                                                                 },
+                                                                            "entidadRelacionada":  {
+                                                                                                       "type":  "string",
+                                                                                                       "nullable":  true
+                                                                                                   },
+                                                                            "campoRelacion":  {
+                                                                                                  "type":  "string",
+                                                                                                  "nullable":  true
+                                                                                              },
+                                                                            "cantidadTotal":  {
+                                                                                                  "type":  "integer",
+                                                                                                  "format":  "int32"
+                                                                                              }
+                                                                        },
+                                                         "additionalProperties":  false
+                                                     },
+                                       "ReportExecutionRequest":  {
+                                                                      "type":  "object",
+                                                                      "properties":  {
+                                                                                         "reportCode":  {
+                                                                                                            "type":  "string",
+                                                                                                            "nullable":  true
+                                                                                                        },
+                                                                                         "parameters":  {
+                                                                                                            "type":  "object",
+                                                                                                            "additionalProperties":  {
+                                                                                                                                         "type":  "string"
+                                                                                                                                     },
+                                                                                                            "nullable":  true
+                                                                                                        }
+                                                                                     },
+                                                                      "additionalProperties":  false
+                                                                  },
+                                       "ReportMetadata":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "reportCode":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                 "reportName":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                 "description":  {
+                                                                                                     "type":  "string",
+                                                                                                     "nullable":  true
+                                                                                                 },
+                                                                                 "module":  {
+                                                                                                "type":  "string",
+                                                                                                "nullable":  true
+                                                                                            },
+                                                                                 "executionType":  {
+                                                                                                       "type":  "string",
+                                                                                                       "nullable":  true
+                                                                                                   },
+                                                                                 "requiredParameters":  {
+                                                                                                            "type":  "array",
+                                                                                                            "items":  {
+                                                                                                                          "type":  "string"
+                                                                                                                      },
+                                                                                                            "nullable":  true
+                                                                                                        },
+                                                                                 "allowedExportFormats":  {
+                                                                                                              "type":  "array",
+                                                                                                              "items":  {
+                                                                                                                            "type":  "string"
+                                                                                                                        },
+                                                                                                              "nullable":  true
+                                                                                                          },
+                                                                                 "status":  {
+                                                                                                "type":  "string",
+                                                                                                "nullable":  true
+                                                                                            },
+                                                                                 "enabled":  {
+                                                                                                 "type":  "boolean"
+                                                                                             }
+                                                                             },
+                                                              "additionalProperties":  false
+                                                          },
+                                       "ReportResponse":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "success":  {
+                                                                                                 "type":  "boolean"
+                                                                                             },
+                                                                                 "reportCode":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                 "reportName":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                 "executionId":  {
+                                                                                                     "type":  "string",
+                                                                                                     "nullable":  true
+                                                                                                 },
+                                                                                 "executedAt":  {
+                                                                                                    "type":  "string",
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                 "parameters":  {
+                                                                                                    "type":  "object",
+                                                                                                    "additionalProperties":  {
+                                                                                                                                 "type":  "string"
+                                                                                                                             },
+                                                                                                    "nullable":  true
+                                                                                                },
+                                                                                 "summary":  {
+                                                                                                 "$ref":  "#/components/schemas/ReportSummary"
+                                                                                             },
+                                                                                 "data":  {
+                                                                                              "nullable":  true
+                                                                                          },
+                                                                                 "warnings":  {
+                                                                                                  "type":  "array",
+                                                                                                  "items":  {
+                                                                                                                "type":  "string"
+                                                                                                            },
+                                                                                                  "nullable":  true
+                                                                                              },
+                                                                                 "errors":  {
+                                                                                                "type":  "array",
+                                                                                                "items":  {
+                                                                                                              "type":  "string"
+                                                                                                          },
+                                                                                                "nullable":  true
+                                                                                            }
+                                                                             },
+                                                              "additionalProperties":  false
+                                                          },
+                                       "ReportSummary":  {
+                                                             "type":  "object",
+                                                             "properties":  {
+                                                                                "totalRows":  {
+                                                                                                  "type":  "integer",
+                                                                                                  "format":  "int32"
+                                                                                              },
+                                                                                "sections":  {
+                                                                                                 "type":  "array",
+                                                                                                 "items":  {
+                                                                                                               "type":  "string"
+                                                                                                           },
+                                                                                                 "nullable":  true
+                                                                                             }
+                                                                            },
+                                                             "additionalProperties":  false
+                                                         },
+                                       "RutResult":  {
+                                                         "type":  "object",
+                                                         "properties":  {
+                                                                            "rut":  {
+                                                                                        "type":  "string",
+                                                                                        "nullable":  true
+                                                                                    },
+                                                                            "status":  {
+                                                                                           "type":  "string",
+                                                                                           "nullable":  true
+                                                                                       },
+                                                                            "data":  {
+                                                                                         "nullable":  true
+                                                                                     }
+                                                                        },
+                                                         "additionalProperties":  false
+                                                     },
+                                       "SingleRequest":  {
+                                                             "type":  "object",
+                                                             "properties":  {
+                                                                                "rut":  {
+                                                                                            "type":  "string",
+                                                                                            "nullable":  true
+                                                                                        },
+                                                                                "pasaporte":  {
+                                                                                                  "type":  "string",
+                                                                                                  "nullable":  true
+                                                                                              },
+                                                                                "mode":  {
+                                                                                             "type":  "string",
+                                                                                             "nullable":  true
+                                                                                         },
+                                                                                "confirmationText":  {
+                                                                                                         "type":  "string",
+                                                                                                         "nullable":  true
+                                                                                                     }
+                                                                            },
+                                                             "additionalProperties":  false
+                                                         }
+                                   }
+                   },
+    "tags":  [
+                 {
+                     "name":  "Umayor.Dynamics.DeletePoc"
+                 }
+             ]
+}

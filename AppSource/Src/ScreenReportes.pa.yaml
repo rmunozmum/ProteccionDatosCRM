@@ -1,0 +1,91 @@
+# ************************************************************************************************
+# Nueva pantalla de Reportes LPD para el Custom Page
+# Diseñada para ser expuesta vía el Sitemap de la Model-driven app (Gestión ARCO > Reportes).
+# ************************************************************************************************
+Screens:
+  ScreenReportes:
+    Properties:
+      Fill: =RGBA(255, 255, 255, 1)
+      OnVisible: |
+        =Set(varProcesandoReporte; false);;
+        ClearCollect(colCatalog; MotorDynamicsAPI.GetReportsCatalog())
+    Children:
+      - HeaderContainerReportes:
+          Control: GroupContainer@1.5.0
+          Properties:
+            Height: =75
+          Children:
+            - LabelTitle:
+                Control: Label@2.5.1
+                Properties:
+                  Text: ="Gestión ARCO - Reportes"
+                  FontWeight: =FontWeight.Bold
+                  Size: =18
+
+      - MainContainerReportes:
+          Control: GroupContainer@1.5.0
+          Properties:
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =20
+          Children:
+            - drpReporte:
+                Control: DropDown@2.0.0
+                Properties:
+                  Items: =Filter(colCatalog; enabled = true)
+                  Default: =First(Filter(colCatalog; enabled = true))
+                  OnChange: =Set(varReporteSeleccionado; drpReporte.Selected)
+            
+            - lblReporteDesc:
+                Control: Label@2.5.1
+                Properties:
+                  Text: =varReporteSeleccionado.description
+                  
+            - txtRutReporte:
+                Control: TextInput@2.1.0
+                Properties:
+                  HintText: ="Ingrese RUT (Ej: 11111111-1)"
+                  Visible: =varReporteSeleccionado.reportCode = "LPD-R01"
+
+            - btnEjecutarReporte:
+                Control: Button@2.5.1
+                Properties:
+                  Text: =If(varProcesandoReporte; "Procesando..."; "Ejecutar Reporte")
+                  DisplayMode: |
+                    =If(
+                        varProcesandoReporte; 
+                        DisplayMode.Disabled;
+                        If(varReporteSeleccionado.reportCode = "LPD-R01" && IsBlank(txtRutReporte.Text); DisplayMode.Disabled; DisplayMode.Edit)
+                    )
+                  OnSelect: |
+                    =Set(varProcesandoReporte; true);;
+                    If(varReporteSeleccionado.reportCode = "LPD-R01" && IsBlank(txtRutReporte.Text);
+                        Notify("El RUT es obligatorio para el reporte LPD-R01"; NotificationType.Error; 5000);;
+                        Set(varProcesandoReporte; false);
+                        // Sino, ejecutar reporte
+                        ClearCollect(colReportResult; MotorDynamicsAPI.ExecuteReport({ reportCode: varReporteSeleccionado.reportCode; parameters: { rut: txtRutReporte.Text } }));;
+                        Set(varReportResponse; First(colReportResult));;
+                        If(varReportResponse.success;
+                            Notify("Reporte ejecutado exitosamente."; NotificationType.Success; 5000);;
+                            Set(varReportPayload; varReportResponse.data);
+                            // Sino
+                            Notify("Error: " & Concat(varReportResponse.errors; Value; ", "); NotificationType.Error; 10000)
+                        );;
+                        Set(varProcesandoReporte; false)
+                    )
+
+            - htmlResultados:
+                Control: HtmlViewer@1.1.0
+                Properties:
+                  HtmlText: |
+                    ="<h3>Resultado de Reporte: " & varReportResponse.reportName & "</h3>
+                    <p><b>RUT:</b> " & varReportPayload.rut & "</p>
+                    <p><b>Contacto:</b> " & varReportPayload.fullname & "</p>
+                    <!-- Aquí se expandirá dinámicamente con las secciones del LPD-R01 -->"
+                  Visible: =varReportResponse.success = true
+
+            - btnExportarExcel:
+                Control: Button@2.5.1
+                Properties:
+                  Text: ="Exportar a Excel (Próximamente)"
+                  DisplayMode: =DisplayMode.Disabled
+                  Visible: =varReportResponse.success = true

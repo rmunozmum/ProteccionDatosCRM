@@ -1,0 +1,154 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "MotorDynamicsAPI",
+    "description": "API de Ejecución ARCO Ley de Protección de Datos Universidad Mayor",
+    "version": "1.0"
+  },
+  "host": "um-ley-proteccion-datos-qa.azurewebsites.net",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/execute-single": {
+      "post": {
+        "summary": "Ejecutar proceso para un RUT o Pasaporte",
+        "description": "Ejecuta una operación para un único RUT o Pasaporte.",
+        "operationId": "ExecuteSingle",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SingleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ExecutionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/execute-batch": {
+      "post": {
+        "summary": "Ejecutar proceso en Lote",
+        "description": "Ejecuta una operación para un lote de RUTs o Pasaportes.",
+        "operationId": "ExecuteBatch",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BatchRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ExecutionResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SingleRequest": {
+      "type": "object",
+      "properties": {
+        "rut": {
+          "type": "string",
+          "description": "RUT del titular"
+        },
+        "pasaporte": {
+          "type": "string",
+          "description": "Pasaporte del titular"
+        },
+        "mode": {
+          "type": "string",
+          "description": "Modo de ejecución"
+        },
+        "confirmationText": {
+          "type": "string",
+          "description": "Texto de confirmación"
+        }
+      }
+    },
+    "BatchRequest": {
+      "type": "object",
+      "properties": {
+        "ruts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pasaportes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mode": {
+          "type": "string"
+        },
+        "confirmationText": {
+          "type": "string"
+        }
+      }
+    },
+    "ExecutionResponse": {
+      "type": "object",
+      "properties": {
+        "executionId": {
+          "type": "string"
+        },
+        "apiBuild": {
+          "type": "string"
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RutResult"
+          }
+        }
+      }
+    },
+    "RutResult": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        },
+        "audit": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

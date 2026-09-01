@@ -1,0 +1,15 @@
+<aiskillconfig uniquename="ais_FormFillFieldOptOut_um_privacyoperationlog_um_responsejsonfull">
+  <aiskill>FormFillFieldOptOut</aiskill>
+  <attribute>
+    <entityid.logicalname>um_privacyoperationlog</entityid.logicalname>
+    <logicalname>um_responsejsonfull</logicalname>
+  </attribute>
+  <description>um_privacyoperationlog - Response JSON Full Optar por no usar el rellenado de formularios</description>
+  <entity>
+    <logicalname>um_privacyoperationlog</logicalname>
+  </entity>
+  <iscustomizable>1</iscustomizable>
+  <scope>1</scope>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</aiskillconfig>

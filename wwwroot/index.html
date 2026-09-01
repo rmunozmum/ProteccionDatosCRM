@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamics POC - Visor de Respaldos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container main-wrapper">
+        <header>
+            <div class="header-titles">
+                <h1>Visor de Respaldos</h1>
+                <p>Umayor Dynamics Delete POC</p>
+            </div>
+            <button id="btnSelectFolder" class="primary-btn">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                Seleccionar carpeta /backups
+            </button>
+        </header>
+
+        <main>
+            <div class="view-controls" id="viewControls" style="display: flex; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+                <button class="tab-btn active" id="btnViewSingle">Ejecutar RUT</button>
+                <button class="tab-btn" id="btnViewBatch">Carga Masiva</button>
+                <button class="tab-btn" id="btnViewMass">Consola Masiva</button>
+                <button class="tab-btn" id="btnViewAudits">Historial de Auditoría</button>
+                <button class="tab-btn" id="btnViewRecords">Respaldos Individuales</button>
+                <button class="tab-btn" id="btnViewMatrices">Consultas de Matriz</button>
+            </div>
+
+            <!-- Dashboard: Operación Manual (RUT Único) -->
+            <div id="singleExecuteContainer" class="dashboard-panel" style="display: none;">
+                <h2>Ejecutar Operación Manual</h2>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>RUT Objetivo (ej: 12345678-9):</label>
+                    <input type="text" id="singleRutInput" placeholder="Ingrese RUT" style="width: 100%; padding: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white;">
+                    <small id="rutValidationMsg" style="color: #f87171; display: none;">RUT Inválido</small>
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Modo de Operación:</label>
+                    <select id="singleModeSelect" style="width: 100%; padding: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: #1e293b; color: white;">
+                        <option value="Consultar">Consultar (Sólo Reporte)</option>
+                        <option value="EliminarTodoMenosContacto">Eliminar Todo (Menos Contacto Mto)</option>
+                        <option value="EliminarTodo">Eliminar Todo (Destrucción Total)</option>
+                    </select>
+                </div>
+                <button id="btnExecuteSingle" class="btn primary" style="width: 100%; padding: 1rem; background: #3b82f6; border: none; border-radius: 4px; color: white; font-weight: bold; cursor: pointer;">EJECUTAR OPERACIÓN</button>
+                <div id="singleResultBox" style="margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 4px; display: none;"></div>
+            </div>
+
+            <!-- Dashboard: Carga Masiva (CSV) -->
+            <div id="batchExecuteContainer" class="dashboard-panel" style="display: none;">
+                <h2>Carga Masiva (Batch)</h2>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Selecciona Modo para todo el Lote:</label>
+                    <select id="batchModeSelect" style="width: 100%; padding: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: #1e293b; color: white;">
+                        <option value="Consultar">Consultar (Sólo Reporte)</option>
+                        <option value="EliminarTodoMenosContacto">Eliminar Todo (Menos Contacto Mto)</option>
+                        <option value="EliminarTodo">Eliminar Todo (Destrucción Total)</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; border: 2px dashed #475569; padding: 2rem; text-align: center; border-radius: 8px;" id="dropZone">
+                    <p>Arrastra tu archivo .CSV o .TXT aquí, o haz clic para seleccionarlo.</p>
+                    <input type="file" id="batchFileInput" accept=".csv, .txt" style="display: none;">
+                    <button class="btn" onclick="document.getElementById('batchFileInput').click()" style="margin-top: 1rem;">Seleccionar Archivo</button>
+                </div>
+                <div id="batchPreviewBox" style="margin-bottom: 1rem; display: none;">
+                    <p>RUTs extraídos válidos: <strong id="batchCount">0</strong></p>
+                </div>
+                <button id="btnExecuteBatch" class="btn primary" style="width: 100%; padding: 1rem; background: #3b82f6; border: none; border-radius: 4px; color: white; font-weight: bold; cursor: pointer; display: none;">EJECUTAR LOTE COMPLETO</button>
+                <div id="batchResultBox" style="margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 4px; display: none;"></div>
+            </div>
+
+            <!-- Dashboard: Consola Masiva (Durable) -->
+            <div id="massExecuteContainer" class="dashboard-panel" style="display: none;">
+                <h2>Consola de Procesos Masivos (Durable)</h2>
+                
+                <!-- Panel de Carga / Configuración -->
+                <div id="massInputForm">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label>Nómina de RUTs/Pasaportes (separados por coma o línea):</label>
+                        <input type="file" id="massFileInput" accept=".csv,.txt,text/csv,text/plain" style="width: 100%; margin-bottom: 0.75rem; padding: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white;">
+                        <textarea id="massIdentifiersInput" placeholder="12345678-9&#10;87654321-0" style="width: 100%; height: 150px; padding: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white; font-family: monospace; resize: vertical;"></textarea>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label>Tratamiento:</label>
+                        <select id="massTreatmentSelect" style="width: 100%; padding: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: #1e293b; color: white;">
+                            <option value="Consultar">Consultar (Sólo Reporte)</option>
+                            <option value="EliminarTodoMenosContacto">Eliminar Todo (Menos Contacto Mto)</option>
+                            <option value="EliminarTodo">Eliminar Todo (Destrucción Total)</option>
+	                        </select>
+	                    </div>
+		                    <div id="massDeleteConfirmBox" class="form-group" style="display: block; margin-bottom: 1rem;">
+	                        <label>ConfirmaciÃ³n de eliminaciÃ³n masiva:</label>
+	                        <input type="text" id="massDeleteConfirmInput" placeholder="Escriba ELIMINAR" autocomplete="off" style="width: 100%; padding: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(127,29,29,0.25); color: white;">
+	                    </div>
+	                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label>Motivo de la Operación / Justificación:</label>
+                        <input type="text" id="massMotiveInput" placeholder="Ej: Solicitud de titular Ley de Protección de Datos" style="width: 100%; padding: 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white;">
+                    </div>
+                    <button id="btnCreateMassLote" class="btn primary" style="width: 100%; padding: 1rem; background: #2563eb; border: none; border-radius: 4px; color: white; font-weight: bold; cursor: pointer;">CREAR E INICIAR LOTE</button>
+                </div>
+
+                <!-- Dashboard de Progreso en Tiempo Real -->
+                <div id="massDashboardBox" style="margin-top: 1.5rem; padding: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="margin: 0; font-size: 1.25rem;">Avance del Proceso</h3>
+                        <span id="massLoteIdBadge" style="font-family: monospace; font-size: 0.85em; background: rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 4px; color: #cbd5e1;">Lote: N/A</span>
+                    </div>
+
+                    <!-- Progreso -->
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 10px; height: 20px; width: 100%; overflow: hidden; margin-bottom: 1.5rem; position: relative;">
+                        <div id="massProgressBar" style="background: #3b82f6; height: 100%; width: 0%; transition: width 0.4s ease;"></div>
+                        <span id="massProgressBarText" style="position: absolute; width: 100%; text-align: center; top: 0; left: 0; line-height: 20px; font-size: 0.85em; font-weight: bold; color: white;">0%</span>
+                    </div>
+
+                    <!-- Métricas -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; text-align: center;">
+                            <div style="font-size: 0.85em; color: #94a3b8; margin-bottom: 0.25rem;">Total</div>
+                            <div id="metricTotal" style="font-size: 1.5rem; font-weight: bold;">0</div>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; text-align: center;">
+                            <div style="font-size: 0.85em; color: #60a5fa; margin-bottom: 0.25rem;">Procesados</div>
+                            <div id="metricProcesados" style="font-size: 1.5rem; font-weight: bold; color: #60a5fa;">0</div>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; text-align: center;">
+                            <div style="font-size: 0.85em; color: #4ade80; margin-bottom: 0.25rem;">Exitosos</div>
+                            <div id="metricExitosos" style="font-size: 1.5rem; font-weight: bold; color: #4ade80;">0</div>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; text-align: center;">
+                            <div style="font-size: 0.85em; color: #a78bfa; margin-bottom: 0.25rem;">No Encontrados</div>
+                            <div id="metricNoEncontrados" style="font-size: 1.5rem; font-weight: bold; color: #a78bfa;">0</div>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; text-align: center;">
+                            <div style="font-size: 0.85em; color: #fb7185; margin-bottom: 0.25rem;">Errores</div>
+                            <div id="metricErrores" style="font-size: 1.5rem; font-weight: bold; color: #fb7185;">0</div>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; text-align: center;">
+                            <div style="font-size: 0.85em; color: #facc15; margin-bottom: 0.25rem;">Inválidos</div>
+                            <div id="metricInvalidos" style="font-size: 1.5rem; font-weight: bold; color: #facc15;">0</div>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; text-align: center;">
+                            <div style="font-size: 0.85em; color: #c084fc; margin-bottom: 0.25rem;">Req. Conciliación</div>
+                            <div id="metricRequiereConciliacion" style="font-size: 1.5rem; font-weight: bold; color: #c084fc;">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Datos Generales Lote -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9em; color: #cbd5e1; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; margin-bottom: 1rem;">
+                        <div><strong>Tratamiento:</strong> <span id="lblMassTratamiento">N/A</span></div>
+                        <div><strong>Estado:</strong> <span id="lblMassEstado" style="font-weight: bold;">N/A</span></div>
+                        <div><strong>Inicio:</strong> <span id="lblMassInicio">N/A</span></div>
+                        <div><strong>Término:</strong> <span id="lblMassTermino">N/A</span></div>
+                        <div><strong>Solicitado Por:</strong> <span id="lblMassUsuario">N/A</span></div>
+                    </div>
+
+                    <!-- Filtros y Acciones Detalle -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <label style="font-size: 0.9em;">Filtrar Detalle:</label>
+                            <select id="massFilterSelect" style="padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: #1e293b; color: white;">
+                                <option value="">Todos</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="EnProceso">En Proceso</option>
+                                <option value="Consultado">Consultado</option>
+                                <option value="Eliminado">Eliminado</option>
+                                <option value="NoEncontrado">No Encontrado</option>
+                                <option value="Error">Error</option>
+                                <option value="Invalido">Inválido</option>
+                                <option value="RequiereConciliacion">Requiere Conciliación</option>
+                            </select>
+                        </div>
+                        <button id="btnExportMassCsv" class="btn" style="background: #10b981; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; font-weight: bold; cursor: pointer;">
+                            Exportar CSV
+                        </button>
+                    </div>
+
+                    <!-- Tabla de Detalle del Lote -->
+                    <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                            <thead>
+                                <tr style="background: rgba(255,255,255,0.05); text-align: left;">
+                                    <th style="padding: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Identificador</th>
+                                    <th style="padding: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Tipo</th>
+                                    <th style="padding: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Estado</th>
+                                    <th style="padding: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Mensaje / Respaldo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="massDetailsTableBody">
+                                <!-- Filas dinámicas -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-bar" id="searchBarContainer" style="display: none;">
+                <input type="text" id="searchInput" placeholder="Buscar por RUT, Operación o valores dentro del JSON...">
+            </div>
+
+            <!-- Tabla de Respaldos Individuales -->
+            <div class="table-container" id="recordsTableContainer" style="display: none;">
+                <table id="backupsTable">
+                    <thead>
+                        <tr>
+                            <th>Fecha de Respaldo</th>
+                            <th>Entidad</th>
+                            <th>Record ID</th>
+                            <th>RUT</th>
+                            <th>Ejecución ID</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Rows will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tabla de Matrices (RUT) -->
+            <div class="table-container" id="matrixTableContainer" style="display: none;">
+                <table id="matrixTable">
+                    <thead>
+                        <tr>
+                            <th>Fecha de Consulta</th>
+                            <th>RUT</th>
+                            <th>Entidad Relacionada</th>
+                            <th>Campo de Relación</th>
+                            <th>Cantidad Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matrixTableBody">
+                        <!-- Rows will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tabla de Auditoría -->
+            <div class="table-container" id="auditTableContainer" style="display: none;">
+                <table id="auditTable">
+                    <thead>
+                        <tr>
+                            <th>Fecha de Ejecución</th>
+                            <th>Usuario</th>
+                            <th>RUT</th>
+                            <th>Operación</th>
+                            <th>Resultado</th>
+                            <th>Detalles / ID</th>
+                        </tr>
+                    </thead>
+                    <tbody id="auditTableBody">
+                        <!-- Rows will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="empty-state" id="emptyState">
+                <p>No se ha cargado ninguna carpeta. Por favor haz clic en el botón superior y selecciona la carpeta <strong>backups</strong> que se encuentra dentro de tu proyecto.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for details -->
+    <div class="modal-overlay" id="detailsModal">
+        <div class="modal-content glass-container">
+            <div class="modal-header">
+                <h2>Detalles del Respaldo</h2>
+                <button class="close-btn" id="btnCloseModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab-btn active" data-target="formattedValuesTab">Valores Formateados</button>
+                    <button class="tab-btn" data-target="rawAttributesTab">Atributos Raw</button>
+                    <button class="tab-btn" data-target="fullJsonTab">JSON Completo</button>
+                </div>
+                <div class="tab-content active" id="formattedValuesTab"></div>
+                <div class="tab-content" id="rawAttributesTab"></div>
+                <div class="tab-content" id="fullJsonTab">
+                    <pre id="jsonViewer"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=20260804-confirmacion-masiva"></script>
+</body>
+</html>
