@@ -324,7 +324,7 @@ $build | Format-List
 ### Test 2: Smoke Test de Consulta Individual (Sin Modificar Datos)
 ```powershell
 $body = @{
-    rut = "171752728"
+    rut = "11111111"
     pasaporte = ""
     mode = "Consultar"
     confirmationText = ""

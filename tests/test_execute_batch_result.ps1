@@ -1,6 +1,6 @@
 param(
     [string]$BaseUrl = "http://localhost:5000",
-    [string]$TestRut = "21367021"
+    [string]$TestRut = "11111111"
 )
 
 $ErrorActionPreference = "Stop"

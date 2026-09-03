@@ -21,7 +21,7 @@
 ==========================================================*/
 
 DECLARE @Rut NVARCHAR(50) = '';
-DECLARE @UsuarioEjecutor NVARCHAR(200) = 'María Cristina Castro';
+DECLARE @UsuarioEjecutor NVARCHAR(200) = 'Operador ARCO UMayor';
 DECLARE @CorreoEjecutor NVARCHAR(300) = '';
 DECLARE @AreaEjecutor NVARCHAR(200) = '';
 DECLARE @Motivo NVARCHAR(500) = 'Solicitud de Acceso del Titular';
@@ -30,7 +30,7 @@ DECLARE @PasaporteNormalizado NVARCHAR(100) = UPPER(REPLACE(REPLACE(REPLACE(@Rut
 DECLARE @ContactId UNIQUEIDENTIFIER;
 DECLARE @Nombre NVARCHAR(300);
 DECLARE @RutRegistrado NVARCHAR(50);
-DECLARE @Pasaporte NVARCHAR(100) = '916767535'
+DECLARE @Pasaporte NVARCHAR(100) = 'PASAPORTE_EJEMPLO';
 DECLARE @Correo NVARCHAR(300);
 DECLARE @Telefono NVARCHAR(100);
 DECLARE @FechaCreacion DATETIME;
