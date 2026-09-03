@@ -541,8 +541,10 @@ public class QueueProcessorFunction
                 };
 
                 // Actualizar log a Consultado
+                var finishedAt = DateTime.UtcNow;
                 auditRefObj["um_operationstatus"] = new OptionSetValue(MassOptionSets.AuditStatusConsultado);
-                auditRefObj["um_finishedat"] = DateTime.UtcNow;
+                auditRefObj["um_finishedat"] = finishedAt;
+                auditRefObj["um_durationms"] = (int)(finishedAt - startedAtUtc).TotalMilliseconds;
                 ApplyAuditJsonPayloads(auditRefObj, requestPayload, responsePayload, null, matrixData, null);
                 UpdateAuditWithFallback(client, auditRefObj);
 
@@ -556,6 +558,7 @@ public class QueueProcessorFunction
                     detailId,
                     auditRefObj,
                     ex.Message,
+                    startedAtUtc,
                     requestPayload,
                     new { identifier, tipoId, tratamiento, status = "Error", error = ex.Message });
             }
@@ -585,8 +588,10 @@ public class QueueProcessorFunction
                 );
 
                 // Actualizar log y detalle
+                var finishedAt = DateTime.UtcNow;
                 auditRefObj["um_operationstatus"] = new OptionSetValue(MassOptionSets.AuditStatusEliminado);
-                auditRefObj["um_finishedat"] = DateTime.UtcNow;
+                auditRefObj["um_finishedat"] = finishedAt;
+                auditRefObj["um_durationms"] = (int)(finishedAt - startedAtUtc).TotalMilliseconds;
                 auditRefObj["um_backupcreated"] = true;
                 auditRefObj["um_backupfilename"] = LimitLength(backupMeta.BackupReference, 100);
                 auditRefObj["um_totaldeleted"] = report.DeletionSummary.TotalDeleted;
@@ -618,6 +623,7 @@ public class QueueProcessorFunction
                     detailId,
                     auditRefObj,
                     ex.Message,
+                    startedAtUtc,
                     requestPayload,
                     new
                     {
@@ -779,15 +785,21 @@ public class QueueProcessorFunction
         Guid detailId, 
         Entity auditRef, 
         string error,
+        DateTime startedAtUtc = default,
         object? requestPayload = null,
         object? responsePayload = null,
         object? preMatrix = null,
         object? postMatrix = null)
     {
         // Actualizar Auditoría a Error
+        var finishedAt = DateTime.UtcNow;
         auditRef["um_operationstatus"] = new OptionSetValue(MassOptionSets.AuditStatusError);
         auditRef["um_errormessagefull"] = error;
-        auditRef["um_finishedat"] = DateTime.UtcNow;
+        auditRef["um_finishedat"] = finishedAt;
+        if (startedAtUtc != default)
+        {
+            auditRef["um_durationms"] = (int)(finishedAt - startedAtUtc).TotalMilliseconds;
+        }
         ApplyAuditJsonPayloads(auditRef, requestPayload, responsePayload, preMatrix, postMatrix, error);
         UpdateAuditWithFallback(client, auditRef);
 
@@ -814,12 +826,18 @@ public class QueueProcessorFunction
         Guid headerId, 
         Guid detailId, 
         Entity auditRef, 
-        string reason)
+        string reason,
+        DateTime startedAtUtc = default)
     {
         // Actualizar Auditoría
+        var finishedAt = DateTime.UtcNow;
         auditRef["um_operationstatus"] = new OptionSetValue(MassOptionSets.AuditStatusRequiereConciliacion);
         auditRef["um_errormessagefull"] = reason;
-        auditRef["um_finishedat"] = DateTime.UtcNow;
+        auditRef["um_finishedat"] = finishedAt;
+        if (startedAtUtc != default)
+        {
+            auditRef["um_durationms"] = (int)(finishedAt - startedAtUtc).TotalMilliseconds;
+        }
         UpdateAuditWithFallback(client, auditRef);
 
         // Actualizar Detalle

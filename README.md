@@ -1,128 +1,92 @@
-# UM — Ley de Protección de Datos
+# UM — Ley de Protección de Datos Personales (Derechos ARCO)
 
-API .NET 8 para consultar y ejecutar operaciones de eliminación de datos personales en Dataverse por RUT o pasaporte, con auditoría y reportería.
+Plataforma empresarial en .NET 8 para consultar, anonimizar y ejecutar operaciones de eliminación profunda de datos personales en **Microsoft Dynamics 365 (Dataverse)** por RUT o Pasaporte, con auditoría reglamentaria inmutable, reportería y respaldos criptográficos en **Azure Blob Storage**.
 
-Esta carpeta corresponde a la base de código recuperada y saneada del proyecto desplegado en el App Service `um-ley-proteccion-datos-qa`. Se excluyeron binarios, publicaciones, respaldos, logs, archivos temporales y credenciales.
+---
 
-## Estructura
+## 1. Arquitectura de la Solución
 
-- `Program.cs`: endpoints y configuración de la API.
-- `Models/`: contratos y configuración.
-- `Services/`: consulta, eliminación, auditoría y reportería.
-- `Services/MassExecutionStore.cs`: estado durable de lotes e ítems en SQLite.
-- `Services/MassExecutionWorker.cs`: procesador asíncrono de un titular por vez.
-- `SQL/`: consulta SQL auxiliar.
-- `wwwroot/`: interfaz web estática.
-- `AppSource/`: fuente desempaquetada de la Canvas App.
-- `AppSolution/`: solución de Power Platform desempaquetada.
-- `swagger*.json`: referencias de los contratos publicados.
+La solución consta de tres componentes en .NET 8 y frontend/Power Apps integrados:
 
-## Requisitos
+1. **`Umayor.Dynamics.DeletePoc` (App Service / Web API)**:
+   - Endpoints REST para ejecución individual (`/api/execute-single`), lotes directos (`/api/execute-batch`), carga masiva por archivo (`/api/mass/upload`), control de lotes (`/api/mass/start/{id}`, `/api/mass/status/{id}`), reportería (`/api/reports/...`) y diagnóstico (`/api/diagnostics/build`).
+   - Servidor web de la interfaz de usuario en `wwwroot/`.
+   - Hosted worker de auto-recuperación (`OutboxRecoveryWorker`).
 
-- .NET SDK 8.
-- Acceso autorizado al entorno de Dataverse.
-- Una aplicación registrada en Microsoft Entra ID con los permisos requeridos.
+2. **`Umayor.Dynamics.DeletePoc.Functions` (Azure Function App - .NET 8 Isolated)**:
+   - Worker elástico desencadenado por la cola `privacy-mass-executions` (`QueueProcessorFunction.cs`).
+   - Procesa particiones en paralelo con control de leases y reconciliación de estados ambiguos.
+   - Genera respaldos SHA-256 en Azure Blob Storage antes de cualquier borrado.
+   - Sanea y anonimiza entidades restringidas por Dataverse (ej. `customeraddress`).
 
-## Configuración local
+3. **`Umayor.Dynamics.DeletePoc.Shared` (Biblioteca de Clases Compartida)**:
+   - `MatrixDeletionService.cs`: Motor de dependencias relacionales sobre más de 20 entidades.
+   - `BlobStorageBackupService.cs`: Snapshots JSON comprimidos con firma SHA-256.
+   - `PrivacyOperationLogService.cs`: Auditoría inmutable en `um_privacyoperationlog`.
+   - `DataverseConnectionFactory.cs`: Gestión optimizada de conexiones ServiceClient.
 
-El archivo `appsettings.json` no contiene secretos y mantiene la eliminación deshabilitada. Para desarrollo local, crea `appsettings.Development.json` con los valores del ambiente correspondiente. Ese archivo está excluido de Git.
+4. **Frontend & Power Platform**:
+   - `wwwroot/`: Portal web estático integrado con tema oscuro y glassmorphism.
+   - `AppSource/` y `AppSolution/`: Solución y Canvas App de Power Apps.
+   - `swagger_custom_connector_mass.yaml`: Conector personalizado Swagger 2.0.
 
-También puedes usar variables de entorno:
+---
+
+## 2. Documentación y Skills Especializadas
+
+En la carpeta `.agents/skills/` se encuentran disponibles guías técnicas detalladas:
+- **[despliegue-azure-umayor](file:///.agents/skills/despliegue-azure-umayor/SKILL.md)**: Guía operativa paso a paso de compilación, empaquetado, Application Settings en Azure, smoke tests y rollback para App Service y Function App.
+- **[proteccion-datos-umayor](file:///.agents/skills/proteccion-datos-umayor/SKILL.md)**: Manual de arquitectura, modelo de entidades Dataverse (`um_massexecution`, `um_massexecutiondetail`), flujos criptográficos de respaldo y optimizaciones.
+- **[DEPLOYMENT.md](file:///DEPLOYMENT.md)**: Matriz de variables por ambiente (DEV, QA, PROD) y puertas de promoción.
+
+---
+
+## 3. Despliegue Rápido a Azure (PowerShell)
+
+Para compilar, empaquetar y desplegar automáticamente tanto el App Service como la Function App:
 
 ```powershell
-$env:Dataverse__Url = "https://organizacion-qa.crm.dynamics.com"
+# Despliegue a QA con Smoke Tests automáticos
+.\deploy_azure.ps1 -Environment qa
+
+# Despliegue a DEV
+.\deploy_azure.ps1 -Environment dev
+
+# Despliegue a PROD (requiere confirmación y autorización institucional)
+.\deploy_azure.ps1 -Environment prod
+```
+
+---
+
+## 4. Requisitos y Ejecución Local
+
+### Requisitos:
+- **.NET SDK 8.0+**
+- **Azure CLI** (`az`) con sesión activa (`az login`).
+- Acceso autorizado a la organización Dataverse (`ServiceClient` / Entra ID).
+- Azurite (o Azure Storage Account) para colas y blobs locales.
+
+### Compilación local:
+```powershell
+dotnet restore
+dotnet build Umayor.Dynamics.DeletePoc.sln
+```
+
+### Configuración local segura:
+El archivo `appsettings.json` mantiene `Safety__DeletionEnabled = false` por seguridad.
+Para desarrollo local con eliminación deshabilitada:
+```powershell
+$env:Dataverse__Url = "https://qas-umayor.crm2.dynamics.com"
 $env:Dataverse__ClientId = "<client-id>"
 $env:Dataverse__ClientSecret = "<secret>"
 $env:Safety__DeletionEnabled = "false"
-dotnet run
+$env:AzureStorage__ConnectionString = "UseDevelopmentStorage=true"
+dotnet run --project .\Umayor.Dynamics.DeletePoc.csproj
 ```
 
-Mantén `Safety__DeletionEnabled=false` mientras se ejecuten consultas o pruebas que no deban eliminar datos.
+---
 
-## Procesamiento masivo
+## 5. Repositorio Oficial
 
-La API incorpora una primera orquestación durable para una sola instancia de App Service:
-
-- creación de lotes por RUT o pasaporte;
-- simulación masiva usando el modo `Consultar`;
-- estado y evidencia por titular;
-- pausa, reanudación y cancelación;
-- reintentos independientes;
-- recuperación de ítems que hayan quedado procesando tras un reinicio;
-- idempotencia por identificador dentro de cada lote.
-
-Endpoints:
-
-```text
-POST /api/mass-executions
-GET  /api/mass-executions/{executionId}
-GET  /api/mass-executions/{executionId}/items?skip=0&take=100
-POST /api/mass-executions/{executionId}/pause
-POST /api/mass-executions/{executionId}/resume
-POST /api/mass-executions/{executionId}/cancel
-POST /api/mass-executions/{executionId}/retry-failed
-```
-
-Ejemplo seguro de simulación:
-
-```json
-{
-  "ruts": ["11111111-1", "22222222-2"],
-  "pasaportes": [],
-  "mode": "Consultar",
-  "confirmationText": "",
-  "instructionReference": "PRUEBA-QAS-001"
-}
-```
-
-Para QAS en Windows App Service, configura la persistencia fuera del paquete desplegado:
-
-```text
-MassProcessing__DatabasePath = C:\home\data\mass-processing\mass-processing.db
-MassProcessing__Enabled = true
-Safety__RequireEnvironmentContains = qa
-Safety__DeletionEnabled = false
-```
-
-Cada ambiente debe usar su propia base de estado, sus propias credenciales y su URL de Dataverse. No se debe promover la base SQLite entre DEV, QAS y PROD.
-
-### Estrategia de promoción
-
-1. Publicar el mismo artefacto versionado en QAS con eliminación deshabilitada.
-2. Ejecutar simulaciones, reinicios, pausa, reanudación y reintentos.
-3. Habilitar eliminación solo para una nómina controlada y verificar auditoría.
-4. Homologar el artefacto y las variables en DEV.
-5. Promover exactamente el artefacto aprobado a PROD, con aprobación separada y variables propias.
-
-La implementación actual exige una sola instancia del App Service. Antes de escalar horizontalmente se debe reemplazar el almacenamiento/claim local por una cola distribuida, por ejemplo Azure Service Bus, y por un repositorio de estado compartido.
-
-## Compilar
-
-```powershell
-dotnet restore
-dotnet build
-dotnet run
-```
-
-## Crear el repositorio
-
-Desde esta carpeta:
-
-```powershell
-git init
-git add .
-git commit -m "Base recuperada y saneada del motor de privacidad"
-git branch -M main
-git remote add origin https://github.com/ORGANIZACION/NOMBRE-REPOSITORIO.git
-git push -u origin main
-```
-
-Antes de publicar, confirma con `git status` que no existan archivos locales con secretos, logs, respaldos ni paquetes de despliegue.
-
-## Seguridad pendiente
-
-El secreto que estaba incluido en la copia histórica debe considerarse expuesto. La limpieza de esta carpeta evita volver a versionarlo, pero no reemplaza su rotación en Microsoft Entra ID y la actualización posterior de la configuración protegida del App Service.
-
-## Próxima evolución
-
-La siguiente evolución es desacoplar el procesador mediante Azure Service Bus y mover el estado a almacenamiento compartido cuando el volumen o el escalamiento requieran más de una instancia.
+- **GitHub**: [https://github.com/RmunozMM/ProteccionDatos](https://github.com/RmunozMM/ProteccionDatos)
+- **Rama Principal**: `main`

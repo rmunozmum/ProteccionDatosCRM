@@ -140,27 +140,31 @@ El sistema cuenta con optimizaciones clave que reducen el tiempo de purga de ~70
 
 ## 7. Procedimiento de Publicación y Despliegue en Azure
 
-### Publicación en Entorno DEV:
+Para la guía técnica exhaustiva, matriz de configuración, resolución de problemas y comandos de rollback, consultar la skill especializada:
+👉 **[despliegue-azure-umayor](file:///d:/Proyectos/Umayor.Dynamics.DeletePoc.MassOrchestration.v1/.agents/skills/despliegue-azure-umayor/SKILL.md)**.
+
+### Resumen de Despliegue Rápido a QA:
 ```powershell
-# Compilar y empaquetar
-dotnet publish Umayor.Dynamics.DeletePoc.Functions/Umayor.Dynamics.DeletePoc.Functions.csproj -c Release -o ./publish_fun
+# 1. Compilación Release de ambos componentes
 dotnet publish Umayor.Dynamics.DeletePoc.csproj -c Release -o ./publish_web
-Compress-Archive -Path ./publish_fun/* -DestinationPath ./deploy_fun.zip -Force
-Compress-Archive -Path ./publish_web/* -DestinationPath ./deploy_web.zip -Force
+dotnet publish Umayor.Dynamics.DeletePoc.Functions/Umayor.Dynamics.DeletePoc.Functions.csproj -c Release -o ./publish_fun
 
-# Desplegar
-az functionapp deployment source config-zip -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-dev-fun --src deploy_fun.zip
-az webapp deployment source config-zip -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-dev --src deploy_web.zip
-az functionapp restart -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-dev-fun
-```
+# 2. Empaquetado ZIP
+Compress-Archive -Path ./publish_web/* -DestinationPath ./publish_web.zip -Force
+Compress-Archive -Path ./publish_fun/* -DestinationPath ./publish_fun.zip -Force
 
-### Publicación en Entorno QA:
-```powershell
-# Desplegar a App Service y Function App de QA
-az webapp deployment source config-zip -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-qa --src deploy_web.zip
-az functionapp deployment source config-zip -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-qa-fun --src deploy_fun.zip
+# 3. Despliegue en App Service y Function App
+az webapp deployment source config-zip -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-qa --src ./publish_web.zip
+az functionapp deployment source config-zip -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-qa-fun --src ./publish_fun.zip
+
+# 4. Reinicio de instancias para aplicar cambios
+az webapp restart -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-qa
 az functionapp restart -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-qa-fun
+
+# 5. Verificación de compilación activa
+Invoke-RestMethod -Uri "https://um-ley-proteccion-datos-qa.azurewebsites.net/api/diagnostics/build" -Method Get
 ```
+
 
 ---
 
