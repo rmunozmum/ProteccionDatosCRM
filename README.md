@@ -86,7 +86,11 @@ dotnet run --project .\Umayor.Dynamics.DeletePoc.csproj
 
 ---
 
-## 5. Repositorio Oficial
+## 5. Autoría y Créditos
 
-- **GitHub**: [https://github.com/RmunozMM/ProteccionDatos](https://github.com/RmunozMM/ProteccionDatos)
-- **Rama Principal**: `main`
+- **Autor / Ingeniero Responsable:** Rogelio Muñoz (`rogelio.munoz@umayor.cl`)
+- **Cuenta GitHub:** [@rmunozmum](https://github.com/rmunozmum)
+- **Organización:** Universidad Mayor — Dirección de Tecnologías de la Información (DTI)
+- **Repositorio Oficial:** [https://github.com/rmunozmum/ProteccionDatosCRM](https://github.com/rmunozmum/ProteccionDatosCRM)
+- **Rama Principal:** `main`
+

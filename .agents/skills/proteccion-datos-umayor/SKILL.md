@@ -168,7 +168,10 @@ Invoke-RestMethod -Uri "https://um-ley-proteccion-datos-qa.azurewebsites.net/api
 
 ---
 
-## 8. Repositorio de Código
+## 8. Autoría y Repositorio de Código
 
-* **GitHub**: [https://github.com/RmunozMM/ProteccionDatos](https://github.com/RmunozMM/ProteccionDatos)
-* **Rama Principal**: `main`
+* **Autor / Ingeniero Responsable:** Rogelio Muñoz (`rogelio.munoz@umayor.cl` | GitHub: [@rmunozmum](https://github.com/rmunozmum))
+* **Organización:** Universidad Mayor — Dirección de Tecnologías de la Información (DTI)
+* **Repositorio Oficial en GitHub:** [https://github.com/rmunozmum/ProteccionDatosCRM](https://github.com/rmunozmum/ProteccionDatosCRM)
+* **Rama Principal:** `main`
+
