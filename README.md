@@ -4,7 +4,19 @@ Plataforma empresarial en .NET 8 para consultar, anonimizar y ejecutar operacion
 
 ---
 
+## 📚 Índice Rápido de Documentación
+
+| Documento | Descripción | Enlace Directo |
+| :--- | :--- | :---: |
+| 🔑 **Variables de Entorno Azure** | **Referencia exhaustiva** de Application Settings verificadas en DEV, QA y PROD | [**README_ENV_VARIABLES.md**](./README_ENV_VARIABLES.md) |
+| 🚀 **Guía de Despliegue por Ambientes** | Procedimiento operativo por ambientes, puertas de paso y 4to entorno | [**DEPLOYMENT.md**](./DEPLOYMENT.md) |
+| ⚙️ **Skill Despliegue Azure** | Guía de comandos Azure CLI para App Service, Functions y Storage | [**SKILL Despliegue**](./.agents/skills/despliegue-azure-umayor/SKILL.md) |
+| 🛡️ **Skill Protección de Datos** | Arquitectura integral, modelo de entidades Dataverse y seguridad | [**SKILL Arquitectura**](./.agents/skills/proteccion-datos-umayor/SKILL.md) |
+
+---
+
 ## 1. Arquitectura de la Solución
+
 
 La solución consta de tres componentes en .NET 8 y frontend/Power Apps integrados:
 
@@ -34,11 +46,11 @@ La solución consta de tres componentes en .NET 8 y frontend/Power Apps integrad
 
 ## 2. Documentación y Skills Especializadas
 
-En el repositorio se encuentran disponibles guías técnicas detalladas:
-- **[README_ENV_VARIABLES.md](file:///README_ENV_VARIABLES.md)**: **Referencia técnica exhaustiva** de todas las variables de entorno de Azure verificadas en DEV, QA y PROD, su propósito y comportamiento.
-- **[despliegue-azure-umayor](file:///.agents/skills/despliegue-azure-umayor/SKILL.md)**: Guía operativa paso a paso de compilación, empaquetado, Application Settings en Azure, smoke tests y rollback para App Service y Function App.
-- **[proteccion-datos-umayor](file:///.agents/skills/proteccion-datos-umayor/SKILL.md)**: Manual de arquitectura, modelo de entidades Dataverse (`um_massexecution`, `um_massexecutiondetail`), flujos criptográficos de respaldo y optimizaciones.
-- **[DEPLOYMENT.md](file:///DEPLOYMENT.md)**: Matriz de variables por ambiente (DEV, QA, PROD) y puertas de promoción.
+- **[README_ENV_VARIABLES.md](./README_ENV_VARIABLES.md)**: **Referencia técnica exhaustiva** de todas las variables de entorno de Azure verificadas en DEV, QA y PROD, su propósito y comportamiento.
+- **[Skill Despliegue Azure](./.agents/skills/despliegue-azure-umayor/SKILL.md)**: Guía operativa paso a paso de compilación, empaquetado, Application Settings en Azure, smoke tests y rollback para App Service y Function App.
+- **[Skill Protección de Datos](./.agents/skills/proteccion-datos-umayor/SKILL.md)**: Manual de arquitectura, modelo de entidades Dataverse (`um_massexecution`, `um_massexecutiondetail`), flujos criptográficos de respaldo y optimizaciones.
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)**: Matriz de variables por ambiente (DEV, QA, PROD), puertas de promoción y alta de nuevo entorno.
+
 
 ---
 
