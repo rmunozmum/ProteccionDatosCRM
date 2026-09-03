@@ -86,9 +86,31 @@ El sistema opera bajo una arquitectura distribuida desacoplada compuesta por dos
 6. Verificación de salud y simulación masiva previa.
 7. Habilitación de eliminación bajo ventana de mantenimiento planificada.
 
+### 4.3. Incorporación de un Nuevo Ambiente (4to Entorno / Custom)
+
+Para provisionar y desplegar el sistema en un entorno adicional (ej: `STAGING`, `SANDBOX`, `DR` o `PROD-2`):
+
+1. **Checklist de Parámetros Requeridos:**
+   - Resource Group y nombres de App Service, Function App y Storage Account.
+   - Instancia de Dataverse y credenciales de Application User en Microsoft Entra ID.
+   - Substring de seguridad (`Safety__RequireEnvironmentContains`) y `Safety__DeletionEnabled = false`.
+2. **Pre-requisitos en Dataverse:**
+   - Importar la solución empaquetada `AppSolution` en la nueva organización CRM.
+   - Asignar rol de seguridad al Application User de Entra ID.
+3. **Orquestación y Despliegue Automatizado:**
+   ```powershell
+   .\deploy_azure.ps1 -Environment "custom" `
+                      -ResourceGroup "<NOMBRE_RG>" `
+                      -ApiAppName "<NOMBRE_APP_SERVICE>" `
+                      -FunAppName "<NOMBRE_FUNCTION_APP>" `
+                      -StorageAccount "<NOMBRE_STORAGE>" `
+                      -ProvisionStorage
+   ```
+
 ---
 
 ## 5. Procedimiento de Reversión (Rollback)
 
 - **Reversión de Código:** Desplegar el paquete ZIP previo inmediatamente o reactivar el Slot anterior de App Service si está configurado.
 - **Integridad de Datos:** Revertir el despliegue restaura el software, pero no los datos eliminados en Dataverse. Para recuperar datos purgados, se cuenta con los respaldos inmutables en Azure Blob Storage (`mass-executions/{headerId}/{detailId}_backup.json`), respaldados con firma hash SHA-256.
+

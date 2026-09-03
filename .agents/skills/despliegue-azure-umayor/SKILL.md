@@ -113,9 +113,14 @@ Write-Host "¡Despliegue a QA completado exitosamente!" -ForegroundColor Green
 
 ---
 
-## 4. Despliegue en Otros Ambientes (DEV y PROD)
+## 4. Despliegue en Otros Ambientes y Migración a un Nuevo Entorno (4to Entorno)
 
+### 4.1. Despliegue a DEV y PROD
 Para desplegar en **DEV**:
+```powershell
+.\deploy_azure.ps1 -Environment dev
+```
+O manualmente:
 ```powershell
 az webapp deployment source config-zip -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-dev --src .\publish_web.zip
 az functionapp deployment source config-zip -g admincrm2021_rg_0225 -n um-ley-proteccion-datos-dev-fun --src .\publish_fun.zip
@@ -131,17 +136,115 @@ Para desplegar en **PROD**:
 > 3. Disponer de aprobación formal institucional.
 
 ```powershell
-$RG_PROD = "admincrm2021_rg_prod" # Ajustar al RG oficial
-$API_PROD = "um-ley-proteccion-datos-prod"
-$FUN_PROD = "um-ley-proteccion-datos-prod-fun"
-
-az webapp deployment source config-zip -g $RG_PROD -n $API_PROD --src .\publish_web.zip
-az functionapp deployment source config-zip -g $RG_PROD -n $FUN_PROD --src .\publish_fun.zip
-az webapp restart -g $RG_PROD -n $API_PROD
-az functionapp restart -g $RG_PROD -n $FUN_PROD
+.\deploy_azure.ps1 -Environment prod -ResourceGroup "<RG_PROD>" -ApiAppName "um-ley-proteccion-datos-prod" -FunAppName "um-ley-proteccion-datos-prod-fun"
 ```
 
 ---
+
+### 4.2. Procedimiento para Pasar el Proyecto a un Entorno Nuevo (4to Entorno / Custom)
+
+Cuando el usuario indique pasar o subir el proyecto a un entorno nuevo (por ejemplo `STAGING`, `DR`, `SANDBOX`, `TEST-2` o `PROD-2`), el agente y el operador deben seguir este flujo estructurado:
+
+#### FASE 1: Checklist de Información Necesaria (Qué se requiere solicitar al usuario)
+Para dar de alta un entorno nuevo, se deben definir o solicitar los siguientes parámetros:
+
+1. **Datos de Azure:**
+   - **`ResourceGroup`**: Nombre del grupo de recursos en Azure donde residirán los servicios.
+   - **`ApiAppName`**: Nombre asignado al App Service (Web API .NET 8 Linux).
+   - **`FunAppName`**: Nombre asignado a la Function App (Worker .NET 8 Isolated).
+   - **`StorageAccount`**: Nombre de la cuenta de almacenamiento Azure Storage.
+2. **Datos de Dataverse (CRM):**
+   - **`Dataverse__Url`**: URL de la organización Dynamics 365 objetivo (ej: `https://umayor-staging.crm2.dynamics.com`).
+   - **`Dataverse__TenantId`**: Tenant ID de Microsoft Entra ID.
+   - **`Dataverse__ClientId`**: ID de cliente del Application Registration.
+   - **`Dataverse__ClientSecret`**: Secreto de cliente vigente.
+3. **Validación de Seguridad:**
+   - **`Safety__RequireEnvironmentContains`**: Cadena distintiva en minúsculas que debe estar contenida en la URL de Dataverse (ej: `"staging"` o `"sandbox"`).
+   - **`Safety__DeletionEnabled`**: Debe fijarse inicialmente en `"false"`.
+4. **Pre-requisito en Dataverse:**
+   - Importar la solución empaquetada (`AppSolution`) en el nuevo Dataverse para crear las tablas `um_massexecution`, `um_massexecutiondetail` y `um_privacyoperationlog`.
+   - Asignar el rol de seguridad al usuario de aplicación (Application User).
+
+---
+
+#### FASE 2: Orquestación del Aprovisionamiento de Storage
+Si la cuenta de almacenamiento es nueva, se deben crear la cola y el contenedor de blobs:
+
+```powershell
+$RG_NEW = "<NOMBRE_RESOURCE_GROUP>"
+$STORAGE_NEW = "<NOMBRE_STORAGE_ACCOUNT>"
+
+# Obtener Connection String
+$CONN_STR = az storage account show-connection-string -g $RG_NEW -n $STORAGE_NEW --query connectionString -o tsv
+
+# Crear cola de particiones y contenedor inmutable de backups
+az storage queue create --name "privacy-mass-executions" --connection-string $CONN_STR
+az storage container create --name "privacy-backups" --connection-string $CONN_STR --public-access off
+```
+
+---
+
+#### FASE 3: Configuración de Application Settings en el Nuevo Entorno
+Inyectar las variables obligatorias en el App Service y Function App del nuevo entorno:
+
+```powershell
+# 1. Configurar App Service (Web API)
+az webapp config appsettings set -g $RG_NEW -n "<API_APP_NEW>" --settings `
+    Dataverse__Url="<DATAVERSE_URL_NEW>" `
+    Dataverse__TenantId="<TENANT_ID>" `
+    Dataverse__ClientId="<CLIENT_ID>" `
+    Dataverse__ClientSecret="<CLIENT_SECRET>" `
+    Safety__RequireEnvironmentContains="<ENV_SUBSTRING>" `
+    Safety__RequireConfirmationText="ELIMINAR" `
+    Safety__DeletionEnabled="false" `
+    AzureStorage__ConnectionString="$CONN_STR" `
+    AzureStorage__QueueName="privacy-mass-executions" `
+    AzureStorage__ContainerName="privacy-backups" `
+    MassOrchestration__MaxBatchSize="500" `
+    MassOrchestration__MaxUploadRows="50000" `
+    MassOrchestration__PartitionSize="500"
+
+# 2. Configurar Function App (Worker)
+az functionapp config appsettings set -g $RG_NEW -n "<FUN_APP_NEW>" --settings `
+    AzureWebJobsStorage="$CONN_STR" `
+    FUNCTIONS_WORKER_RUNTIME="dotnet-isolated" `
+    Dataverse__Url="<DATAVERSE_URL_NEW>" `
+    Dataverse__TenantId="<TENANT_ID>" `
+    Dataverse__ClientId="<CLIENT_ID>" `
+    Dataverse__ClientSecret="<CLIENT_SECRET>" `
+    Safety__RequireEnvironmentContains="<ENV_SUBSTRING>" `
+    Safety__RequireConfirmationText="ELIMINAR" `
+    Safety__DeletionEnabled="false" `
+    AzureStorage__ConnectionString="$CONN_STR" `
+    AzureStorage__ContainerName="privacy-backups"
+```
+
+---
+
+#### FASE 4: Orquestación del Upload y Despliegue con un Solo Comando
+Con los recursos y settings listos, ejecutar el script automatizado para compilar, empaquetar, subir y validar:
+
+```powershell
+.\deploy_azure.ps1 -Environment "custom" `
+                   -ResourceGroup $RG_NEW `
+                   -ApiAppName "<API_APP_NEW>" `
+                   -FunAppName "<FUN_APP_NEW>" `
+                   -StorageAccount $STORAGE_NEW `
+                   -ProvisionStorage
+```
+
+El script se encargará de:
+1. Verificar la sesión activa de Azure CLI.
+2. Comprobar y aprovisionar el Storage (`-ProvisionStorage`).
+3. Limpiar compilaciones residuales.
+4. Compilar ambos proyectos en Release (.NET 8).
+5. Empaquetar en archivos ZIP.
+6. Subir (Upload ZipDeploy) a la Web API y a la Function App.
+7. Reiniciar ambos servicios.
+8. Ejecutar el Smoke Test post-despliegue (`/api/diagnostics/build`).
+
+---
+
 
 ## 5. Configuración de Variables en Azure (Application Settings)
 

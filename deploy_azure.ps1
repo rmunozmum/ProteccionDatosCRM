@@ -5,50 +5,97 @@
 .DESCRIPTION
     Compila la Web API (App Service) y el Procesador Asincrono de Colas (Function App) en modo Release,
     los empaqueta en archivos ZIP y los despliega usando Azure CLI ZipDeploy con verificacion post-despliegue.
+    Soporta los ambientes predefinidos ('qa', 'dev', 'prod') y cualquier nuevo entorno ('custom', 'staging', 'dr', etc.).
 
 .PARAMETER Environment
-    Ambiente objetivo: 'qa' (por defecto), 'dev' o 'prod'.
+    Ambiente objetivo: 'qa' (por defecto), 'dev', 'prod' o cualquier nombre personalizado (ej: 'custom', 'staging').
 
 .PARAMETER ResourceGroup
     Grupo de recursos en Azure (por defecto 'admincrm2021_rg_0225').
+
+.PARAMETER ApiAppName
+    Nombre del App Service en Azure. Obligatorio si el ambiente es personalizado o para sobreescribir el predeterminado.
+
+.PARAMETER FunAppName
+    Nombre de la Function App en Azure. Obligatorio si el ambiente es personalizado o para sobreescribir el predeterminado.
+
+.PARAMETER StorageAccount
+    Nombre de la cuenta de almacenamiento en Azure (opcional, requerida si se usa -ProvisionStorage).
+
+.PARAMETER ProvisionStorage
+    Si se especifica, verifica y crea automaticamente la cola 'privacy-mass-executions' y el contenedor 'privacy-backups'.
 
 .PARAMETER SkipSmokeTests
     Si se especifica, omite las pruebas de verificacion post-despliegue.
 
 .EXAMPLE
     .\deploy_azure.ps1 -Environment qa
+
+.EXAMPLE
+    .\deploy_azure.ps1 -Environment custom -ResourceGroup "rg-umayor-staging" -ApiAppName "um-lpd-staging" -FunAppName "um-lpd-staging-fun"
+
+.EXAMPLE
+    .\deploy_azure.ps1 -Environment staging -ResourceGroup "rg-staging" -ApiAppName "um-lpd-staging" -FunAppName "um-lpd-staging-fun" -StorageAccount "stlumayorstaging" -ProvisionStorage
 #>
 
 param(
-    [ValidateSet("qa", "dev", "prod")]
     [string]$Environment = "qa",
 
     [string]$ResourceGroup = "admincrm2021_rg_0225",
+
+    [string]$ApiAppName = "",
+
+    [string]$FunAppName = "",
+
+    [string]$StorageAccount = "",
+
+    [switch]$ProvisionStorage,
 
     [switch]$SkipSmokeTests
 )
 
 $ErrorActionPreference = "Stop"
 
+$envLower = $Environment.ToLower().Trim()
+
 Write-Host "==========================================================================" -ForegroundColor Cyan
 Write-Host "   DESPLIEGUE A AZURE - SISTEMA DE PROTECCION DE DATOS (ARCO) UMAYOR      " -ForegroundColor Cyan
-Write-Host "   Ambiente Objetivo: $($Environment.ToUpper()) | Grupo Recursos: $ResourceGroup" -ForegroundColor Cyan
+Write-Host "   Ambiente: $($Environment.ToUpper()) | Grupo Recursos: $ResourceGroup" -ForegroundColor Cyan
 Write-Host "==========================================================================" -ForegroundColor Cyan
 
-# 1. Mapeo de nombres de recursos por ambiente
-$appNames = @{
+# 1. Resolver nombres de recursos por ambiente
+$predefined = @{
     "qa"   = @{ Api = "um-ley-proteccion-datos-qa";   Fun = "um-ley-proteccion-datos-qa-fun"   }
     "dev"  = @{ Api = "um-ley-proteccion-datos-dev";  Fun = "um-ley-proteccion-datos-dev-fun"  }
     "prod" = @{ Api = "um-ley-proteccion-datos-prod"; Fun = "um-ley-proteccion-datos-prod-fun" }
 }
 
-$target = $appNames[$Environment]
-$apiAppName = $target.Api
-$funAppName = $target.Fun
+$apiFinalName = $ApiAppName
+$funFinalName = $FunAppName
+
+if ($predefined.ContainsKey($envLower)) {
+    if ([string]::IsNullOrWhiteSpace($apiFinalName)) { $apiFinalName = $predefined[$envLower].Api }
+    if ([string]::IsNullOrWhiteSpace($funFinalName)) { $funFinalName = $predefined[$envLower].Fun }
+}
+else {
+    # Ambiente nuevo / personalizado
+    if ([string]::IsNullOrWhiteSpace($apiFinalName)) {
+        $apiFinalName = Read-Host "Ingrese el nombre del App Service (API Web) para '$Environment'"
+    }
+    if ([string]::IsNullOrWhiteSpace($funFinalName)) {
+        $funFinalName = Read-Host "Ingrese el nombre de la Function App (Worker) para '$Environment'"
+    }
+    if ([string]::IsNullOrWhiteSpace($apiFinalName) -or [string]::IsNullOrWhiteSpace($funFinalName)) {
+        throw "Debe especificar -ApiAppName y -FunAppName para el ambiente '$Environment'."
+    }
+}
+
+Write-Host "  App Service (API) : $apiFinalName" -ForegroundColor Cyan
+Write-Host "  Function App (Fun): $funFinalName" -ForegroundColor Cyan
 
 # 2. Validar sesion activa en Azure CLI
 Write-Host ""
-Write-Host "[1/6] Verificando sesion activa en Azure CLI..." -ForegroundColor Yellow
+Write-Host "[1/7] Verificando sesion activa en Azure CLI..." -ForegroundColor Yellow
 try {
     $currentAccount = az account show --query "{Subscription:name, User:user.name}" -o json | ConvertFrom-Json
     Write-Host "  Conectado como : $($currentAccount.User)" -ForegroundColor Green
@@ -59,9 +106,40 @@ catch {
     exit 1
 }
 
-# 3. Limpieza de artefactos
+# 3. Aprovisionamiento opcional de Storage (util para nuevos entornos)
+if ($ProvisionStorage) {
+    Write-Host ""
+    Write-Host "[2/7] Aprovisionando recursos de Storage en Azure..." -ForegroundColor Yellow
+    if ([string]::IsNullOrWhiteSpace($StorageAccount)) {
+        $StorageAccount = Read-Host "Ingrese el nombre del Storage Account en el Grupo '$ResourceGroup'"
+    }
+    
+    if (-not [string]::IsNullOrWhiteSpace($StorageAccount)) {
+        try {
+            Write-Host "  Consultando Connection String para '$StorageAccount'..." -ForegroundColor Gray
+            $connStr = az storage account show-connection-string -g $ResourceGroup -n $StorageAccount --query connectionString -o tsv
+            
+            Write-Host "  Asegurando existencia de Cola 'privacy-mass-executions'..." -ForegroundColor Gray
+            az storage queue create --name "privacy-mass-executions" --connection-string $connStr | Out-Null
+            
+            Write-Host "  Asegurando existencia de Contenedor 'privacy-backups'..." -ForegroundColor Gray
+            az storage container create --name "privacy-backups" --connection-string $connStr --public-access off | Out-Null
+            
+            Write-Host "  Storage aprovisionado y validado correctamente." -ForegroundColor Green
+        }
+        catch {
+            Write-Warning "No se pudo aprovisionar el Storage automaticamente ($($_.Exception.Message)). Verifique los permisos."
+        }
+    }
+}
+else {
+    Write-Host ""
+    Write-Host "[2/7] Aprovisionamiento de Storage omitido (no se indico -ProvisionStorage)." -ForegroundColor Gray
+}
+
+# 4. Limpieza de artefactos
 Write-Host ""
-Write-Host "[2/6] Limpiando carpetas y artefactos previos..." -ForegroundColor Yellow
+Write-Host "[3/7] Limpiando carpetas y artefactos previos..." -ForegroundColor Yellow
 $cleanPaths = @(".\publish_web", ".\publish_fun", ".\publish_web.zip", ".\publish_fun.zip")
 foreach ($p in $cleanPaths) {
     if (Test-Path $p) {
@@ -70,9 +148,9 @@ foreach ($p in $cleanPaths) {
 }
 Write-Host "  Limpieza completada." -ForegroundColor Green
 
-# 4. Compilacion y publicacion .NET 8 Release
+# 5. Compilacion y publicacion .NET 8 Release
 Write-Host ""
-Write-Host "[3/6] Compilando proyectos en modo Release (.NET 8)..." -ForegroundColor Yellow
+Write-Host "[4/7] Compilando proyectos en modo Release (.NET 8)..." -ForegroundColor Yellow
 
 Write-Host "  Compilando Web API (App Service)..." -ForegroundColor Gray
 dotnet publish .\Umayor.Dynamics.DeletePoc.csproj -c Release -o .\publish_web --nologo -v q
@@ -83,9 +161,9 @@ dotnet publish .\Umayor.Dynamics.DeletePoc.Functions\Umayor.Dynamics.DeletePoc.F
 if ($LASTEXITCODE -ne 0) { throw "Error al compilar Umayor.Dynamics.DeletePoc.Functions" }
 Write-Host "  Compilacion exitosa." -ForegroundColor Green
 
-# 5. Empaquetado ZIP
+# 6. Empaquetado ZIP
 Write-Host ""
-Write-Host "[4/6] Generando paquetes ZIP de despliegue..." -ForegroundColor Yellow
+Write-Host "[5/7] Generando paquetes ZIP de despliegue..." -ForegroundColor Yellow
 Compress-Archive -Path .\publish_web\* -DestinationPath .\publish_web.zip -Force
 Compress-Archive -Path .\publish_fun\* -DestinationPath .\publish_fun.zip -Force
 $webZipSize = [math]::Round((Get-Item .\publish_web.zip).Length / 1MB, 2)
@@ -93,29 +171,29 @@ $funZipSize = [math]::Round((Get-Item .\publish_fun.zip).Length / 1MB, 2)
 Write-Host "  publish_web.zip generado ($webZipSize MB)" -ForegroundColor Green
 Write-Host "  publish_fun.zip generado ($funZipSize MB)" -ForegroundColor Green
 
-# 6. Despliegue con Azure CLI
+# 7. Despliegue con Azure CLI
 Write-Host ""
-Write-Host "[5/6] Desplegando paquetes a Azure..." -ForegroundColor Yellow
+Write-Host "[6/7] Desplegando paquetes a Azure..." -ForegroundColor Yellow
 
-Write-Host "  Desplegando Web API a App Service ($apiAppName)..." -ForegroundColor Gray
-az webapp deployment source config-zip --resource-group $ResourceGroup --name $apiAppName --src .\publish_web.zip
-if ($LASTEXITCODE -ne 0) { throw "Fallo el despliegue al App Service $apiAppName" }
+Write-Host "  Desplegando Web API a App Service ($apiFinalName)..." -ForegroundColor Gray
+az webapp deployment source config-zip --resource-group $ResourceGroup --name $apiFinalName --src .\publish_web.zip
+if ($LASTEXITCODE -ne 0) { throw "Fallo el despliegue al App Service $apiFinalName" }
 
-Write-Host "  Desplegando Worker a Function App ($funAppName)..." -ForegroundColor Gray
-az functionapp deployment source config-zip --resource-group $ResourceGroup --name $funAppName --src .\publish_fun.zip
-if ($LASTEXITCODE -ne 0) { throw "Fallo el despliegue a la Function App $funAppName" }
+Write-Host "  Desplegando Worker a Function App ($funFinalName)..." -ForegroundColor Gray
+az functionapp deployment source config-zip --resource-group $ResourceGroup --name $funFinalName --src .\publish_fun.zip
+if ($LASTEXITCODE -ne 0) { throw "Fallo el despliegue a la Function App $funFinalName" }
 
 Write-Host "  Reiniciando servicios para aplicar los nuevos binarios..." -ForegroundColor Gray
-az webapp restart --resource-group $ResourceGroup --name $apiAppName
-az functionapp restart --resource-group $ResourceGroup --name $funAppName
+az webapp restart --resource-group $ResourceGroup --name $apiFinalName
+az functionapp restart --resource-group $ResourceGroup --name $funFinalName
 Write-Host "  Despliegue y reinicio concluidos con exito." -ForegroundColor Green
 
-# 7. Smoke Tests Post-Despliegue
+# 8. Smoke Tests Post-Despliegue
 if (-not $SkipSmokeTests) {
     Write-Host ""
-    Write-Host "[6/6] Ejecutando Smoke Tests post-despliegue..." -ForegroundColor Yellow
+    Write-Host "[7/7] Ejecutando Smoke Tests post-despliegue..." -ForegroundColor Yellow
     
-    $apiBaseUrl = "https://$apiAppName.azurewebsites.net"
+    $apiBaseUrl = "https://$apiFinalName.azurewebsites.net"
     $healthUrl = "$apiBaseUrl/api/diagnostics/build"
     
     Write-Host "  Esperando 10 segundos a que el App Service inicie..." -ForegroundColor Gray
@@ -136,7 +214,7 @@ if (-not $SkipSmokeTests) {
 }
 else {
     Write-Host ""
-    Write-Host "[6/6] Smoke Tests omitidos por parametro (-SkipSmokeTests)." -ForegroundColor Gray
+    Write-Host "[7/7] Smoke Tests omitidos por parametro (-SkipSmokeTests)." -ForegroundColor Gray
 }
 
 Write-Host ""
