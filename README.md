@@ -10,6 +10,7 @@ Plataforma empresarial en .NET 8 para consultar, anonimizar y ejecutar operacion
 | :--- | :--- | :---: |
 | 🔑 **Variables de Entorno Azure** | **Referencia exhaustiva** de Application Settings verificadas en DEV, QA y PROD | [**README_ENV_VARIABLES.md**](./README_ENV_VARIABLES.md) |
 | 🚀 **Guía de Despliegue por Ambientes** | Procedimiento operativo por ambientes, puertas de paso y 4to entorno | [**DEPLOYMENT.md**](./DEPLOYMENT.md) |
+| 📋 **Levantamiento QAS Power Platform** | Inventario en modo lectura de soluciones, tablas, páginas, conector, dependencias y brechas contra Git | [**Levantamiento QAS**](./docs/levantamiento_qas_proteccion_datos_2026-09-03.md) |
 | ⚙️ **Skill Despliegue Azure** | Guía de comandos Azure CLI para App Service, Functions y Storage | [**SKILL Despliegue**](./.agents/skills/despliegue-azure-umayor/SKILL.md) |
 | 🛡️ **Skill Protección de Datos** | Arquitectura integral, modelo de entidades Dataverse y seguridad | [**SKILL Arquitectura**](./.agents/skills/proteccion-datos-umayor/SKILL.md) |
 
@@ -78,6 +79,16 @@ El repositorio cuenta con una suite de documentación técnica organizada según
   - Puertas de promoción y criterios de aceptación entre DEV, QA y PROD.
   - **Incorporación de un 4to Entorno:** Checklist de requisitos y procedimiento para dar de alta un nuevo ambiente (`custom`, `staging`, etc.).
   - Protocolo de reversión (*Rollback*) de código e integridad de respaldos de datos.
+
+---
+
+### 📋 [docs/levantamiento_qas_proteccion_datos_2026-09-03.md](./docs/levantamiento_qas_proteccion_datos_2026-09-03.md) — *Levantamiento QAS Power Platform*
+- **Audiencia:** Arquitectos Dynamics 365, responsables ALM, QA Lead y documentación técnica.
+- **Contenido:**
+  - Inventario en modo lectura de las soluciones `LeydeProtecciondeDatos`, `Pagina_Leyproteccion` y `CustomConnector_LeyProteccion`.
+  - Componentes visibles en QAS: tablas, páginas, Model Driven App, sitemap, Canvas App, conector personalizado y dependencias.
+  - Diccionario preliminar de columnas y relaciones de `um_privacyoperationlog`, `um_massexecution` y `um_massexecutiondetail`.
+  - Contraste contra el repositorio y brechas documentales para cerrar antes de consolidar ALM y documentación técnica.
 
 ---
 
