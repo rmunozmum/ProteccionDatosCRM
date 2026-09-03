@@ -44,12 +44,65 @@ La solución consta de tres componentes en .NET 8 y frontend/Power Apps integrad
 
 ---
 
-## 2. Documentación y Skills Especializadas
+## 2. Mapa Integral de Documentación (`*.md`)
 
-- **[README_ENV_VARIABLES.md](./README_ENV_VARIABLES.md)**: **Referencia técnica exhaustiva** de todas las variables de entorno de Azure verificadas en DEV, QA y PROD, su propósito y comportamiento.
-- **[Skill Despliegue Azure](./.agents/skills/despliegue-azure-umayor/SKILL.md)**: Guía operativa paso a paso de compilación, empaquetado, Application Settings en Azure, smoke tests y rollback para App Service y Function App.
-- **[Skill Protección de Datos](./.agents/skills/proteccion-datos-umayor/SKILL.md)**: Manual de arquitectura, modelo de entidades Dataverse (`um_massexecution`, `um_massexecutiondetail`), flujos criptográficos de respaldo y optimizaciones.
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)**: Matriz de variables por ambiente (DEV, QA, PROD), puertas de promoción y alta de nuevo entorno.
+El repositorio cuenta con una suite de documentación técnica organizada según el rol y la tarea a realizar:
+
+### 📄 [README.md](./README.md) — *Manual Central del Repositorio*
+- **Audiencia:** Todo el equipo (Desarrolladores, QA, DevOps, Líderes Técnicos).
+- **Contenido:**
+  - Visión general del proyecto, propósito y marco legal (Ley ARCO).
+  - Arquitectura de componentes (.NET 8 Web API, Azure Functions y Shared Library).
+  - Guía de inicio y ejecución local segura.
+  - **Guía para Desarrolladores:** Flujo de trabajo con Git, ramas, reglas de seguridad y procedimiento para hacer `git push`.
+  - Autoría corporativa y créditos institucionales.
+
+---
+
+### 🔑 [README_ENV_VARIABLES.md](./README_ENV_VARIABLES.md) — *Referencia de Variables de Entorno Azure*
+- **Audiencia:** DevOps, Cloud Engineers, Administradores de Infraestructura Azure.
+- **Contenido:**
+  - Inventario de los 6 servicios en Azure (`admincrm2021_rg_0225`) en DEV, QA y PROD.
+  - Matriz de valores reales verificados para cada ambiente.
+  - Explicación técnica de variables de conexión Dataverse (`Dataverse__Url`, `ClientId`, `AuthType`).
+  - **Mecanismos de Fail-Safe y Kill-Switch:** `Safety__RequireEnvironmentContains` (anti-ejecución cruzada) y `Safety__DeletionEnabled`.
+  - Configuración de Azure Storage Queues (`privacy-mass-executions`) y Blob Containers (`privacy-backups`).
+  - Parámetros de dimensionamiento de lotes masivos (`MassOrchestration__*`).
+
+---
+
+### 🚀 [DEPLOYMENT.md](./DEPLOYMENT.md) — *Guía de Despliegue y Puertas de Promoción*
+- **Audiencia:** Responsables de Release, DevOps, QA Lead.
+- **Contenido:**
+  - Arquitectura de despliegue y separación de cómputo (Web API vs. Workers Asíncronos).
+  - Puertas de promoción y criterios de aceptación entre DEV, QA y PROD.
+  - **Incorporación de un 4to Entorno:** Checklist de requisitos y procedimiento para dar de alta un nuevo ambiente (`custom`, `staging`, etc.).
+  - Protocolo de reversión (*Rollback*) de código e integridad de respaldos de datos.
+
+---
+
+### ⚙️ [.agents/skills/despliegue-azure-umayor/SKILL.md](./.agents/skills/despliegue-azure-umayor/SKILL.md) — *Skill Operativa de Despliegue Azure*
+- **Audiencia:** Desarrolladores, DevOps y Asistentes de IA (Copilot / Antigravity).
+- **Contenido:**
+  - Secuencia de comandos en PowerShell y Azure CLI para compilar y desplegar vía `ZipDeploy`.
+  - Comandos para aprovisionamiento inicial de Storage (Colas y Blobs) con Azure CLI.
+  - Instrucciones para actualizar el Conector Personalizado (*Custom Connector*) en Power Apps con `swagger_custom_connector_mass.yaml`.
+  - Batería de Smoke Tests post-despliegue (`/api/diagnostics/build`, `/api/execute-single`, monitoreo de colas).
+  - Diagnóstico y resolución de fallas comunes (errores MFA, HTTP 502/503, bloqueos de Dataverse).
+
+---
+
+### 🛡️ [.agents/skills/proteccion-datos-umayor/SKILL.md](./.agents/skills/proteccion-datos-umayor/SKILL.md) — *Skill de Arquitectura y Dominio Dataverse*
+- **Audiencia:** Desarrolladores de Backend, Arquitectos de Software, Consultores Dynamics 365.
+- **Contenido:**
+  - Diagrama de flujo de extremo a extremo desde Power Apps hasta Azure Functions.
+  - Definición de los tres modos de operación (`EliminarTodo`, `EliminarTodoMenosContacto`, `Consultar`).
+  - Matriz relacional de más de 20 entidades de Dataverse (`contact`, `lead`, `incident`, actividades, etc.).
+  - Mecanismo de desvinculación automática (*unlinking fallback*) y saneamiento de `customeraddress`.
+  - Pipeline criptográfico de snapshots JSON comprimidos firmados con **SHA-256** en Blob Storage.
+  - Esquema detallado de las tablas de Dataverse: `um_massexecution`, `um_massexecutiondetail` y `um_privacyoperationlog`.
+  - Optimizaciones de rendimiento (reducción de tiempos de purga a ~5.5 segundos por registro).
+
 
 
 ---
