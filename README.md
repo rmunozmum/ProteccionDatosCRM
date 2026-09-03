@@ -34,7 +34,8 @@ La solución consta de tres componentes en .NET 8 y frontend/Power Apps integrad
 
 ## 2. Documentación y Skills Especializadas
 
-En la carpeta `.agents/skills/` se encuentran disponibles guías técnicas detalladas:
+En el repositorio se encuentran disponibles guías técnicas detalladas:
+- **[README_ENV_VARIABLES.md](file:///README_ENV_VARIABLES.md)**: **Referencia técnica exhaustiva** de todas las variables de entorno de Azure verificadas en DEV, QA y PROD, su propósito y comportamiento.
 - **[despliegue-azure-umayor](file:///.agents/skills/despliegue-azure-umayor/SKILL.md)**: Guía operativa paso a paso de compilación, empaquetado, Application Settings en Azure, smoke tests y rollback para App Service y Function App.
 - **[proteccion-datos-umayor](file:///.agents/skills/proteccion-datos-umayor/SKILL.md)**: Manual de arquitectura, modelo de entidades Dataverse (`um_massexecution`, `um_massexecutiondetail`), flujos criptográficos de respaldo y optimizaciones.
 - **[DEPLOYMENT.md](file:///DEPLOYMENT.md)**: Matriz de variables por ambiente (DEV, QA, PROD) y puertas de promoción.
